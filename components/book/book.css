@@ -580,11 +580,26 @@
 }
 
 .tome-page-plate .tome-scene,
-.tome-scene-mapplate,
-.tome-mapplate-well {
+.tome-page-plate .tome-scene-mapplate,
+.tome-page-plate .tome-mapplate-well {
   position: absolute;
   inset: 0;
   border-radius: 0;
+  aspect-ratio: auto;
+}
+
+/* A map-plate sharing a page with another scene renders as a framed inline
+   plate instead of bleeding over the whole page. */
+.tome-scene-mapplate {
+  position: relative;
+}
+
+.tome-mapplate-well {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: 3px;
+  overflow: hidden;
 }
 
 .tome-mapplate-img {
