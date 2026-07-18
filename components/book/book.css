@@ -1,0 +1,1027 @@
+/*
+ * Tome book renderer styles.
+ * All theme values arrive as CSS custom properties from themeToCssVars():
+ *   --paper --ink --accent --gold --font-display --font-body
+ * Everything here is scoped under .tome-* class names.
+ */
+
+/* ── Book chrome: leather cover, spine, arrows ─────────────────────────── */
+
+.tome-book {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  font-family: var(--font-body, Georgia, serif);
+  color: var(--ink, #2b2118);
+}
+
+.tome-cover-board {
+  position: relative;
+  border-radius: 14px 20px 20px 14px;
+  padding: clamp(12px, 1.7vw, 22px);
+  padding-bottom: 48px;
+  background:
+    radial-gradient(
+      120% 90% at 30% 20%,
+      rgba(122, 84, 48, 0.35),
+      transparent 60%
+    ),
+    linear-gradient(135deg, #3a2a1c 0%, #241710 55%, #2f1f14 100%);
+  box-shadow:
+    0 34px 70px rgba(10, 5, 2, 0.55),
+    0 8px 22px rgba(10, 5, 2, 0.4),
+    inset 0 1px 0 rgba(255, 220, 160, 0.12);
+}
+
+.tome-cover-board::before {
+  content: '';
+  position: absolute;
+  inset: 7px;
+  bottom: 42px;
+  border: 1px solid rgba(200, 160, 90, 0.35);
+  border-radius: 10px 15px 15px 10px;
+  pointer-events: none;
+}
+
+.tome-two-up .tome-spread {
+  width: min(88vw, 1100px);
+  height: min(76vh, 700px);
+}
+
+.tome-one-up .tome-spread {
+  width: min(92vw, 560px);
+  height: min(80vh, 720px);
+}
+
+.tome-spread {
+  position: relative;
+  perspective: 2600px;
+}
+
+.tome-spine-shadow {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 8%;
+  transform: translateX(-50%);
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(52, 32, 12, 0.18) 38%,
+    rgba(52, 32, 12, 0.34) 50%,
+    rgba(52, 32, 12, 0.18) 62%,
+    transparent 100%
+  );
+  pointer-events: none;
+  z-index: 2;
+}
+
+.tome-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 7;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-display, Georgia, serif);
+  font-size: 2.4rem;
+  line-height: 1;
+  color: rgba(232, 202, 140, 0.8);
+  padding: 0.2em 0.25em;
+  transition:
+    color 0.25s,
+    opacity 0.25s;
+}
+
+.tome-arrow:hover:not(:disabled) {
+  color: rgba(255, 228, 168, 1);
+}
+
+.tome-arrow:disabled {
+  opacity: 0.15;
+  cursor: default;
+}
+
+.tome-arrow-prev {
+  left: -6px;
+}
+
+.tome-arrow-next {
+  right: -6px;
+}
+
+@media (max-width: 919px) {
+  .tome-arrow-prev {
+    left: 2px;
+  }
+
+  .tome-arrow-next {
+    right: 2px;
+  }
+}
+
+/* Page-corner click zones with a hover "curl" fold */
+
+.tome-corner {
+  position: absolute;
+  bottom: 0;
+  width: 70px;
+  height: 70px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 6;
+  padding: 0;
+}
+
+.tome-corner::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  transition: border-width 0.28s ease;
+}
+
+.tome-corner-next {
+  right: 0;
+}
+
+.tome-corner-next::after {
+  right: 0;
+  border-width: 0 0 16px 16px;
+  border-color: transparent transparent rgba(120, 90, 45, 0.35) transparent;
+  filter: drop-shadow(-2px -2px 3px rgba(50, 30, 10, 0.3));
+}
+
+.tome-corner-next:hover::after {
+  border-width: 0 0 36px 36px;
+}
+
+.tome-corner-prev {
+  left: 0;
+}
+
+.tome-corner-prev::after {
+  left: 0;
+  border-width: 0 16px 16px 0;
+  border-color: transparent transparent rgba(120, 90, 45, 0.35) transparent;
+  filter: drop-shadow(2px -2px 3px rgba(50, 30, 10, 0.3));
+}
+
+.tome-corner-prev:hover::after {
+  border-width: 0 36px 36px 0;
+}
+
+/* ── Leaves and paper pages ────────────────────────────────────────────── */
+
+.tome-leaf {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+.tome-leaf-left {
+  left: 0;
+  width: 50%;
+}
+
+.tome-leaf-right {
+  left: 50%;
+  width: 50%;
+}
+
+.tome-leaf-single {
+  left: 0;
+  width: 100%;
+}
+
+.tome-page {
+  --page-pad: clamp(1.3rem, 2.6vw, 2.4rem);
+  position: absolute;
+  inset: 0;
+  background-color: var(--paper, #f4ecd9);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  padding: var(--page-pad);
+}
+
+.tome-leaf-left .tome-page {
+  border-radius: 5px 0 0 5px;
+  box-shadow: inset -18px 0 26px -20px rgba(60, 38, 14, 0.55);
+}
+
+.tome-leaf-right .tome-page {
+  border-radius: 0 5px 5px 0;
+  box-shadow: inset 18px 0 26px -20px rgba(60, 38, 14, 0.55);
+}
+
+.tome-leaf-single .tome-page {
+  border-radius: 5px;
+}
+
+.tome-page-body {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  overflow: hidden;
+  /* If content ever overruns the page, the last line fades like drying ink
+     instead of hard-clipping. */
+  mask-image: linear-gradient(
+    to bottom,
+    #000 calc(100% - 1.4em),
+    transparent 100%
+  );
+}
+
+/* Mobile: keep the portrait large — single pages have room to spare. */
+@media (max-width: 919px) {
+  .tome-portrait-frame {
+    width: min(78%, 330px);
+  }
+}
+
+.tome-running-head {
+  flex: none;
+  text-align: center;
+  font-size: 0.68rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--ink) 52%, var(--paper));
+  margin-bottom: 0.7rem;
+}
+
+.tome-page-number {
+  flex: none;
+  text-align: center;
+  font-family: var(--font-display, Georgia, serif);
+  font-size: 0.8rem;
+  color: color-mix(in srgb, var(--ink) 58%, var(--paper));
+  margin-top: 0.45rem;
+}
+
+.tome-page-active .tome-page-number {
+  color: var(--gold, #b08a3e);
+}
+
+/* ── Paper textures (pure CSS/SVG, no external images) ─────────────────── */
+
+.tome-texture-parchment {
+  background-image:
+    radial-gradient(
+      120% 90% at 50% 42%,
+      transparent 58%,
+      rgba(96, 64, 26, 0.13) 100%
+    ),
+    radial-gradient(
+      42% 30% at 18% 24%,
+      rgba(130, 92, 40, 0.05),
+      transparent 100%
+    ),
+    radial-gradient(
+      50% 36% at 80% 72%,
+      rgba(130, 92, 40, 0.06),
+      transparent 100%
+    ),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='280' height='280'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.32 0 0 0 0 0.23 0 0 0 0 0.11 0 0 0 0.08 0'/%3E%3C/filter%3E%3Crect width='280' height='280' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.tome-texture-linen {
+  background-image:
+    radial-gradient(
+      120% 90% at 50% 45%,
+      transparent 62%,
+      rgba(80, 60, 30, 0.1) 100%
+    ),
+    repeating-linear-gradient(
+      0deg,
+      rgba(70, 52, 28, 0.028) 0px,
+      rgba(70, 52, 28, 0.028) 1px,
+      transparent 1px,
+      transparent 3px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(70, 52, 28, 0.028) 0px,
+      rgba(70, 52, 28, 0.028) 1px,
+      transparent 1px,
+      transparent 3px
+    ),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.3 0 0 0 0 0.24 0 0 0 0 0.14 0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.tome-texture-aged-paper {
+  background-image:
+    radial-gradient(
+      115% 85% at 50% 40%,
+      transparent 48%,
+      rgba(92, 58, 20, 0.2) 100%
+    ),
+    radial-gradient(
+      34% 26% at 12% 10%,
+      rgba(110, 70, 24, 0.1),
+      transparent 100%
+    ),
+    radial-gradient(
+      30% 22% at 90% 88%,
+      rgba(110, 70, 24, 0.12),
+      transparent 100%
+    ),
+    radial-gradient(
+      18% 14% at 72% 18%,
+      rgba(120, 78, 28, 0.07),
+      transparent 100%
+    ),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.55' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.34 0 0 0 0 0.22 0 0 0 0 0.09 0 0 0 0.11 0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.tome-texture-vellum {
+  background-image:
+    radial-gradient(
+      130% 100% at 50% 30%,
+      rgba(255, 252, 240, 0.35),
+      transparent 70%
+    ),
+    radial-gradient(
+      120% 90% at 50% 50%,
+      transparent 68%,
+      rgba(90, 66, 34, 0.08) 100%
+    ),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='320' height='320'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.35' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.32 0 0 0 0 0.26 0 0 0 0 0.16 0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='320' height='320' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.tome-texture-none {
+  background-image: none;
+}
+
+/* ── Typography ────────────────────────────────────────────────────────── */
+
+.tome-prose {
+  font-family: var(--font-body, Georgia, serif);
+  font-size: clamp(0.92rem, 1.12vw, 1.08rem);
+  line-height: 1.62;
+  text-align: justify;
+  hyphens: auto;
+  margin: 0;
+}
+
+.tome-word {
+  display: inline-block;
+}
+
+.tome-dropcap {
+  float: left;
+  font-family: var(--font-display, Georgia, serif);
+  font-size: 3.1em;
+  line-height: 0.82;
+  padding: 0.08em 0.14em 0 0;
+  color: var(--accent, #7d3b28);
+}
+
+.tome-rule {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 0.8rem auto;
+  width: 72%;
+}
+
+.tome-rule-small {
+  width: 34%;
+  margin: 0.55rem auto 0.9rem;
+}
+
+.tome-rule-line {
+  flex: 1;
+  height: 1px;
+  background: color-mix(in srgb, var(--accent) 52%, transparent);
+}
+
+.tome-rule-fleuron {
+  color: var(--gold, #b08a3e);
+  font-size: 0.95rem;
+  line-height: 1;
+}
+
+/* ── Scene shells & citation affordance ────────────────────────────────── */
+
+.tome-scene {
+  position: relative;
+  border-radius: 4px;
+  transition:
+    background-color 0.3s,
+    box-shadow 0.3s;
+}
+
+.tome-scene-citable {
+  cursor: pointer;
+}
+
+.tome-scene-citable:hover,
+.tome-scene-citable:focus-visible {
+  background-color: color-mix(in srgb, var(--gold) 8%, transparent);
+  box-shadow: 0 0 0 6px color-mix(in srgb, var(--gold) 8%, transparent);
+  outline: none;
+}
+
+.tome-cite-mark {
+  position: absolute;
+  top: 0;
+  right: 2px;
+  font-size: 0.85rem;
+  color: var(--gold, #b08a3e);
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+
+.tome-scene-citable:hover .tome-cite-mark,
+.tome-scene-citable:focus-visible .tome-cite-mark {
+  opacity: 0.9;
+}
+
+/* ── Chapter header scene ──────────────────────────────────────────────── */
+
+.tome-scene-chapter {
+  text-align: center;
+  padding-top: 0.6rem;
+}
+
+.tome-chapter-numeral {
+  font-size: 0.72rem;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: var(--gold, #b08a3e);
+}
+
+.tome-chapter-title {
+  font-family: var(--font-display, Georgia, serif);
+  font-size: clamp(1.5rem, 2.5vw, 2.2rem);
+  font-weight: 500;
+  line-height: 1.18;
+  color: var(--accent, #7d3b28);
+  margin: 0.4rem 0 0.3rem;
+}
+
+.tome-epigraph {
+  font-style: italic;
+  font-size: 0.98rem;
+  line-height: 1.5;
+  color: color-mix(in srgb, var(--ink) 72%, var(--paper));
+  max-width: 86%;
+  margin: 0.5rem auto 0.2rem;
+}
+
+.tome-prose-opening {
+  text-align: justify;
+  margin-top: 0.4rem;
+}
+
+/* ── Portrait scene ────────────────────────────────────────────────────── */
+
+.tome-scene-portrait {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.tome-portrait-frame {
+  align-self: center;
+  width: min(58%, 252px);
+  aspect-ratio: 3 / 3.4;
+  padding: 7px;
+  background: color-mix(in srgb, var(--paper) 70%, #ffffff);
+  border: 1px solid color-mix(in srgb, var(--accent) 45%, transparent);
+  outline: 1px solid color-mix(in srgb, var(--gold) 45%, transparent);
+  outline-offset: 3px;
+  box-shadow:
+    0 10px 26px rgba(50, 30, 8, 0.28),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.35);
+  overflow: hidden;
+}
+
+.tome-portrait-frame > * {
+  width: 100%;
+  height: 100%;
+}
+
+.tome-portrait-img {
+  display: block;
+  object-fit: cover;
+  filter: sepia(0.14) contrast(1.02) saturate(0.94);
+}
+
+.tome-portrait-skel {
+  aspect-ratio: auto !important;
+}
+
+.tome-caption {
+  text-align: center;
+  margin: 0.65rem 0 0.7rem;
+}
+
+.tome-caption-name {
+  display: block;
+  font-size: 0.82rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent, #7d3b28);
+}
+
+.tome-caption-detail {
+  display: block;
+  font-size: 0.74rem;
+  letter-spacing: 0.1em;
+  font-style: italic;
+  color: color-mix(in srgb, var(--ink) 65%, var(--paper));
+  margin-top: 0.15rem;
+}
+
+/* ── Map plate scene (full-bleed) ──────────────────────────────────────── */
+
+.tome-page-plate {
+  padding: 0;
+}
+
+.tome-page-plate .tome-page-body {
+  position: absolute;
+  inset: 0;
+  display: block;
+}
+
+.tome-page-plate .tome-scene,
+.tome-scene-mapplate,
+.tome-mapplate-well {
+  position: absolute;
+  inset: 0;
+  border-radius: 0;
+}
+
+.tome-mapplate-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: sepia(0.45) contrast(0.92) brightness(0.96) saturate(0.8);
+}
+
+/* Paper-tint wash so bright modern images sit inside the aged book. */
+.tome-mapplate-well::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--paper, #f4ecd9);
+  opacity: 0.28;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.tome-mapplate-vignette,
+.tome-cartouche {
+  z-index: 2;
+}
+
+.tome-mapplate-skel {
+  position: absolute;
+  inset: 0;
+}
+
+.tome-mapplate-vignette {
+  position: absolute;
+  inset: 0;
+  box-shadow:
+    inset 0 0 70px rgba(46, 26, 6, 0.55),
+    inset 0 0 12px rgba(46, 26, 6, 0.35);
+  pointer-events: none;
+}
+
+.tome-cartouche {
+  position: absolute;
+  left: 50%;
+  bottom: 7%;
+  transform: translateX(-50%);
+  max-width: 78%;
+  background: var(--paper, #f4ecd9);
+  border: 3px double color-mix(in srgb, var(--accent) 70%, transparent);
+  padding: 0.5em 1.3em;
+  font-size: 0.76rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-align: center;
+  color: color-mix(in srgb, var(--ink) 85%, var(--paper));
+  box-shadow: 0 6px 18px rgba(30, 16, 2, 0.4);
+}
+
+/* ── Timeline scene ────────────────────────────────────────────────────── */
+
+.tome-timeline-heading {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin: 0.4rem 0 0.9rem;
+}
+
+.tome-timeline-word {
+  font-size: 0.72rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--gold, #b08a3e);
+}
+
+.tome-timeline-list {
+  list-style: none;
+  margin: 0 0 1rem;
+  padding: 0;
+  position: relative;
+}
+
+.tome-timeline-list::before {
+  content: '';
+  position: absolute;
+  left: calc(4.4rem + 0.52rem);
+  top: 6px;
+  bottom: 6px;
+  width: 1px;
+  background: color-mix(in srgb, var(--accent) 38%, transparent);
+}
+
+.tome-timeline-event {
+  display: grid;
+  grid-template-columns: 4.4rem 1.1rem 1fr;
+  gap: 0.45rem;
+  align-items: center;
+  margin: 0.6rem 0;
+}
+
+.tome-timeline-year {
+  font-family: var(--font-display, Georgia, serif);
+  font-size: 0.95rem;
+  color: var(--accent, #7d3b28);
+  text-align: right;
+}
+
+.tome-timeline-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--gold, #b08a3e);
+  justify-self: center;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--gold) 22%, transparent);
+}
+
+.tome-timeline-label {
+  font-size: 0.92rem;
+  line-height: 1.35;
+}
+
+/* ── Letter quote scene ────────────────────────────────────────────────── */
+
+.tome-letter-paper {
+  position: relative;
+  margin: 0.7rem 0.5rem 1.3rem;
+  padding: 1.5rem 1.5rem 1rem;
+  background: color-mix(in srgb, var(--paper) 80%, #ffffff);
+  border: 1px solid color-mix(in srgb, var(--ink) 14%, transparent);
+  box-shadow:
+    0 9px 24px rgba(35, 20, 5, 0.2),
+    0 2px 6px rgba(35, 20, 5, 0.14);
+}
+
+.tome-letter-quotemark {
+  position: absolute;
+  top: -0.12em;
+  left: 0.32rem;
+  font-family: var(--font-display, Georgia, serif);
+  font-size: 3.2em;
+  line-height: 1;
+  color: color-mix(in srgb, var(--accent) 38%, transparent);
+  pointer-events: none;
+}
+
+.tome-letter-quote {
+  font-style: italic;
+  font-size: 1rem;
+  line-height: 1.55;
+  margin: 0 0 0.75rem;
+}
+
+.tome-letter-attribution {
+  text-align: right;
+  font-size: 0.76rem;
+  letter-spacing: 0.12em;
+  line-height: 1.7;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--ink) 76%, var(--paper));
+}
+
+.tome-letter-date {
+  text-transform: none;
+  letter-spacing: 0.06em;
+}
+
+.tome-letter-seal {
+  position: absolute;
+  bottom: -11px;
+  right: 16px;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 34% 32%, #c05038, #7c2417 68%);
+  box-shadow:
+    0 3px 7px rgba(40, 8, 2, 0.4),
+    inset 0 0 4px rgba(255, 200, 180, 0.35);
+}
+
+/* ── Title page & blank page ───────────────────────────────────────────── */
+
+.tome-title-page {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.tome-title-frame {
+  border: 1px solid color-mix(in srgb, var(--gold) 55%, transparent);
+  outline: 1px solid color-mix(in srgb, var(--gold) 28%, transparent);
+  outline-offset: 5px;
+  padding: clamp(1.6rem, 3vw, 3rem) clamp(1.2rem, 2.4vw, 2.4rem);
+  max-width: 90%;
+}
+
+.tome-title-ornament {
+  display: block;
+  color: var(--gold, #b08a3e);
+  font-size: 1.35rem;
+}
+
+.tome-title {
+  font-family: var(--font-display, Georgia, serif);
+  font-size: clamp(1.8rem, 3.2vw, 2.9rem);
+  font-weight: 500;
+  line-height: 1.16;
+  color: var(--accent, #7d3b28);
+  margin: 0.8rem 0 0.4rem;
+}
+
+.tome-subtitle {
+  font-style: italic;
+  font-size: clamp(0.98rem, 1.4vw, 1.2rem);
+  color: color-mix(in srgb, var(--ink) 76%, var(--paper));
+  margin: 0 0 0.4rem;
+}
+
+.tome-era-label {
+  font-size: 0.74rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--gold, #b08a3e);
+  margin: 0.5rem 0 0;
+}
+
+.tome-blank-page {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tome-forming {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  color: color-mix(in srgb, var(--ink) 45%, var(--paper));
+}
+
+.tome-forming-quill {
+  font-size: 1.6rem;
+  animation: tome-quill 2.2s ease-in-out infinite;
+}
+
+.tome-forming-text {
+  font-style: italic;
+  font-size: 0.92rem;
+  letter-spacing: 0.06em;
+  animation: tome-pulse 2.2s ease-in-out infinite;
+}
+
+@keyframes tome-quill {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-6deg);
+  }
+  50% {
+    transform: translateY(-5px) rotate(6deg);
+  }
+}
+
+@keyframes tome-pulse {
+  0%,
+  100% {
+    opacity: 0.55;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* ── Skeletons (shimmering ink) ────────────────────────────────────────── */
+
+.tome-skel {
+  background: linear-gradient(
+    100deg,
+    color-mix(in srgb, var(--ink) 8%, transparent) 40%,
+    color-mix(in srgb, var(--ink) 16%, transparent) 50%,
+    color-mix(in srgb, var(--ink) 8%, transparent) 60%
+  );
+  background-size: 220% 100%;
+  animation: tome-shimmer 1.8s ease-in-out infinite;
+  border-radius: 3px;
+}
+
+.tome-skel-lines {
+  padding: 0.2rem 0;
+}
+
+.tome-skel-line {
+  height: 0.8em;
+  margin: 0.55em 0;
+}
+
+.tome-skel-block {
+  width: 100%;
+}
+
+@keyframes tome-shimmer {
+  0% {
+    background-position: 130% 0;
+  }
+  100% {
+    background-position: -90% 0;
+  }
+}
+
+/* ── Reading progress ──────────────────────────────────────────────────── */
+
+.tome-progress {
+  position: absolute;
+  left: 14%;
+  right: 14%;
+  bottom: 9px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  z-index: 7;
+}
+
+.tome-progress-track {
+  width: 100%;
+  height: 3px;
+  border-radius: 2px;
+  background: rgba(255, 238, 205, 0.16);
+  overflow: hidden;
+}
+
+.tome-progress-fill {
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--gold) 70%, #ffffff),
+    var(--gold, #b08a3e)
+  );
+}
+
+.tome-progress-label {
+  font-size: 0.64rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(240, 224, 190, 0.72);
+}
+
+.tome-progress-writing {
+  animation: tome-pulse 1.8s ease-in-out infinite;
+}
+
+/* ── Dev preview backdrop (app/dev-book only) ──────────────────────────── */
+
+.tome-dev-backdrop {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.1rem;
+  padding: 1.5rem;
+  overflow-x: hidden;
+  background:
+    radial-gradient(
+      1100px 700px at 50% 28%,
+      rgba(84, 62, 40, 0.55),
+      transparent 75%
+    ),
+    #171009;
+}
+
+.tome-dev-controls {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.tome-dev-controls button {
+  background: rgba(255, 235, 200, 0.08);
+  border: 1px solid rgba(220, 185, 120, 0.4);
+  color: rgba(240, 224, 190, 0.9);
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.45em 1.1em;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background 0.25s;
+}
+
+.tome-dev-controls button:hover {
+  background: rgba(255, 235, 200, 0.18);
+}
+
+.tome-dev-citations {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: min(380px, 92vw);
+  background: #241a10;
+  border-left: 1px solid rgba(220, 185, 120, 0.35);
+  color: rgba(240, 228, 205, 0.95);
+  padding: 1.4rem;
+  overflow-y: auto;
+  z-index: 40;
+  box-shadow: -18px 0 40px rgba(0, 0, 0, 0.45);
+}
+
+.tome-dev-citations h3 {
+  margin: 0 0 1rem;
+  font-size: 0.85rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(232, 202, 140, 0.95);
+}
+
+.tome-dev-citations > button {
+  position: absolute;
+  top: 1.1rem;
+  right: 1.2rem;
+  background: none;
+  border: 1px solid rgba(220, 185, 120, 0.4);
+  border-radius: 3px;
+  color: rgba(240, 224, 190, 0.85);
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 0.3em 0.8em;
+  cursor: pointer;
+}
+
+.tome-dev-citation {
+  border-top: 1px solid rgba(220, 185, 120, 0.2);
+  padding: 0.8rem 0;
+  font-size: 0.86rem;
+  line-height: 1.5;
+}
+
+.tome-dev-citation a {
+  color: rgba(232, 202, 140, 0.95);
+}
+
+.tome-dev-citation blockquote {
+  margin: 0.4rem 0 0;
+  font-style: italic;
+  opacity: 0.85;
+}
+
+/* ── Reduced motion ────────────────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  .tome-skel,
+  .tome-forming-quill,
+  .tome-forming-text,
+  .tome-progress-writing {
+    animation: none;
+  }
+}
