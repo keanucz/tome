@@ -1,4 +1,4 @@
-/* eslint-disable no-console */
+ 
 /**
  * Live smoke test for the Wikipedia/Commons source pipeline.
  * Run: npx -y tsx scripts/test-corpus.ts
