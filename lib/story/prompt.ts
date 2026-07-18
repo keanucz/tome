@@ -3,7 +3,7 @@ import type {
   SourceCorpus,
   SourceImage,
 } from '../sources/types'
-import { FONT_PAIRINGS, TEXTURE_IDS } from './schema'
+import { FONT_PAIRINGS, TEXTURE_IDS, type StoryDepth } from './schema'
 
 /**
  * Builds the system + user prompt for the story weave. The corpus text and
@@ -70,21 +70,63 @@ a letterpress artisan: palettes, type, and textures that a reader would date
 to the period at a glance.
 
 You respond with a single JSON object that exactly matches the provided
-schema. No commentary, no markdown — only the object.`
+schema. No commentary, no markdown — only the object.
 
-export function buildStoryPrompt(corpus: SourceCorpus): {
+CRITICAL OUTPUT ORDER: the reader watches the book materialize as you
+stream, so you MUST emit the JSON object's top-level keys in exactly this
+order: "title" first, then "subtitle", then "theme", then "chapters". The
+cover and era styling must exist before the first chapter is written.
+Emitting "chapters" before "title" and "theme" ruins the experience.`
+
+/** Depth → structure targets and narrative density instructions. */
+const DEPTH_SPECS: Record<
+  StoryDepth,
+  { chapters: string; pages: string; density: string }
+> = {
+  pamphlet: {
+    chapters: '2 to 3 chapters',
+    pages: '2 to 3 pages per chapter',
+    density:
+      'A brisk, evocative telling — hit the defining moments, keep momentum high.',
+  },
+  chronicle: {
+    chapters: '4 to 5 chapters',
+    pages: '3 to 4 pages per chapter',
+    density:
+      'A full telling. Give each major phase of the subject its own space; ' +
+      'do not fold distinct periods, campaigns, or works into one breath.',
+  },
+  tome: {
+    chapters: '6 to 9 chapters',
+    pages: '3 to 5 pages per chapter',
+    density:
+      'An exhaustive telling. Cover every major phase of the subject in ' +
+      'proportion to the source material. A single narration must never ' +
+      'compress more than a few years of a life (or one campaign, one work, ' +
+      'one phase of an event). Where the sources give detail — names, ' +
+      'places, dates, quotes — use it. Refuse the urge to summarize.',
+  },
+}
+
+export function buildStoryPrompt(
+  corpus: SourceCorpus,
+  depth: StoryDepth = 'chronicle',
+): {
   system: string
   prompt: string
 } {
+  const depthSpec = DEPTH_SPECS[depth]
+  // Deeper tellings get proportionally more source text per section.
+  const charScale = depth === 'tome' ? 2 : depth === 'pamphlet' ? 0.6 : 1
   const articles = [
     renderArticle(corpus.main, {
-      extractChars: MAIN_SECTION_CHARS,
-      sectionChars: MAIN_SECTION_CHARS,
+      extractChars: Math.round(MAIN_SECTION_CHARS * charScale),
+      sectionChars: Math.round(MAIN_SECTION_CHARS * charScale),
     }),
     ...corpus.related.map((a) =>
       renderArticle(a, {
-        extractChars: RELATED_EXTRACT_CHARS,
-        sectionChars: RELATED_SECTION_CHARS,
+        extractChars: Math.round(RELATED_EXTRACT_CHARS * charScale),
+        sectionChars: Math.round(RELATED_SECTION_CHARS * charScale),
       }),
     ),
   ].join('\n\n')
@@ -117,8 +159,10 @@ ${imageList}
    flowing audiobook prose: full sentences, concrete detail, momentum. Never
    bullet-point-speak, never headings, never meta commentary ("in this
    chapter…"), never second person.
-4. STRUCTURE — 3 to 4 chapters; 2 to 4 pages per chapter; 1 to 2 scenes per
+4. STRUCTURE — ${depthSpec.chapters}; ${depthSpec.pages}; 1 to 2 scenes per
    page. The FIRST scene of every chapter is a \`chapter-header\` scene.
+   NARRATIVE DENSITY — ${depthSpec.density} Narration is scene-level
+   storytelling, never encyclopedia summary.
 5. VARIETY — across the book use portraits, map-plates, timelines, and
    letter-quotes. Avoid the same scene type on consecutive pages when
    possible. A \`letter-quote\`'s \`quoteText\` should be a real quoted phrase

@@ -126,9 +126,17 @@ export const StorySchema = z.object({
   title: z.string(),
   subtitle: z.string().optional(),
   theme: ThemeSpecSchema,
-  chapters: z.array(ChapterSchema).min(2).max(5),
+  chapters: z.array(ChapterSchema).min(2).max(9),
 })
 export type Story = z.infer<typeof StorySchema>
+
+/**
+ * Reader-selected story depth. Controls corpus size, chapter/page targets,
+ * and output budget — 'pamphlet' is a quick tale, 'tome' an exhaustive
+ * telling that refuses to compress a life into vignettes.
+ */
+export const STORY_DEPTHS = ['pamphlet', 'chronicle', 'tome'] as const
+export type StoryDepth = (typeof STORY_DEPTHS)[number]
 
 /**
  * While streaming, every nested field may be missing. Renderers must

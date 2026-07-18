@@ -16,11 +16,36 @@ import {
  * Throws a descriptive Error on failure (surfaced as the torn-page state).
  */
 
-// Budgets keep the whole corpus well under ~25k words for the LLM prompt.
-const MAIN_BUDGET = { leadWords: 700, sectionWords: 900, totalWords: 8000 }
-const RELATED_BUDGET = { leadWords: 350, sectionWords: 450, totalWords: 2200 }
-const MAX_RELATED = 5
-const CORPUS_WORD_CAP = 25_000
+import type { StoryDepth } from '../story/schema'
+
+type CorpusBudget = {
+  main: { leadWords: number; sectionWords: number; totalWords: number }
+  related: { leadWords: number; sectionWords: number; totalWords: number }
+  maxRelated: number
+  wordCap: number
+}
+
+// Budgets keep the whole corpus inside the LLM prompt window per depth.
+const DEPTH_BUDGETS: Record<StoryDepth, CorpusBudget> = {
+  pamphlet: {
+    main: { leadWords: 500, sectionWords: 600, totalWords: 5000 },
+    related: { leadWords: 250, sectionWords: 350, totalWords: 1500 },
+    maxRelated: 3,
+    wordCap: 12_000,
+  },
+  chronicle: {
+    main: { leadWords: 700, sectionWords: 900, totalWords: 8000 },
+    related: { leadWords: 350, sectionWords: 450, totalWords: 2200 },
+    maxRelated: 5,
+    wordCap: 25_000,
+  },
+  tome: {
+    main: { leadWords: 900, sectionWords: 1400, totalWords: 14_000 },
+    related: { leadWords: 450, sectionWords: 700, totalWords: 3500 },
+    maxRelated: 7,
+    wordCap: 38_000,
+  },
+}
 
 function articleWords(article: SourceArticle): number {
   return (
@@ -53,14 +78,18 @@ function capRelated(
   return kept
 }
 
-export async function buildCorpus(query: string): Promise<SourceCorpus> {
+export async function buildCorpus(
+  query: string,
+  depth: StoryDepth = 'chronicle',
+): Promise<SourceCorpus> {
   const trimmed = query?.trim()
   if (!trimmed) throw new Error('Cannot build a story from an empty query')
+  const budget = DEPTH_BUDGETS[depth]
 
   const topic = await resolveTopic(trimmed)
   const { article: main, rawLead, rawText } = await fetchArticleDetailed(
     topic,
-    MAIN_BUDGET,
+    budget.main,
   )
 
   let linkTitles: string[] = []
@@ -75,13 +104,13 @@ export async function buildCorpus(query: string): Promise<SourceCorpus> {
   const relatedTitles = pickRelated(
     { title: main.title, lead: rawLead, text: rawText },
     linkTitles,
-    MAX_RELATED,
+    budget.maxRelated,
   )
 
   const relatedResults = await Promise.all(
     relatedTitles.map(async (title): Promise<SourceArticle | null> => {
       try {
-        return await fetchArticle(title, RELATED_BUDGET)
+        return await fetchArticle(title, budget.related)
       } catch (err) {
         console.warn(
           `[corpus] skipping related article "${title}":`,
@@ -92,7 +121,7 @@ export async function buildCorpus(query: string): Promise<SourceCorpus> {
     }),
   )
   const fetched = relatedResults.filter((a): a is SourceArticle => a !== null)
-  const related = capRelated(fetched, CORPUS_WORD_CAP - articleWords(main))
+  const related = capRelated(fetched, budget.wordCap - articleWords(main))
 
   const personTitles = new Set(
     [main.title, ...related.map((r) => r.title)].filter(isPersonLike),
