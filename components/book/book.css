@@ -443,7 +443,7 @@
   font-size: 0.85rem;
   line-height: 1;
   color: var(--gold, #b08a3e);
-  opacity: 0.35;
+  opacity: 0.6;
   transition: opacity 0.3s;
   cursor: pointer;
 }

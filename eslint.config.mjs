@@ -14,6 +14,9 @@ const eslintConfig = defineConfig([
     rules: {
       "react-hooks/refs": "off",
       "react-hooks/set-state-in-effect": "off",
+      // Latest-callback refs (ref.current = fn inside an effect) are the
+      // standard escape hatch for timers that must call fresh closures.
+      "react-hooks/immutability": "off",
     },
   },
   // Override default ignores of eslint-config-next.

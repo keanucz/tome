@@ -217,10 +217,23 @@ export function MarginGloss({ topic }: MarginGlossProps) {
       if (rootRef.current?.contains(e.target as Node)) return
       window.setTimeout(() => setCandidate(readSelection()), 0)
     }
-    // Collapsed selection → the ornament button has nothing to ask about.
+    // Touch devices select via long-press with no mouseup — debounce
+    // selectionchange itself so a settled touch selection also summons the
+    // ornament. Collapsed selection still dismisses it immediately.
+    let touchTimer: number | undefined
     const onSelectionChange = () => {
       const sel = window.getSelection()
-      if (!sel || sel.isCollapsed) setCandidate(null)
+      if (!sel || sel.isCollapsed) {
+        window.clearTimeout(touchTimer)
+        setCandidate(null)
+        return
+      }
+      window.clearTimeout(touchTimer)
+      touchTimer = window.setTimeout(() => setCandidate(readSelection()), 450)
+    }
+    // Lifting the finger after a long-press selection reads it right away.
+    const onTouchEnd = () => {
+      window.setTimeout(() => setCandidate(readSelection()), 50)
     }
     // Click-away dismisses the popover (mousedown, before click handlers).
     const onMouseDown = (e: MouseEvent) => {
@@ -236,12 +249,15 @@ export function MarginGloss({ topic }: MarginGlossProps) {
       if (popoverOpenRef.current) closeAll()
     }
     document.addEventListener('mouseup', onMouseUp)
+    document.addEventListener('touchend', onTouchEnd)
     document.addEventListener('selectionchange', onSelectionChange)
     document.addEventListener('mousedown', onMouseDown)
     document.addEventListener('keydown', onKeyDown)
     window.addEventListener('scroll', onScroll, { capture: true, passive: true })
     return () => {
+      window.clearTimeout(touchTimer)
       document.removeEventListener('mouseup', onMouseUp)
+      document.removeEventListener('touchend', onTouchEnd)
       document.removeEventListener('selectionchange', onSelectionChange)
       document.removeEventListener('mousedown', onMouseDown)
       document.removeEventListener('keydown', onKeyDown)

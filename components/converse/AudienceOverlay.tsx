@@ -142,6 +142,20 @@ function SendIcon() {
   )
 }
 
+/** Transcripts survive page turns and reopen — one per figure, per session. */
+const transcriptStore = new Map<string, TranscriptEntry[]>()
+
+/** Book theme custom props snapshotted onto the portal (it escapes the
+ *  .tome-book scope, so the vars must travel with it). */
+const THEME_VARS = [
+  '--paper',
+  '--ink',
+  '--accent',
+  '--gold',
+  '--font-display',
+  '--font-body',
+] as const
+
 /* ------------------------------------------------------------------ */
 /* Component                                                          */
 /* ------------------------------------------------------------------ */
@@ -189,7 +203,17 @@ export function AudienceOverlay({
     }
   }, [])
 
+  /** A finished utterance auto-sends after a short pause; typing cancels. */
+  const autoSendRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+  const clearAutoSend = useCallback(() => {
+    if (autoSendRef.current !== null) {
+      clearTimeout(autoSendRef.current)
+      autoSendRef.current = null
+    }
+  }, [])
+
   const stopListening = useCallback(() => {
+    clearAutoSend()
     const rec = recognitionRef.current
     recognitionRef.current = null
     if (rec) {
@@ -204,7 +228,7 @@ export function AudienceOverlay({
     }
     setListening(false)
     setInterim('')
-  }, [])
+  }, [clearAutoSend])
 
   const startListening = useCallback(() => {
     const Ctor = getSpeechRecognitionCtor()
@@ -231,6 +255,13 @@ export function AudienceOverlay({
           .replace(/\s+/g, ' ')
           .trimStart()
         setFieldValue(combined)
+        // Speak, pause, and the question sends itself — matching the
+        // landing-page mic. Any further speech or typing resets the clock.
+        clearAutoSend()
+        autoSendRef.current = setTimeout(() => {
+          autoSendRef.current = null
+          void sendRef.current()
+        }, 700)
       }
       setInterim(interimText)
     }
@@ -251,7 +282,7 @@ export function AudienceOverlay({
     } catch {
       recognitionRef.current = null
     }
-  }, [setFieldValue])
+  }, [setFieldValue, clearAutoSend])
 
   const toggleMic = useCallback(() => {
     if (listening) stopListening()
@@ -334,6 +365,11 @@ export function AudienceOverlay({
     topic,
   ])
 
+  const sendRef = useRef<() => Promise<void>>(async () => {})
+  useEffect(() => {
+    sendRef.current = send
+  }, [send])
+
   const handleSubmit = useCallback(
     (event: FormEvent<HTMLFormElement>) => {
       event.preventDefault()
@@ -341,6 +377,30 @@ export function AudienceOverlay({
     },
     [send],
   )
+
+  // The portal lives on document.body, outside the book's inline CSS-var
+  // scope — snapshot the story theme onto the overlay whenever it opens.
+  const [themeStyle, setThemeStyle] = useState<Record<string, string>>({})
+  useEffect(() => {
+    if (!open || typeof document === 'undefined') return
+    const host = document.querySelector<HTMLElement>('.tome-book')
+    if (!host) return
+    const computed = getComputedStyle(host)
+    const snapshot: Record<string, string> = {}
+    for (const name of THEME_VARS) {
+      const value = computed.getPropertyValue(name).trim()
+      if (value) snapshot[name] = value
+    }
+    setThemeStyle(snapshot)
+  }, [open])
+
+  // Restore this figure's transcript on open; persist every change.
+  useEffect(() => {
+    if (open) setEntries(transcriptStore.get(person) ?? [])
+  }, [open, person])
+  useEffect(() => {
+    if (entries.length > 0) transcriptStore.set(person, entries)
+  }, [person, entries])
 
   // Announce open/close so the book narrator yields the floor while the
   // figure speaks; Book.tsx listens and silences itself on open.
@@ -401,6 +461,7 @@ export function AudienceOverlay({
         <motion.div
           key="tome-aud-backdrop"
           className="tome-aud-backdrop"
+          style={themeStyle}
           onClick={onClose}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -497,7 +558,10 @@ export function AudienceOverlay({
                   type="text"
                   name="audience-question"
                   value={value}
-                  onChange={(e) => setFieldValue(e.target.value)}
+                  onChange={(e) => {
+                    clearAutoSend()
+                    setFieldValue(e.target.value)
+                  }}
                   placeholder={hint}
                   aria-label={`Ask ${person} a question`}
                   autoComplete="off"
