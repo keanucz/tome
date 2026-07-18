@@ -8,6 +8,7 @@ import { textureClass, themeToCssVars } from '@/lib/story/theme'
 import { useNarration } from '@/lib/tts/client'
 import { BookPage } from './BookPage'
 import { flattenStory, storyFingerprint } from './flatten'
+import { MarginGloss } from './MarginGloss'
 import { PageLeaf } from './PageLeaf'
 import { ProgressBar } from './ProgressBar'
 import { useMediaQuery } from './useMediaQuery'
@@ -298,6 +299,7 @@ export function Book({
         <ProgressBar current={clamped} total={total} writing={!settled} />
       </div>
       </motion.div>
+      <MarginGloss topic={story?.title ?? ''} />
     </div>
   )
 }

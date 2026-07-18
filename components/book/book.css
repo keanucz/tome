@@ -424,31 +424,40 @@
     box-shadow 0.3s;
 }
 
-.tome-scene-citable {
-  cursor: pointer;
-}
-
-.tome-scene-citable:hover,
-.tome-scene-citable:focus-visible {
-  background-color: color-mix(in srgb, var(--gold) 8%, transparent);
-  box-shadow: 0 0 0 6px color-mix(in srgb, var(--gold) 8%, transparent);
-  outline: none;
-}
+/* Scene bodies are plain, freely selectable text — no pointer cursor, no
+   hover wash. The citations affordance is the dagger button alone. */
 
 .tome-cite-mark {
   position: absolute;
-  top: 0;
-  right: 2px;
+  top: -10px;
+  right: -10px;
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  margin: 0;
+  border: none;
+  background: none;
+  font-family: inherit;
   font-size: 0.85rem;
+  line-height: 1;
   color: var(--gold, #b08a3e);
-  opacity: 0;
+  opacity: 0.35;
   transition: opacity 0.3s;
-  pointer-events: none;
+  cursor: pointer;
 }
 
 .tome-scene-citable:hover .tome-cite-mark,
-.tome-scene-citable:focus-visible .tome-cite-mark {
-  opacity: 0.9;
+.tome-cite-mark:hover,
+.tome-cite-mark:focus-visible {
+  opacity: 1;
+}
+
+.tome-cite-mark:focus-visible {
+  outline: 2px solid var(--gold, #b08a3e);
+  outline-offset: -8px;
+  border-radius: 9999px;
 }
 
 /* ── Chapter header scene ──────────────────────────────────────────────── */

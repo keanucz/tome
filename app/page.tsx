@@ -231,7 +231,7 @@ export default function Home() {
           style={{ ...ARCHIVE, textWrap: 'pretty' }}
         >
           Woven live from Wikipedia &amp; Wikimedia Commons — every passage
-          cited
+          cited — select any phrase for a margin note
         </p>
       </main>
     )

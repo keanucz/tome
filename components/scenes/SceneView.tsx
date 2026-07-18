@@ -20,8 +20,9 @@ interface SceneViewProps {
 }
 
 /**
- * Dispatches a (possibly partial) streamed scene to its renderer and wraps it
- * in a citation target: clicking any scene reveals its sources.
+ * Dispatches a (possibly partial) streamed scene to its renderer. The scene
+ * body is plain, freely selectable text (margin glosses depend on that); the
+ * citations affordance is the dagger button in the scene's top corner alone.
  */
 export function SceneView({ scene, ctx, onCite }: SceneViewProps) {
   const citations = sceneCitations(scene)
@@ -32,26 +33,18 @@ export function SceneView({ scene, ctx, onCite }: SceneViewProps) {
   return (
     <div
       className={`tome-scene ${citable ? 'tome-scene-citable' : ''} tome-scene-${scene?.type ?? 'loading'}-slot`}
-      role={citable ? 'button' : undefined}
-      tabIndex={citable ? 0 : undefined}
-      title={citable ? 'View sources' : undefined}
-      onClick={citable ? () => onCite(citations) : undefined}
-      onKeyDown={
-        citable
-          ? (e) => {
-              if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault()
-                onCite(citations)
-              }
-            }
-          : undefined
-      }
     >
       {body}
       {citable ? (
-        <span className="tome-cite-mark" aria-hidden>
-          &#8224;
-        </span>
+        <button
+          type="button"
+          className="tome-cite-mark"
+          onClick={() => onCite(citations)}
+          aria-label="View sources"
+          title="View sources"
+        >
+          <span aria-hidden>&#8224;</span>
+        </button>
       ) : null}
     </div>
   )
