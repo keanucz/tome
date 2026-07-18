@@ -5,6 +5,7 @@ import {
   resolveTopic,
   WIKIMEDIA_USER_AGENT,
 } from '@/lib/sources/wikipedia'
+import { catalogForPrompt, isCatalogVoice } from '@/lib/tts/voices'
 
 /**
  * POST /api/converse — an audience with a figure from the book.
@@ -74,6 +75,36 @@ async function fetchGrounding(person: string): Promise<WikiGrounding> {
   return grounding
 }
 
+/** Casting cache — one ElevenLabs voice per figure per process. */
+const voiceCache = new Map<string, string | null>()
+
+async function castVoice(
+  person: string,
+  era: string | undefined,
+  extract: string,
+): Promise<string | null> {
+  const key = person.toLowerCase()
+  const cached = voiceCache.get(key)
+  if (cached !== undefined) return cached
+
+  let voiceId: string | null = null
+  try {
+    const result = await generateText({
+      model: anthropic('claude-haiku-4-5-20251001'),
+      system:
+        'You are a casting director. Given a historical figure, pick the single closest voice from the catalog. Respond with ONLY the voice id, nothing else.',
+      prompt: `Figure: ${person}${era ? ` (${era})` : ''}\nAbout them: ${extract.slice(0, 600) || 'unknown'}\n\nVoice catalog:\n${catalogForPrompt()}\n\nBest-matching voice id:`,
+      maxOutputTokens: 30,
+    })
+    const candidate = result.text.trim().split(/\s/)[0]
+    if (isCatalogVoice(candidate)) voiceId = candidate
+  } catch {
+    voiceId = null // casting is a garnish — never block the audience on it
+  }
+  voiceCache.set(key, voiceId)
+  return voiceId
+}
+
 function personaSystem(
   person: string,
   topic: string,
@@ -120,6 +151,7 @@ export async function POST(req: Request): Promise<Response> {
   }
 
   const grounding = await fetchGrounding(parsed.person)
+  const voiceId = await castVoice(parsed.person, parsed.era, grounding.extract)
 
   try {
     const result = await generateText({
@@ -137,6 +169,7 @@ export async function POST(req: Request): Promise<Response> {
     return Response.json({
       reply: result.text.trim(),
       articleUrl: grounding.url,
+      voiceId,
     })
   } catch (err) {
     console.error('[api/converse] failed:', err)

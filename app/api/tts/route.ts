@@ -4,12 +4,15 @@ import path from 'node:path'
 import { z } from 'zod'
 import { TTS_PROVIDER_IDS } from '@/lib/tts/types'
 import { TTS_PROVIDERS, providerVoice } from '@/lib/tts/providers'
+import { isCatalogVoice } from '@/lib/tts/voices'
 
 /**
- * GET /api/tts?text=<urlencoded>&provider=<id optional>
+ * GET /api/tts?text=<urlencoded>&provider=<id optional>&voice=<id optional>
  *   → 200 audio (provider mime) on success
  *   → 400 on invalid input, 503 when no server provider is available,
  *     502 when every available provider failed
+ * `voice` must come from the curated catalog (persona casting) and only
+ * applies to ElevenLabs; other providers keep their own default voice.
  * Audio cached by sha256(provider + voice + text) under .cache/tts/.
  */
 
@@ -26,6 +29,10 @@ const QuerySchema = z.object({
     .min(1, 'text is required')
     .max(MAX_TEXT_LENGTH, `text must be at most ${MAX_TEXT_LENGTH} characters`),
   provider: z.enum(TTS_PROVIDER_IDS).optional(),
+  voice: z
+    .string()
+    .refine(isCatalogVoice, 'voice must come from the curated catalog')
+    .optional(),
 })
 
 function jsonError(status: number, error: string): Response {
@@ -100,11 +107,12 @@ export async function GET(req: Request): Promise<Response> {
   const parsed = QuerySchema.safeParse({
     text: searchParams.get('text') ?? '',
     provider: searchParams.get('provider') ?? undefined,
+    voice: searchParams.get('voice') ?? undefined,
   })
   if (!parsed.success) {
     return jsonError(400, parsed.error.issues[0]?.message ?? 'invalid request')
   }
-  const { text, provider: preferred } = parsed.data
+  const { text, provider: preferred, voice: castVoice } = parsed.data
 
   // Fallback chain in registry order; a preferred provider jumps the queue.
   const available = TTS_PROVIDERS.filter((p) => p.available())
@@ -125,7 +133,12 @@ export async function GET(req: Request): Promise<Response> {
   }
 
   for (const provider of candidates) {
-    const voice = providerVoice(provider.id)
+    // Persona casting applies to ElevenLabs only — its ids are meaningless
+    // to other providers, which keep their defaults.
+    const voice =
+      castVoice && provider.id === 'elevenlabs'
+        ? castVoice
+        : providerVoice(provider.id)
     const key = cacheKey(provider.id, voice, text)
 
     const cached = await readCache(key)
