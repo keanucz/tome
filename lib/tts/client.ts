@@ -8,7 +8,9 @@
  * written:
  *
  *   useNarration(): {
- *     speak(text: string): Promise<void>   // resolves when playback ends
+ *     // resolves when playback ends; preferUrl (e.g. a prebaked mp3) is
+ *     // tried before the /api/tts round-trip and falls through on failure
+ *     speak(text: string, preferUrl?: string): Promise<void>
  *     stop(): void
  *     speaking: boolean
  *   }
@@ -44,7 +46,7 @@ function splitSentences(text: string): string[] {
 }
 
 export function useNarration(): {
-  speak: (text: string) => Promise<void>
+  speak: (text: string, preferUrl?: string) => Promise<void>
   stop: () => void
   speaking: boolean
 } {
@@ -116,6 +118,26 @@ export function useNarration(): {
     })
   }, [])
 
+  /** Play a same-origin audio URL (e.g. a prebaked mp3) directly. */
+  const playUrl = useCallback((src: string): Promise<PlaybackResult> => {
+    return new Promise<PlaybackResult>((resolve) => {
+      const audio = new Audio(src)
+      audioRef.current = audio
+
+      let done = false
+      const finish = (result: PlaybackResult) => {
+        if (done) return
+        done = true
+        if (audioRef.current === audio) audioRef.current = null
+        resolve(result)
+      }
+      finishRef.current = () => finish('ended') // stop()/replacement path
+      audio.onended = () => finish('ended')
+      audio.onerror = () => finish('error')
+      audio.play().catch(() => finish('error'))
+    })
+  }, [])
+
   const speakWithSynthesis = useCallback(
     (text: string): Promise<void> => {
       if (typeof window === 'undefined' || !window.speechSynthesis) {
@@ -160,7 +182,7 @@ export function useNarration(): {
   )
 
   const speak = useCallback(
-    async (rawText: string): Promise<void> => {
+    async (rawText: string, preferUrl?: string): Promise<void> => {
       if (!rawText.trim() || typeof window === 'undefined') return
       // Oversized pages must not 400 the TTS route into the robot voice.
       const text = clampAtSentence(rawText.trim())
@@ -171,6 +193,13 @@ export function useNarration(): {
       const stale = () => sessionRef.current !== session
 
       try {
+        // Prebaked audio ships with the story — no network, no provider.
+        if (preferUrl) {
+          const result = await playUrl(preferUrl)
+          if (stale() || result === 'ended') return
+          // 404 / autoplay block / bad file — fall through to live TTS.
+        }
+
         let response: Response | null = null
         try {
           const controller = new AbortController()
@@ -207,7 +236,7 @@ export function useNarration(): {
         }
       }
     },
-    [teardownPlayback, playBlob, speakWithSynthesis],
+    [teardownPlayback, playBlob, playUrl, speakWithSynthesis],
   )
 
   return { speak, stop, speaking }

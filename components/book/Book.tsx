@@ -24,10 +24,17 @@ export function Book({
   story,
   onCite,
   autoNarrate = true,
+  narrationSrc,
 }: {
   story: PartialStory
   onCite: (c: Citation[]) => void
   autoNarrate?: boolean
+  /**
+   * Optional pre-recorded narration lookup (prebaked stories): given the
+   * 0-based content-page index (cover excluded), return an audio URL to
+   * try before live TTS.
+   */
+  narrationSrc?: (contentPageIndex: number) => string
 }) {
   const pages = useMemo(() => flattenStory(story), [story])
   const total = pages.length
@@ -121,12 +128,15 @@ export function Book({
     if (!text) return
     lastStarted.current = clamped
     const my = ++epoch.current
-    speak(text).then(() => {
+    // The cover always holds flat index 0, so content page N sits at N + 1.
+    const preferUrl =
+      narrationSrc && clamped > 0 ? narrationSrc(clamped - 1) : undefined
+    speak(text, preferUrl).then(() => {
       if (epoch.current !== my) return
       if (clamped + 1 < totalRef.current) goToRef.current(clamped + 1, false)
       else setAwaitingNext(true)
     })
-  }, [autoNarrate, pageDone, clamped, currentPage, speak])
+  }, [autoNarrate, pageDone, clamped, currentPage, speak, narrationSrc])
 
   // A narration finished at the story's edge — advance once more pages arrive.
   useEffect(() => {

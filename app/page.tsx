@@ -8,7 +8,12 @@ import {
   type PartialStory,
   type StoryDepth,
 } from '@/lib/story/schema'
-import { loadPrebaked, PREBAKED, type PrebakedEntry } from '@/lib/story/prebaked'
+import {
+  loadPrebaked,
+  PREBAKED,
+  prebakedAudioUrl,
+  type PrebakedEntry,
+} from '@/lib/story/prebaked'
 import { simulateStream } from '@/components/book/mockStory'
 import { Book } from '@/components/book/Book'
 import { VoiceInput } from '@/components/voice/VoiceInput'
@@ -59,6 +64,7 @@ export default function Home() {
   const [streamDied, setStreamDied] = useState(false)
   // Prebaked chip path: the story replayed through simulateStream.
   const [prebaked, setPrebaked] = useState<PartialStory | null>(null)
+  const [prebakedSlug, setPrebakedSlug] = useState<string | null>(null)
   const cancelSimRef = useRef<(() => void) | null>(null)
   // Bumped on every begin/reset so stale async prebaked loads are ignored.
   const runRef = useRef(0)
@@ -78,6 +84,7 @@ export default function Home() {
     cancelSimRef.current?.()
     cancelSimRef.current = null
     setPrebaked(null)
+    setPrebakedSlug(null)
   }, [])
 
   const beginStory = useCallback(
@@ -104,11 +111,13 @@ export default function Home() {
       setTopic(entry.topic)
       setStarted(true)
       setPrebaked({}) // the book opens immediately; the sim fills it in
+      setPrebakedSlug(entry.slug)
       const story = await loadPrebaked(entry.slug)
       if (runRef.current !== run) return // reader moved on meanwhile
       if (!story) {
         // Not baked (yet) — fall back to the live weave seamlessly.
         setPrebaked(null)
+        setPrebakedSlug(null)
         submit({ topic: entry.topic, depth })
         return
       }
@@ -239,7 +248,16 @@ export default function Home() {
         />
       ) : prebaked !== null ? (
         <>
-          <Book story={prebaked} onCite={onCite} autoNarrate />
+          <Book
+            story={prebaked}
+            onCite={onCite}
+            autoNarrate
+            narrationSrc={
+              prebakedSlug
+                ? (i) => prebakedAudioUrl(prebakedSlug, i)
+                : undefined
+            }
+          />
           <button
             type="button"
             onClick={reset}
