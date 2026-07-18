@@ -127,6 +127,17 @@ export function Book({
     }
   }, [awaitingNext, total, clamped])
 
+  // Opening the citations panel silences the narrator so the reader can
+  // study the sources; narration resumes on the next page turn.
+  const handleCite = useCallback(
+    (c: Citation[]) => {
+      epoch.current++
+      stop()
+      onCite(c)
+    },
+    [onCite, stop],
+  )
+
   // Stop speech when narration is switched off or the book unmounts.
   const stopRef = useRef(stop)
   stopRef.current = stop
@@ -170,7 +181,7 @@ export function Book({
                     active={flatIdx === clamped}
                     writing={!settled}
                     textureCls={textureCls}
-                    onCite={onCite}
+                    onCite={handleCite}
                     cover={cover}
                   />
                 </PageLeaf>
