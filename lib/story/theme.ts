@@ -82,7 +82,7 @@ export function themeToCssVars(
     '--paper': safeHex(palette?.paper, DEFAULT_PALETTE.paper),
     '--ink': safeHex(palette?.ink, DEFAULT_PALETTE.ink),
     '--accent': safeHex(palette?.accent, DEFAULT_PALETTE.accent),
-    '--gold': safeHex(palette?.gold, DEFAULT_PALETTE.gold),
+    '--gold': safeHex(palette?.gold ?? undefined, DEFAULT_PALETTE.gold),
     '--font-display': `var(${fonts.displayVar}), Georgia, serif`,
     '--font-body': `var(${fonts.bodyVar}), Georgia, serif`,
   }

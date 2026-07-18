@@ -12,7 +12,7 @@ export const CitationSchema = z.object({
   snippet: z
     .string()
     .describe('Short verbatim quote from the source that supports this passage'),
-  sectionAnchor: z.string().optional(),
+  sectionAnchor: z.string().nullish(),
 })
 export type Citation = z.infer<typeof CitationSchema>
 
@@ -41,7 +41,7 @@ export const ThemeSpecSchema = z.object({
     paper: hex.describe('Page background, light parchment tone'),
     ink: hex.describe('Body text color, dark'),
     accent: hex.describe('Chapter titles / ornaments'),
-    gold: hex.optional().describe('Gilding highlights'),
+    gold: hex.nullish().describe('Gilding highlights'),
   }),
   textureId: z.enum(TEXTURE_IDS),
   ambientPrompt: z
@@ -61,7 +61,7 @@ const sceneBase = {
 export const ChapterHeaderSceneSchema = z.object({
   type: z.literal('chapter-header'),
   title: z.string(),
-  epigraph: z.string().optional().describe('Short period quote or line setting the mood'),
+  epigraph: z.string().nullish().describe('Short period quote or line setting the mood'),
   ...sceneBase,
 })
 
@@ -97,7 +97,7 @@ export const LetterQuoteSceneSchema = z.object({
   type: z.literal('letter-quote'),
   quoteText: z.string().describe('Verbatim primary-source quote'),
   attribution: z.string(),
-  date: z.string().optional(),
+  date: z.string().nullish(),
   ...sceneBase,
 })
 
@@ -124,7 +124,7 @@ export type Chapter = z.infer<typeof ChapterSchema>
 
 export const StorySchema = z.object({
   title: z.string(),
-  subtitle: z.string().optional(),
+  subtitle: z.string().nullish(),
   theme: ThemeSpecSchema,
   chapters: z.array(ChapterSchema).min(2).max(9),
 })
