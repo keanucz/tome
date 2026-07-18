@@ -25,6 +25,10 @@ interface BookPageProps {
   cover: CoverInfo
   /** Theme's ambient art prompt, threaded to chapter-header frontispieces. */
   ambientPrompt?: string
+  /** Story title, threaded to portrait audiences as conversation grounding. */
+  topic?: string
+  /** Theme's era label, threaded to portrait audiences. */
+  era?: string
 }
 
 /** Renders one paper page: cover, content scenes, or a blank/forming page. */
@@ -37,6 +41,8 @@ export function BookPage({
   onCite,
   cover,
   ambientPrompt,
+  topic,
+  era,
 }: BookPageProps) {
   const isPlate =
     page?.kind === 'content' &&
@@ -63,7 +69,7 @@ export function BookPage({
               <SceneView
                 key={i}
                 scene={scene}
-                ctx={{ chapterIndex: page.chapterIndex, ambientPrompt }}
+                ctx={{ chapterIndex: page.chapterIndex, ambientPrompt, topic, era }}
                 onCite={onCite}
               />
             ))}

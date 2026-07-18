@@ -58,6 +58,17 @@ export function Book({
   const totalRef = useRef(total)
   totalRef.current = total
   const [awaitingNext, setAwaitingNext] = useState(false)
+  const stopRef = useRef(stop)
+  stopRef.current = stop
+
+  // ── Narration toggle (reader-facing, in the bottom chrome) ────────────────
+  const [narrateOn, setNarrateOn] = useState(autoNarrate)
+  // The parent's autoNarrate stays authoritative whenever it changes (the
+  // dev harness flips it); the reader's toggle overrides in between.
+  useEffect(() => {
+    setNarrateOn(autoNarrate)
+  }, [autoNarrate])
+  const narrationEnabled = autoNarrate && narrateOn
 
   // ── Stream-settle detection: has the story stopped changing? ──────────────
   const fingerprint = useMemo(() => storyFingerprint(pages), [pages])
@@ -120,12 +131,33 @@ export function Book({
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
+      // Never steal arrow keys from form fields (voice input, audiences).
+      const t = e.target
+      if (
+        t instanceof HTMLElement &&
+        (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable)
+      ) {
+        return
+      }
       if (e.key === 'ArrowRight') next()
       if (e.key === 'ArrowLeft') prev()
     }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
   }, [next, prev])
+
+  // Toggling narration OFF silences the narrator immediately; toggling it
+  // back ON re-narrates the current page (the lastStarted reset lets the
+  // narration effect below start over). Declared before that effect so the
+  // reset lands before it re-runs.
+  useEffect(() => {
+    if (!narrationEnabled) {
+      epoch.current++
+      stopRef.current()
+    } else {
+      lastStarted.current = -1
+    }
+  }, [narrationEnabled])
 
   // ── Narration: speak the active page, auto-turn when it finishes ─────────
   const currentPage = pages[clamped]
@@ -139,7 +171,7 @@ export function Book({
     currentPage.scenes.every((s) => (s?.citations?.length ?? 0) > 0)
   const pageDone = clamped < total - 1 || settled || lastPageClosed
   useEffect(() => {
-    if (!autoNarrate || !opened || !currentPage || !pageDone) return
+    if (!narrationEnabled || !opened || !currentPage || !pageDone) return
     if (lastStarted.current === clamped) return
     const text = currentPage.narration.trim()
     if (!text) return
@@ -153,7 +185,15 @@ export function Book({
       if (clamped + 1 < totalRef.current) goToRef.current(clamped + 1, false)
       else setAwaitingNext(true)
     })
-  }, [autoNarrate, opened, pageDone, clamped, currentPage, speak, narrationSrc])
+  }, [
+    narrationEnabled,
+    opened,
+    pageDone,
+    clamped,
+    currentPage,
+    speak,
+    narrationSrc,
+  ])
 
   // A narration finished at the story's edge — advance once more pages arrive.
   useEffect(() => {
@@ -174,16 +214,22 @@ export function Book({
     [onCite, stop],
   )
 
-  // Stop speech when narration is switched off or the book unmounts.
-  const stopRef = useRef(stop)
-  stopRef.current = stop
-  useEffect(() => {
-    if (!autoNarrate) {
-      epoch.current++
-      stopRef.current()
-    }
-  }, [autoNarrate])
+  // Stop speech when the book unmounts.
   useEffect(() => () => stopRef.current(), [])
+
+  // An open audience overlay (portrait conversation) silences the narrator —
+  // same pattern as opening the citations panel. Narration resumes on the
+  // next page turn after the audience ends.
+  useEffect(() => {
+    const onAudience = (e: Event) => {
+      if ((e as CustomEvent<{ open?: boolean }>).detail?.open) {
+        epoch.current++
+        stopRef.current()
+      }
+    }
+    window.addEventListener('tome:audience', onAudience)
+    return () => window.removeEventListener('tome:audience', onAudience)
+  }, [])
 
   // ── Render ────────────────────────────────────────────────────────────────
   const themeVars = themeToCssVars(story?.theme)
@@ -252,6 +298,8 @@ export function Book({
                     onCite={handleCite}
                     cover={cover}
                     ambientPrompt={story?.theme?.ambientPrompt}
+                    topic={story?.title}
+                    era={story?.theme?.era}
                   />
                 </PageLeaf>
               )
@@ -297,9 +345,50 @@ export function Book({
         </button>
 
         <ProgressBar current={clamped} total={total} writing={!settled} />
+        <button
+          type="button"
+          className="tome-narrate-toggle"
+          onClick={() => setNarrateOn((v) => !v)}
+          aria-pressed={narrateOn}
+          aria-label={narrateOn ? 'Turn narration off' : 'Turn narration on'}
+          title={narrateOn ? 'Turn narration off' : 'Turn narration on'}
+        >
+          <NarrationGlyph on={narrateOn} />
+          <span>Narration {narrateOn ? 'on' : 'off'}</span>
+        </button>
       </div>
       </motion.div>
       <MarginGloss topic={story?.title ?? ''} />
     </div>
+  )
+}
+
+/** Speaker glyph for the narration toggle — waves when on, an × when off. */
+function NarrationGlyph({ on }: { on: boolean }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      width="14"
+      height="14"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M11 5 6 9H3v6h3l5 4z" fill="currentColor" stroke="none" />
+      {on ? (
+        <>
+          <path d="M15.5 8.5a5 5 0 0 1 0 7" />
+          <path d="M18.5 6a9 9 0 0 1 0 12" />
+        </>
+      ) : (
+        <>
+          <line x1="16" y1="9.5" x2="21" y2="14.5" />
+          <line x1="21" y1="9.5" x2="16" y2="14.5" />
+        </>
+      )}
+    </svg>
   )
 }

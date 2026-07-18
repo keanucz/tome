@@ -1233,3 +1233,92 @@
 .tome-portrait-frame {
   width: min(62%, 400px);
 }
+
+/* ── Narration toggle (bottom chrome, beside the progress bar) ─────────── */
+
+.tome-narrate-toggle {
+  position: absolute;
+  right: max(12px, 2%);
+  bottom: 1px;
+  z-index: 8;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  min-width: 40px;
+  min-height: 40px;
+  padding: 0 0.55em;
+  background: transparent;
+  border: none;
+  border-radius: 4px;
+  font-family: var(--font-archive, monospace);
+  font-size: 0.64rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: oklch(0.9 0.045 85 / 0.72);
+  cursor: pointer;
+  transition: color 150ms ease, transform 120ms ease;
+}
+
+.tome-narrate-toggle:hover {
+  color: oklch(0.93 0.05 85 / 0.95);
+}
+
+.tome-narrate-toggle:active {
+  transform: scale(0.96);
+}
+
+.tome-narrate-toggle:focus-visible {
+  outline: 1px solid oklch(0.9 0.045 85 / 0.55);
+  outline-offset: 2px;
+}
+
+.tome-narrate-toggle[aria-pressed='false'] {
+  color: oklch(0.88 0.02 85 / 0.42);
+}
+
+.tome-narrate-toggle svg {
+  flex-shrink: 0;
+}
+
+/* ── Request-an-audience affordance (portrait scenes) ──────────────────── */
+
+.tome-audience-btn {
+  align-self: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  min-height: 40px;
+  min-width: 40px;
+  margin: -0.45rem 0 0.15rem;
+  padding: 0 0.85em;
+  background: transparent;
+  border: none;
+  font-family: var(--font-archive, monospace);
+  font-size: 0.6rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--accent, #7d3b28) 80%, var(--ink, #2f2718));
+  opacity: 0.72;
+  cursor: pointer;
+  transition: opacity 150ms ease, transform 120ms ease;
+}
+
+.tome-audience-btn:hover {
+  opacity: 1;
+}
+
+.tome-audience-btn:active {
+  transform: scale(0.96);
+}
+
+.tome-audience-btn:focus-visible {
+  outline: 1px solid var(--accent, #7d3b28);
+  outline-offset: 2px;
+  opacity: 1;
+}
+
+.tome-audience-fleuron {
+  font-size: 0.85rem;
+  line-height: 1;
+}

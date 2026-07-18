@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import { useEffect, useState } from 'react'
 import type { z } from 'zod'
+import { AudienceOverlay } from '@/components/converse/AudienceOverlay'
 import type { PortraitSceneSchema } from '@/lib/story/schema'
 import { InkText } from './InkText'
 import { SkeletonBlock, SkeletonLines } from './Skeleton'
@@ -15,9 +16,10 @@ function isSafeImageUrl(url: string | undefined): url is string {
 }
 
 /** Framed Commons portrait with a slow Ken Burns drift and engraved caption. */
-export function PortraitScene({ scene }: SceneComponentProps<Portrait>) {
+export function PortraitScene({ scene, ctx }: SceneComponentProps<Portrait>) {
   const [loaded, setLoaded] = useState(false)
   const [failed, setFailed] = useState(false)
+  const [audienceOpen, setAudienceOpen] = useState(false)
   const showImage = isSafeImageUrl(scene.imageUrl) && !failed
 
   // The URL streams in chunks — a 404 on a partial URL must not latch the
@@ -64,6 +66,29 @@ export function PortraitScene({ scene }: SceneComponentProps<Portrait>) {
           <SkeletonLines lines={1} />
         ) : null}
       </div>
+
+      {scene.personName ? (
+        <>
+          <button
+            type="button"
+            className="tome-audience-btn"
+            onClick={() => setAudienceOpen(true)}
+          >
+            <span className="tome-audience-fleuron" aria-hidden>
+              &#9884;
+            </span>
+            Request an audience
+          </button>
+          <AudienceOverlay
+            open={audienceOpen}
+            onClose={() => setAudienceOpen(false)}
+            person={scene.personName}
+            portraitUrl={showImage && loaded ? scene.imageUrl : undefined}
+            topic={ctx.topic}
+            era={ctx.era}
+          />
+        </>
+      ) : null}
 
       {scene.narration ? (
         <p className="tome-prose">

@@ -8,6 +8,10 @@ export interface SceneContext {
   chapterIndex: number
   /** Theme's ambient art prompt — chapter headers render a frontispiece from it. */
   ambientPrompt?: string
+  /** Story title — grounds "request an audience" conversations with figures. */
+  topic?: string
+  /** Theme's era label, threaded to persona conversations. */
+  era?: string
 }
 
 export interface SceneComponentProps<S extends { type: string }> {
