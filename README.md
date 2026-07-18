@@ -44,13 +44,14 @@ flowchart LR
 | Piece | Status |
 |---|---|
 | Wikipedia + Commons corpus | Real, fetched live per query |
-| Story weave | Real. Every story is a live streaming model call; there are no pre-generated stories in this repo |
+| Story weave | Real for anything you type or speak — a live streaming model call at your chosen depth |
+| Prebaked showcase stories | `public/prebaked/` holds four stories baked by `scripts/prebake.ts` through the identical pipeline, with per-page ElevenLabs audio. The four landing chips replay them (labeled "From the archive" in the UI) so the pitch never depends on conference wifi. Typed and voice queries always weave live |
 | Era theming | Chosen by the model per story, from a curated vocabulary that cannot render broken |
 | Narration | Real ElevenLabs (OpenAI, then browser voice as fallbacks). Audio is disk-cached, so a repeated demo replays instantly |
 | Voice input | Real Web Speech API (Chrome). Typing always works; the mic button hides itself where unsupported |
 | Demo insurance | `lib/story/fixtures/` holds a saved Seven Years' War corpus — real Wikipedia/Commons data fetched earlier. `POST /api/story {fixture: true}` weaves from it if live Wikipedia is unreachable. The model call is still live |
 | `/dev-book` | Dev preview harness: a hand-written mock story played through a simulated stream, used to build the book UI without spending API calls |
-| Runware ambient art | Not built. Key provisioned, cut to fit the clock; on the roadmap |
+| Runware ambient art | Built: per-chapter frontispieces generated from the model's `ambientPrompt`, disk-cached per prompt, preloaded client-side, and degrading to no-art on any failure. Always secondary to real Commons artifacts |
 | Kokoro local TTS | Stub only; reports itself unavailable so the fallback chain skips it |
 
 ## Hallucination guardrails
