@@ -129,6 +129,10 @@ ${imageList}
    design (paper light, ink dark, readable contrast); \`textureId\` from
    ${TEXTURE_IDS.join(', ')}; and an \`ambientPrompt\` describing chapter art
    in a painting style true to the period.
+7. KEY ORDER — the reader watches the book materialize as you stream, so emit
+   the JSON object's keys in exactly this order: \`title\`, \`subtitle\`,
+   \`theme\`, then \`chapters\`. The cover and era styling must appear before
+   the first chapter, never after.
 
 Begin the book now. Output only the JSON object.`
 

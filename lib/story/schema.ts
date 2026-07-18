@@ -135,7 +135,7 @@ export type Story = z.infer<typeof StorySchema>
  * null-guard everything. Use with `useObject` partial results.
  */
 export type DeepPartial<T> = T extends (infer U)[]
-  ? DeepPartial<U>[]
+  ? (DeepPartial<U> | undefined)[]
   : T extends object
     ? { [K in keyof T]?: DeepPartial<T[K]> }
     : T

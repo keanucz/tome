@@ -77,6 +77,12 @@ export async function POST(req: Request): Promise<Response> {
       system,
       prompt,
       maxOutputTokens: MAX_OUTPUT_TOKENS,
+      // The default outputFormat mode compiles our discriminated-union schema
+      // into a constraint grammar the API rejects as too large; jsonTool sends
+      // it as a plain tool schema instead.
+      providerOptions: {
+        anthropic: { structuredOutputMode: 'jsonTool' },
+      },
       onError: ({ error }) => {
         console.error('[api/story] stream error:', error)
       },

@@ -120,6 +120,11 @@ async function main(): Promise<void> {
     system,
     prompt,
     maxOutputTokens: 24_000,
+    // Match app/api/story/route.ts: outputFormat mode rejects our union schema
+    // as a too-large grammar; jsonTool sends it as a plain tool schema.
+    providerOptions: {
+      anthropic: { structuredOutputMode: 'jsonTool' },
+    },
     onError: ({ error }) => {
       console.error('stream error:', error)
     },
