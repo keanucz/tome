@@ -1,0 +1,496 @@
+{
+  "topic": "The Unification of Germany",
+  "slug": "unification-of-germany",
+  "story": {
+    "title": "Blood and Iron: The Unification of Germany",
+    "subtitle": "From the Ashes of the Holy Roman Empire to the Proclamation of the German Reich, 1806–1871",
+    "theme": {
+      "era": "Germanic Central Europe, 1806–1871",
+      "fontPairing": "gothic",
+      "palette": {
+        "paper": "#ece3d1",
+        "ink": "#2b2419",
+        "accent": "#7a1f1f",
+        "gold": "#a9822f"
+      },
+      "textureId": "parchment",
+      "ambientPrompt": "A somber oil-painting style vignette of Prussian eagles, black-red-gold banners, iron cannon, and gothic cathedral spires wreathed in campfire smoke over a fractured map of German princely states, rendered in the manner of a 19th-century history painter."
+    },
+    "chapters": [
+      {
+        "title": "The Shattered Empire",
+        "pages": [
+          {
+            "scenes": [
+              {
+                "type": "chapter-header",
+                "title": "A Thousand Years Undone",
+                "narration": "For a thousand years a confederated realm of German princedoms had endured, tracing back to the Treaty of Verdun and the birth of East Francia in 843. It grew into the Holy Roman Empire of the German Nation, a vast quilt of duchies, bishoprics, and free cities bound by law rather than blood. Then Napoleon's armies came, and in 1806 the ancient crown itself was laid down forever.",
+                "citations": [
+                  {
+                    "articleTitle": "Unification of Germany",
+                    "url": "https://en.wikipedia.org/wiki/Unification_of_Germany",
+                    "snippet": "A confederated realm of German princedoms, along with some adjacent lands, had been in existence for over a thousand years; dating to the Treaty of Verdun",
+                    "sectionAnchor": "Early_history"
+                  }
+                ]
+              },
+              {
+                "type": "map-plate",
+                "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/c/cc/Map_of_the_Holy_Roman_Empire%2C_1789_en.png",
+                "caption": "The Holy Roman Empire on the eve of revolution, 1789",
+                "narration": "Here lies the old patchwork: more than three hundred political entities, from the mighty Electorate of Bavaria to the minuscule free city of Weil der Stadt, each with its own prince, its own laws, its own loyalties. Most inhabitants knew themselves first as subjects of a duke or bishop, not as Germans. This was Kleinstaaterei, the small-statery that would soon be swept away by war.",
+                "citations": [
+                  {
+                    "articleTitle": "Unification of Germany",
+                    "url": "https://en.wikipedia.org/wiki/Unification_of_Germany",
+                    "snippet": "leading to the existence of more than 300 German-speaking political entities, most of them being parts of the Holy Roman Empire, as the Napoleonic Wars dawned",
+                    "sectionAnchor": "Early_modern_era_and_Eighteenth_century"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "scenes": [
+              {
+                "type": "letter-quote",
+                "quoteText": "Those who speak the same language are joined to each other by a multitude of invisible bonds by nature herself, long before any human art begins; they understand each other and have the power of continuing to make themselves understood more and more clearly; they belong together and are by nature one and an inseparable whole.",
+                "attribution": "Johann Gottlieb Fichte, German philosopher",
+                "narration": "Even as French soldiers occupied German soil, a new idea stirred among poets and professors: that a shared tongue might be the truest border of a nation. Fichte's words, spoken under foreign occupation, planted a seed that would outlive Napoleon's empire and take root in the hearts of a scattered people.",
+                "citations": [
+                  {
+                    "articleTitle": "Unification of Germany",
+                    "url": "https://en.wikipedia.org/wiki/Unification_of_Germany",
+                    "snippet": "The first, original, and truly natural boundaries of states are beyond doubt their internal boundaries. Those who speak the same language are joined to each other by a multitude of invisible bonds",
+                    "sectionAnchor": "Rise_of_German_nationalism_under_Napoleon"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "scenes": [
+              {
+                "type": "map-plate",
+                "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/c/c9/Battle_Of_The_Nations-Monument.jpg",
+                "caption": "Monument to the Battle of the Nations, Leipzig, October 1813",
+                "narration": "More than half a million men clashed for three days at Leipzig, the largest land battle Europe had yet seen. Austria, Prussia, Russia, Saxony, and Sweden broke Napoleon's grip on the German lands, and the Confederation of the Rhine collapsed behind him. German soldiers who had marched to Russia and back now dreamed of a Central Europe free of French shadow.",
+                "citations": [
+                  {
+                    "articleTitle": "Unification of Germany",
+                    "url": "https://en.wikipedia.org/wiki/Unification_of_Germany",
+                    "snippet": "In October 1813, more than 500,000 combatants engaged in ferocious fighting over three days, making it the largest European land battle of the 19th century.",
+                    "sectionAnchor": "Rise_of_German_nationalism_under_Napoleon"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "scenes": [
+              {
+                "type": "portrait",
+                "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/4/49/Prince_Metternich_by_Lawrence.jpeg",
+                "personName": "Klemens von Metternich",
+                "caption": "Prince Metternich, architect of the Vienna settlement",
+                "narration": "At Vienna in 1814 and 1815, Metternich gathered the powers of Europe to redraw the map after Napoleon's fall. He wanted balance, not nations; order, not liberty. Out of his negotiations rose a loose German Confederation of thirty-nine states under Austrian presidency, a cautious echo of the old Empire that failed to reckon with a rising Prussia.",
+                "citations": [
+                  {
+                    "articleTitle": "Congress of Vienna",
+                    "url": "https://en.wikipedia.org/wiki/Congress_of_Vienna",
+                    "snippet": "A German Confederation of 39 states, under the presidency of the Austrian Emperor, formed from the previous 300 states of the Holy Roman Empire.",
+                    "sectionAnchor": "Final_agreement"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Vormärz and the Springtime of Nations",
+        "pages": [
+          {
+            "scenes": [
+              {
+                "type": "chapter-header",
+                "title": "Fraternities, Fires, and Censors",
+                "narration": "Between Vienna and the revolutions of 1848 stretched a restless age Germans came to call the Vormärz, the time before March. Students in black, red, and gold gathered at Wartburg Castle, liberals dreamed of unity and suffrage, and Metternich's censors watched every printed word, fearing the storm that nationalism and liberty together might unleash.",
+                "citations": [
+                  {
+                    "articleTitle": "Unification of Germany",
+                    "url": "https://en.wikipedia.org/wiki/Unification_of_Germany",
+                    "snippet": "The period of Austrian and Prussian police-states and vast censorship between the Congress of Vienna and the Revolutions of 1848 in Germany later became widely known as the Vormärz",
+                    "sectionAnchor": "Prelude"
+                  }
+                ]
+              },
+              {
+                "type": "portrait",
+                "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/8/8f/Wartburg_demonstration_1817.jpg",
+                "personName": "Wartburg Festival demonstrators",
+                "caption": "The Wartburg Festival, October 1817",
+                "narration": "Students climbed to Wartburg Castle in October 1817, waving flags of black, red, and gold and burning symbols of reaction. It was here that fraternities and student organizations first coalesced into a movement, and here that the colors of a future German flag first flew as a political statement rather than mere heraldry.",
+                "citations": [
+                  {
+                    "articleTitle": "Unification of Germany",
+                    "url": "https://en.wikipedia.org/wiki/Unification_of_Germany",
+                    "snippet": "At the Wartburg Festival in 1817 the first real movements among students were formed – fraternities and student organizations emerged. The colors black, red and gold were symbolic of this.",
+                    "sectionAnchor": "Prelude"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "scenes": [
+              {
+                "type": "letter-quote",
+                "quoteText": "it was both impossible and undesirable to repress the free utterance of public opinion by reactionary measures",
+                "attribution": "Johann Joseph von Görres, Teutschland und die Revolution, 1820",
+                "narration": "When a radical student murdered the dramatist Kotzebue in 1819, Metternich seized the moment. His Carlsbad Decrees gagged the press, drove student fraternities underground, and forbade professors from speaking of nationalism. Yet the pamphleteer Görres answered from exile that no decree could truly silence a people's voice.",
+                "citations": [
+                  {
+                    "articleTitle": "Unification of Germany",
+                    "url": "https://en.wikipedia.org/wiki/Unification_of_Germany",
+                    "snippet": "The decrees were the subject of Johann Joseph von Görres's pamphlet Teutschland [archaic: Deutschland] und die Revolution (Germany and the Revolution) (1820), in which he concluded that it was both impossible and undesirable to repress the free utterance of public opinion",
+                    "sectionAnchor": "Prelude"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "scenes": [
+              {
+                "type": "map-plate",
+                "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Map-GermanConfederation.svg/1280px-Map-GermanConfederation.svg.png",
+                "caption": "The German Confederation, 1815–1866",
+                "narration": "Thirty-nine sovereign states, bound only by the Federal Assembly at Frankfurt, made up this uneasy union. Its most important decisions demanded unanimity, and it possessed no head of state at all — only an Austrian president over an assembly of appointed envoys, a structure built for stability, not for nationhood.",
+                "citations": [
+                  {
+                    "articleTitle": "German Confederation",
+                    "url": "https://en.wikipedia.org/wiki/German_Confederation",
+                    "snippet": "The Convention was presided over by the representative of Austria, but this was a formality, as the Confederation had no head of state, since it was not a state."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "scenes": [
+              {
+                "type": "portrait",
+                "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/1/12/2008_ffm_paulskirche_marine.jpg",
+                "personName": "St. Paul's Church, Frankfurt",
+                "caption": "The Paulskirche, seat of the Frankfurt National Assembly, 1848",
+                "narration": "In May 1848, revolution swept the German states, and 379 deputies walked solemnly into St. Paul's Church at Frankfurt to convene the first freely elected German parliament. They dreamed of a constitutional empire built on liberty. But when they offered the imperial crown to Prussia's king, Frederick William IV refused it as an insult to the divine rights of princes, and the dream collapsed.",
+                "citations": [
+                  {
+                    "articleTitle": "Frankfurt National Assembly",
+                    "url": "https://en.wikipedia.org/wiki/Frankfurt_National_Assembly",
+                    "snippet": "The Prussian king Frederick William IV refused to accept the office of \"Emperor of the Germans\" when it was offered to him on the grounds that such a constitution and such an offer were an abridgment of the rights of the princes"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Bismarck's Iron and Blood",
+        "pages": [
+          {
+            "scenes": [
+              {
+                "type": "chapter-header",
+                "title": "The Iron Chancellor Ascends",
+                "narration": "In September 1862, with the Prussian parliament deadlocked over army funding, King Wilhelm I turned in desperation to a Junker diplomat named Otto von Bismarck. What followed was neither a speech nor a vote, but three calculated wars, waged with cold precision, that would forge a German Empire on Prussian terms and exclude Austria from the German house forever.",
+                "citations": [
+                  {
+                    "articleTitle": "Otto von Bismarck",
+                    "url": "https://en.wikipedia.org/wiki/Otto_von_Bismarck",
+                    "snippet": "On 23 September 1862, Wilhelm appointed Bismarck Minister President and Foreign Minister.",
+                    "sectionAnchor": "Minister_President_of_Prussia"
+                  }
+                ]
+              },
+              {
+                "type": "portrait",
+                "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/5/5f/Portrait_Bismarck_1894.jpg",
+                "personName": "Otto von Bismarck",
+                "caption": "Otto von Bismarck, architect of unification",
+                "narration": "Under Bismarck's leadership, Prussia provoked three short, decisive wars against Denmark, Austria, and France. His nickname, the Iron Chancellor, was earned through a Realpolitik that valued outcomes over ideals — a statesman who understood that speeches and majority votes, so beloved of the Frankfurt liberals, would never build a nation as swiftly as disciplined armies could.",
+                "citations": [
+                  {
+                    "articleTitle": "Otto von Bismarck",
+                    "url": "https://en.wikipedia.org/wiki/Otto_von_Bismarck",
+                    "snippet": "Under Bismarck's leadership, Prussia provoked three short, decisive wars against Denmark, Austria, and France."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "scenes": [
+              {
+                "type": "portrait",
+                "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/7/76/Portr%C3%A4t_des_Kaiser_Wilhelm_I_in_uniform.jpg",
+                "personName": "Wilhelm I of Prussia",
+                "caption": "King Wilhelm I of Prussia",
+                "narration": "Wilhelm I had nearly abdicated rather than face a hostile parliament, until his advisor Roon convinced him that only Bismarck could master the crisis. Wary of surrendering control over foreign affairs, the king nonetheless handed his new minister president near-total command, a partnership of throne and statesman that would remake Central Europe within a decade.",
+                "citations": [
+                  {
+                    "articleTitle": "Otto von Bismarck",
+                    "url": "https://en.wikipedia.org/wiki/Otto_von_Bismarck",
+                    "snippet": "Wilhelm was ambivalent about appointing a person who demanded unfettered control over foreign affairs.",
+                    "sectionAnchor": "Minister_President_of_Prussia"
+                  }
+                ]
+              },
+              {
+                "type": "map-plate",
+                "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/0/0e/Jutland_Peninsula_map.PNG",
+                "caption": "Schleswig and Holstein, the disputed duchies of Jutland",
+                "narration": "The tangled question of Schleswig and Holstein had vexed Germans since 1848, when Danish and German nationalists both claimed the twin duchies. In 1863 the Confederation ordered federal troops to occupy Holstein against the Danish king, and it was this old quarrel that Bismarck would soon turn into the opening move of his unification game.",
+                "citations": [
+                  {
+                    "articleTitle": "German Confederation",
+                    "url": "https://en.wikipedia.org/wiki/German_Confederation",
+                    "snippet": "In 1863, the Confederation ordered the execution of the duke of Holstein (the Danish king). Federal troops occupied Holstein, which was a member state.",
+                    "sectionAnchor": "Military"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "scenes": [
+              {
+                "type": "map-plate",
+                "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Map-AustroPrussianWar.svg/1280px-Map-AustroPrussianWar.svg.png",
+                "caption": "The Austro-Prussian War, 1866",
+                "narration": "Having partnered with Austria to strip Schleswig-Holstein from Denmark, Bismarck then engineered a quarrel over the spoils. The brief, brutal Austro-Prussian War of 1866 shattered Austrian pretensions to lead the German world. At its climax at Königgrätz, Prussian needle guns cut through Austrian ranks, and the old German Confederation died with the battle.",
+                "citations": [
+                  {
+                    "articleTitle": "Unification of Germany",
+                    "url": "https://en.wikipedia.org/wiki/Unification_of_Germany",
+                    "snippet": "The Peace of Prague sealed the dissolution of the German Confederation. Its former leading state, the Austrian Empire, and the majority of its allies were excluded from the newly formed North German Confederation.",
+                    "sectionAnchor": "Founding_a_unified_state"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "scenes": [
+              {
+                "type": "map-plate",
+                "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/4/40/1866_prinz-friedrich-karl-bei-koeniggraetz_1b-640x428.jpg",
+                "caption": "Prince Friedrich Karl at Königgrätz, 1866",
+                "narration": "On this bloody field the fate of the German Confederation was decided in a single afternoon. Prussia's victory broke Austria's centuries-old claim to German leadership, forced Vienna into the Austro-Hungarian Compromise of 1867, and turned Habsburg attention away from Germany and toward the Balkans forever.",
+                "citations": [
+                  {
+                    "articleTitle": "Unification of Germany",
+                    "url": "https://en.wikipedia.org/wiki/Unification_of_Germany",
+                    "snippet": "In 1867, the Austrian emperor Franz Joseph accepted a settlement (the Austro-Hungarian Compromise of 1867) in which he gave his Hungarian holdings equal status with his Austrian domains",
+                    "sectionAnchor": "Founding_a_unified_state"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "The North German Confederation",
+        "pages": [
+          {
+            "scenes": [
+              {
+                "type": "chapter-header",
+                "title": "A New House, North of the Main",
+                "narration": "On 18 August 1866, the North German Confederation Treaty was signed, and a new federal state rose from Austria's defeat — fifteen states north of the Main River joined by four Austrian allies Prussia simply annexed outright: Hanover, Hesse-Kassel, Nassau, and Frankfurt itself. It was, in law and fact, the true beginning of German unification.",
+                "citations": [
+                  {
+                    "articleTitle": "Unification of Germany",
+                    "url": "https://en.wikipedia.org/wiki/Unification_of_Germany",
+                    "snippet": "It commenced on 18 August 1866 with the adoption of the North German Confederation Treaty establishing the North German Confederation, initially a military alliance de facto dominated by the Kingdom of Prussia"
+                  }
+                ]
+              },
+              {
+                "type": "map-plate",
+                "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Map-AustroPrussianWar-annexed.svg/1280px-Map-AustroPrussianWar-annexed.svg.png",
+                "caption": "Territories annexed by Prussia after 1866",
+                "narration": "Hanover, Hesse-Kassel, Nassau, and the free city of Frankfurt vanished as independent states, swallowed whole into Prussia's growing body. Hesse-Darmstadt survived, diminished but intact. The map of Germany was being redrawn not by congress and compromise, as at Vienna, but by conquest and treaty dictated from Berlin.",
+                "citations": [
+                  {
+                    "articleTitle": "Unification of Germany",
+                    "url": "https://en.wikipedia.org/wiki/Unification_of_Germany",
+                    "snippet": "It included fifteen states of the German Confederation north of the Main river, plus four Austrian allies which Prussia annexed: Hanover, Hesse-Kassel, Nassau, and the city of Frankfurt",
+                    "sectionAnchor": "Founding_a_unified_state"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "scenes": [
+              {
+                "type": "timeline",
+                "events": [
+                  {
+                    "year": "1866",
+                    "label": "North German Confederation Treaty adopted"
+                  },
+                  {
+                    "year": "1867",
+                    "label": "North German Constitution adopted, 1 July"
+                  },
+                  {
+                    "year": "1867",
+                    "label": "Revised Customs Union agreed"
+                  },
+                  {
+                    "year": "1870",
+                    "label": "Franco-Prussian War begins"
+                  },
+                  {
+                    "year": "1871",
+                    "label": "South German states accede, 1 January"
+                  },
+                  {
+                    "year": "1871",
+                    "label": "German Empire proclaimed, 18 January"
+                  },
+                  {
+                    "year": "1871",
+                    "label": "Treaty of Frankfurt signed, 10 May"
+                  }
+                ],
+                "narration": "Step by step the pieces locked into place: a treaty, then a constitution largely drafted by Bismarck himself, then a customs union binding markets before flags ever bound hearts. Each date marks not sentiment but mechanism — the patient construction of a nation-state built first from law, and only afterward from loyalty.",
+                "citations": [
+                  {
+                    "articleTitle": "Unification of Germany",
+                    "url": "https://en.wikipedia.org/wiki/Unification_of_Germany",
+                    "snippet": "The North German Constitution, based largely on a draft developed by Bismarck, was adopted on 1 July 1867.",
+                    "sectionAnchor": "Founding_a_unified_state"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "scenes": [
+              {
+                "type": "portrait",
+                "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/c/cf/BismarckundNapoleonIII.jpg",
+                "personName": "Bismarck and Napoleon III",
+                "caption": "Bismarck and Napoleon III after Sedan, 1870",
+                "narration": "French pride, already stung by 'Revenge for Sadova' after 1866, curdled into war by 1870. Bismarck's ambiguous promises to Napoleon III at Biarritz over Belgium and Luxembourg had never been honored, and animosity festered. The Franco-Prussian War that followed would deliver the southern German states — Baden, Württemberg, Bavaria — into Prussia's waiting arms.",
+                "citations": [
+                  {
+                    "articleTitle": "Unification of Germany",
+                    "url": "https://en.wikipedia.org/wiki/Unification_of_Germany",
+                    "snippet": "At a meeting in Biarritz in September 1865 with Napoleon III, Bismarck had let it be understood... that France might annex parts of Belgium and Luxembourg in exchange for its neutrality in the war.",
+                    "sectionAnchor": "Founding_a_unified_state"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Proclamation and the New Reich",
+        "pages": [
+          {
+            "scenes": [
+              {
+                "type": "chapter-header",
+                "title": "A Ceremony at Versailles",
+                "narration": "On 18 January 1871, in the Hall of Mirrors at Versailles itself, the German Empire was ceremonially proclaimed, twenty-five member states bound together under the Hohenzollern crown of Prussia. Yet the true legal hinges had already turned: the southern states' accession and the adoption of the imperial name on New Year's Day, the permanent constitution's enactment that May, and France's formal recognition ten days later.",
+                "citations": [
+                  {
+                    "articleTitle": "Unification of Germany",
+                    "url": "https://en.wikipedia.org/wiki/Unification_of_Germany",
+                    "snippet": "the event was typically celebrated as the date of the German Empire's foundation, although the legally meaningful events relevant to the completion of unification occurred on 1 January 1871"
+                  }
+                ]
+              },
+              {
+                "type": "map-plate",
+                "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/1/19/Deutsches_Reich_%281871-1918%29-en.png",
+                "caption": "The German Empire, 1871–1918",
+                "narration": "Twenty-five states, kingdoms, and free cities now stood beneath a single imperial roof — the Lesser Germany that excluded Austria's multi-ethnic domains but united nearly every other German-speaking land from the Baltic to the Alps. It was the nation the Frankfurt liberals of 1848 had dreamed of, built at last, but by iron and blood rather than by ballot.",
+                "citations": [
+                  {
+                    "articleTitle": "Unification of Germany",
+                    "url": "https://en.wikipedia.org/wiki/Unification_of_Germany",
+                    "snippet": "the ceremonial proclamation of the German Empire (German Reich) having 25 member states and led by the Kingdom of Prussia of Hohenzollerns on 18 January 1871"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "scenes": [
+              {
+                "type": "map-plate",
+                "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/German_Empire_states_map.svg/1280px-German_Empire_states_map.svg.png",
+                "caption": "The federal states of the German Empire",
+                "narration": "Prussia dwarfed its partners, but Bavaria, Saxony, Württemberg, and the free cities of Hamburg and Bremen kept their own kings, parliaments, and pride within the new imperial structure. This federal patchwork, however centralized in practice under Berlin, preserved the outward forms of the old Kleinstaaterei even as it forged something entirely new.",
+                "citations": [
+                  {
+                    "articleTitle": "Unification of Germany",
+                    "url": "https://en.wikipedia.org/wiki/Unification_of_Germany",
+                    "snippet": "It commenced on 18 August 1866... initially a military alliance de facto dominated by the Kingdom of Prussia"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "scenes": [
+              {
+                "type": "letter-quote",
+                "quoteText": "a Kulturkampf (1872–78) that followed political, economic, and administrative unification attempted to address, with a remarkable lack of success, some of the contradictions in German society",
+                "attribution": "from the record of the new Empire's internal struggles",
+                "narration": "Flags and constitutions, Germans soon discovered, did not by themselves make a nation. Bismarck's Kulturkampf turned the machinery of the new state against the Catholic Church, closing seminaries under the May Laws of 1873 and abolishing religious orders in 1875, in a fitful, often failing attempt to weld a single national culture out of Protestants, Catholics, Poles, Danes, and Jews all now called German.",
+                "citations": [
+                  {
+                    "articleTitle": "Unification of Germany",
+                    "url": "https://en.wikipedia.org/wiki/Unification_of_Germany",
+                    "snippet": "The May Laws of 1873 brought the appointment of priests, and their education, under the control of the state, resulting in the closure of many seminaries, and a shortage of priests.",
+                    "sectionAnchor": "Beyond_the_political_mechanism:_forming_a_nation"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "scenes": [
+              {
+                "type": "portrait",
+                "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/a/a9/Berlin_.Gendarmenmarkt_.Deutscher_Dom_010.jpg",
+                "personName": "Berlin, imperial capital",
+                "caption": "The Gendarmenmarkt, heart of the new imperial Berlin",
+                "narration": "From a Prussian garrison town, Berlin now grew into the capital of a European great power, home to a chancellor who governed both empire and kingdom at once. What had begun as a scattering of princedoms under the ancient Holy Roman crown had, through revolution, war, and cold calculation, become the German Empire — a nation built, at last, though not the nation the dreamers of Wartburg and the Paulskirche had first imagined.",
+                "citations": [
+                  {
+                    "articleTitle": "Otto von Bismarck",
+                    "url": "https://en.wikipedia.org/wiki/Otto_von_Bismarck",
+                    "snippet": "Because of both the imperial and the Prussian offices that he held, Bismarck had nearly complete control over domestic and foreign policy."
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "bakedAt": "2026-07-18T17:13:40.594Z"
+}

@@ -6,6 +6,8 @@ export type PartialScene = DeepPartial<Scene>
 export interface SceneContext {
   /** 0-based chapter index, for chapter numerals / ornaments. */
   chapterIndex: number
+  /** Theme's ambient art prompt — chapter headers render a frontispiece from it. */
+  ambientPrompt?: string
 }
 
 export interface SceneComponentProps<S extends { type: string }> {

@@ -13,7 +13,7 @@ import { useMediaQuery } from './useMediaQuery'
 import './book.css'
 
 /** How long the stream must stay quiet before the last page counts as done. */
-const SETTLE_MS = 2200
+const SETTLE_MS = 4000
 
 /**
  * The living book. Renders a (possibly still-streaming) story as a themed
@@ -55,9 +55,10 @@ export function Book({
     return () => clearTimeout(t)
   }, [fingerprint])
 
-  // A fresh story stream (pages emptied out) rewinds the book to its cover.
+  // A fresh story stream rewinds the book to its cover. Streams only grow,
+  // so shrinking back to the bare cover (total <= 1) means a new story began.
   useEffect(() => {
-    if (total === 0 && current !== 0) {
+    if (total <= 1 && current !== 0) {
       epoch.current++
       lastStarted.current = -1
       setCurrent(0)
@@ -104,7 +105,15 @@ export function Book({
 
   // ── Narration: speak the active page, auto-turn when it finishes ─────────
   const currentPage = pages[clamped]
-  const pageDone = clamped < total - 1 || settled
+  // The last page may still be streaming. It is safe to narrate once every
+  // scene on it carries at least one citation entry — citations stream last
+  // within each scene, so their arrival means the narration is complete.
+  // The settle timer stays as a fallback for pages the model never closes.
+  const lastPageClosed =
+    currentPage !== undefined &&
+    currentPage.scenes.length > 0 &&
+    currentPage.scenes.every((s) => (s?.citations?.length ?? 0) > 0)
+  const pageDone = clamped < total - 1 || settled || lastPageClosed
   useEffect(() => {
     if (!autoNarrate || !currentPage || !pageDone) return
     if (lastStarted.current === clamped) return
@@ -154,7 +163,7 @@ export function Book({
   const textureCls = textureClass(story?.theme?.textureId)
   const cover = {
     title: story?.title,
-    subtitle: story?.subtitle,
+    subtitle: story?.subtitle ?? undefined,
     era: story?.theme?.era,
   }
   const visible = twoUp
@@ -183,6 +192,7 @@ export function Book({
                     textureCls={textureCls}
                     onCite={handleCite}
                     cover={cover}
+                    ambientPrompt={story?.theme?.ambientPrompt}
                   />
                 </PageLeaf>
               )

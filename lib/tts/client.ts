@@ -18,6 +18,31 @@ import { useCallback, useRef, useState } from 'react'
 
 type PlaybackResult = 'ended' | 'error'
 
+/** Keep safely under the /api/tts 2000-char limit, cutting at a sentence. */
+const TTS_MAX_CHARS = 1950
+
+/** Chrome speechSynthesis silently dies mid-utterance unless resumed. */
+const SYNTHESIS_KEEPALIVE_MS = 10_000
+
+function clampAtSentence(text: string, max = TTS_MAX_CHARS): string {
+  if (text.length <= max) return text
+  const slice = text.slice(0, max)
+  const lastStop = Math.max(
+    slice.lastIndexOf('. '),
+    slice.lastIndexOf('! '),
+    slice.lastIndexOf('? '),
+  )
+  if (lastStop > max * 0.5) return slice.slice(0, lastStop + 1)
+  const lastSpace = slice.lastIndexOf(' ')
+  return lastSpace > 0 ? slice.slice(0, lastSpace) : slice
+}
+
+/** Split prose into sentence-sized chunks (Chrome kills long utterances). */
+function splitSentences(text: string): string[] {
+  const parts = text.match(/[^.!?…]+[.!?…]+["'”’)\]]*\s*|[^.!?…]+$/g) ?? [text]
+  return parts.map((s) => s.trim()).filter(Boolean)
+}
+
 export function useNarration(): {
   speak: (text: string) => Promise<void>
   stop: () => void
@@ -31,6 +56,15 @@ export function useNarration(): {
   const objectUrlRef = useRef<string | null>(null)
   /** Resolves whichever playback promise is currently pending. */
   const finishRef = useRef<(() => void) | null>(null)
+  /** speechSynthesis.resume() keepalive while the fallback voice speaks. */
+  const keepaliveRef = useRef<ReturnType<typeof setInterval> | null>(null)
+
+  const clearKeepalive = useCallback(() => {
+    if (keepaliveRef.current !== null) {
+      clearInterval(keepaliveRef.current)
+      keepaliveRef.current = null
+    }
+  }, [])
 
   const teardownPlayback = useCallback(() => {
     abortRef.current?.abort()
@@ -44,10 +78,11 @@ export function useNarration(): {
       URL.revokeObjectURL(objectUrlRef.current)
       objectUrlRef.current = null
     }
+    clearKeepalive()
     if (typeof window !== 'undefined') window.speechSynthesis?.cancel()
     finishRef.current?.()
     finishRef.current = null
-  }, [])
+  }, [clearKeepalive])
 
   const stop = useCallback(() => {
     sessionRef.current++
@@ -81,29 +116,54 @@ export function useNarration(): {
     })
   }, [])
 
-  const speakWithSynthesis = useCallback((text: string): Promise<void> => {
-    if (typeof window === 'undefined' || !window.speechSynthesis) {
-      return Promise.resolve()
-    }
-    return new Promise<void>((resolve) => {
-      let done = false
-      const finish = () => {
-        if (done) return
-        done = true
-        resolve()
+  const speakWithSynthesis = useCallback(
+    (text: string): Promise<void> => {
+      if (typeof window === 'undefined' || !window.speechSynthesis) {
+        return Promise.resolve()
       }
-      finishRef.current = finish
-      const utterance = new SpeechSynthesisUtterance(text)
-      utterance.rate = 0.95
-      utterance.onend = finish
-      utterance.onerror = finish
-      window.speechSynthesis.speak(utterance)
-    })
-  }, [])
+      return new Promise<void>((resolve) => {
+        let done = false
+        const finish = () => {
+          if (done) return
+          done = true
+          clearKeepalive()
+          resolve()
+        }
+        finishRef.current = finish
+
+        // Chrome silently kills long utterances ~15s in without firing onend,
+        // freezing the auto page-turn. Speak sentence-sized utterances
+        // sequentially and nudge the engine with resume() while speaking.
+        const sentences = splitSentences(text)
+        let index = 0
+        const speakNext = () => {
+          if (done) return
+          if (index >= sentences.length) {
+            finish()
+            return
+          }
+          const utterance = new SpeechSynthesisUtterance(sentences[index])
+          index += 1
+          utterance.rate = 0.95
+          utterance.onend = speakNext
+          utterance.onerror = finish
+          window.speechSynthesis.speak(utterance)
+        }
+        clearKeepalive()
+        keepaliveRef.current = setInterval(() => {
+          window.speechSynthesis.resume()
+        }, SYNTHESIS_KEEPALIVE_MS)
+        speakNext()
+      })
+    },
+    [clearKeepalive],
+  )
 
   const speak = useCallback(
-    async (text: string): Promise<void> => {
-      if (!text.trim() || typeof window === 'undefined') return
+    async (rawText: string): Promise<void> => {
+      if (!rawText.trim() || typeof window === 'undefined') return
+      // Oversized pages must not 400 the TTS route into the robot voice.
+      const text = clampAtSentence(rawText.trim())
 
       const session = ++sessionRef.current
       teardownPlayback() // replace any narration already in flight

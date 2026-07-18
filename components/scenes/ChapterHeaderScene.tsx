@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import type { z } from 'zod'
+import { useAmbient } from '@/lib/ambient/useAmbient'
 import type { ChapterHeaderSceneSchema } from '@/lib/story/schema'
 import { InkText } from './InkText'
 import { SkeletonLines } from './Skeleton'
@@ -17,6 +18,9 @@ export function ChapterHeaderScene({
   ctx,
 }: SceneComponentProps<ChapterHeader>) {
   const numeral = ROMAN[ctx.chapterIndex] ?? String(ctx.chapterIndex + 1)
+  // Ambient frontispiece art from the story theme; null (loading / failed /
+  // no prompt) renders exactly the plain header — no placeholder, no shift.
+  const frontispiece = useAmbient(ctx.ambientPrompt)
   const narration = scene.narration ?? ''
   const dropCap = narration.charAt(0)
   const rest = narration.slice(1)
@@ -37,6 +41,18 @@ export function ChapterHeaderScene({
         <span className="tome-rule-fleuron">&#10087;</span>
         <span className="tome-rule-line" />
       </div>
+
+      {frontispiece ? (
+        <motion.img
+          src={frontispiece}
+          alt=""
+          aria-hidden
+          className="tome-frontispiece"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1.4, ease: 'easeOut' }}
+        />
+      ) : null}
 
       {scene.title ? (
         <motion.h2

@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import type { z } from 'zod'
 import type { MapPlateSceneSchema } from '@/lib/story/schema'
 import { SkeletonBlock, SkeletonLines } from './Skeleton'
@@ -19,6 +19,12 @@ export function MapPlateScene({ scene }: SceneComponentProps<MapPlate>) {
   const [failed, setFailed] = useState(false)
   const showImage = isSafeImageUrl(scene.imageUrl) && !failed
 
+  // The URL streams in chunks — a 404 on a partial URL must not latch the
+  // failed state, or the finished image never shows.
+  useEffect(() => {
+    setFailed(false)
+  }, [scene.imageUrl])
+
   return (
     <div className="tome-scene-mapplate">
       <div className="tome-mapplate-well">
@@ -30,8 +36,8 @@ export function MapPlateScene({ scene }: SceneComponentProps<MapPlate>) {
             referrerPolicy="no-referrer"
             onLoad={() => setLoaded(true)}
             onError={() => setFailed(true)}
-            initial={{ scale: 1.02, opacity: 0 }}
-            animate={loaded ? { scale: 1.18, opacity: 1 } : { opacity: 0 }}
+            initial={{ scale: 1, opacity: 0 }}
+            animate={loaded ? { scale: 1.03, opacity: 1 } : { opacity: 0 }}
             transition={{
               opacity: { duration: 1.6, ease: 'easeOut' },
               scale: {

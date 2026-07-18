@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import type { z } from 'zod'
 import type { PortraitSceneSchema } from '@/lib/story/schema'
 import { InkText } from './InkText'
@@ -20,6 +20,12 @@ export function PortraitScene({ scene }: SceneComponentProps<Portrait>) {
   const [failed, setFailed] = useState(false)
   const showImage = isSafeImageUrl(scene.imageUrl) && !failed
 
+  // The URL streams in chunks — a 404 on a partial URL must not latch the
+  // failed state, or the finished image never shows.
+  useEffect(() => {
+    setFailed(false)
+  }, [scene.imageUrl])
+
   return (
     <div className="tome-scene-portrait">
       <div className="tome-portrait-frame">
@@ -31,12 +37,8 @@ export function PortraitScene({ scene }: SceneComponentProps<Portrait>) {
             referrerPolicy="no-referrer"
             onLoad={() => setLoaded(true)}
             onError={() => setFailed(true)}
-            initial={{ scale: 1.08, x: '1.5%', y: '-1.5%', opacity: 0 }}
-            animate={
-              loaded
-                ? { scale: 1.22, x: '-1.5%', y: '1.5%', opacity: 1 }
-                : { opacity: 0 }
-            }
+            initial={{ scale: 1, opacity: 0 }}
+            animate={loaded ? { scale: 1.03, opacity: 1 } : { opacity: 0 }}
             transition={{
               opacity: { duration: 1.4, ease: 'easeOut' },
               default: {

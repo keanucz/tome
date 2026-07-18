@@ -16,7 +16,10 @@ export interface FlatPage {
 
 /**
  * Flatten a (possibly partially-streamed) story into an ordered page list.
- * Page 0 is a synthesized title page once the story title exists. Content
+ * Page 0 is ALWAYS the synthesized title page — even before the title has
+ * streamed in (the cover renders a skeleton until it arrives). Emitting the
+ * cover unconditionally keeps every flat page index stable: a late-arriving
+ * title must never prepend a page and shift the reader mid-book. Content
  * pages appear as soon as they carry at least one scene — even a scene shell
  * renders (as a skeleton), which is what makes the book visibly grow.
  */
@@ -24,17 +27,15 @@ export function flattenStory(story: PartialStory | undefined): FlatPage[] {
   const out: FlatPage[] = []
   if (!story) return out
 
-  if (story.title) {
-    out.push({
-      key: 'cover',
-      kind: 'cover',
-      chapterIndex: -1,
-      chapterTitle: undefined,
-      pageInChapter: 0,
-      scenes: [],
-      narration: [story.title, story.subtitle].filter(Boolean).join('. '),
-    })
-  }
+  out.push({
+    key: 'cover',
+    kind: 'cover',
+    chapterIndex: -1,
+    chapterTitle: undefined,
+    pageInChapter: 0,
+    scenes: [],
+    narration: [story.title, story.subtitle].filter(Boolean).join('. '),
+  })
 
   for (const [ci, chapter] of (story.chapters ?? []).entries()) {
     for (const [pi, page] of (chapter?.pages ?? []).entries()) {

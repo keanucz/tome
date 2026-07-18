@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import { InkText } from '@/components/scenes/InkText'
 import { SceneView } from '@/components/scenes/SceneView'
+import { SkeletonLines } from '@/components/scenes/Skeleton'
 import type { OnCite } from '@/components/scenes/types'
 import type { FlatPage } from './flatten'
 
@@ -22,6 +23,8 @@ interface BookPageProps {
   textureCls: string
   onCite: OnCite
   cover: CoverInfo
+  /** Theme's ambient art prompt, threaded to chapter-header frontispieces. */
+  ambientPrompt?: string
 }
 
 /** Renders one paper page: cover, content scenes, or a blank/forming page. */
@@ -33,6 +36,7 @@ export function BookPage({
   textureCls,
   onCite,
   cover,
+  ambientPrompt,
 }: BookPageProps) {
   const isPlate =
     page?.kind === 'content' &&
@@ -59,7 +63,7 @@ export function BookPage({
               <SceneView
                 key={i}
                 scene={scene}
-                ctx={{ chapterIndex: page.chapterIndex }}
+                ctx={{ chapterIndex: page.chapterIndex, ambientPrompt }}
                 onCite={onCite}
               />
             ))}
@@ -80,9 +84,15 @@ function CoverPage({ cover }: { cover: CoverInfo }) {
         <span className="tome-title-ornament" aria-hidden>
           &#10022;
         </span>
-        <h1 className="tome-title">
-          <InkText text={cover.title} maxDelay={1.6} />
-        </h1>
+        {cover.title ? (
+          <h1 className="tome-title">
+            <InkText text={cover.title} maxDelay={1.6} />
+          </h1>
+        ) : (
+          <div className="tome-title">
+            <SkeletonLines lines={2} />
+          </div>
+        )}
         {cover.subtitle ? (
           <p className="tome-subtitle">
             <InkText text={cover.subtitle} maxDelay={1.8} />

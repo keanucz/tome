@@ -14,5 +14,84 @@
       "/prebaked/audio/seven-years-war/6.mp3",
       "/prebaked/audio/seven-years-war/7.mp3"
     ]
+  },
+  {
+    "slug": "french-revolution",
+    "topic": "The French Revolution",
+    "title": "Liberty, Equality, Terror",
+    "pages": 18,
+    "audioFiles": [
+      "/prebaked/audio/french-revolution/0.mp3",
+      "/prebaked/audio/french-revolution/1.mp3",
+      "/prebaked/audio/french-revolution/2.mp3",
+      "/prebaked/audio/french-revolution/3.mp3",
+      "/prebaked/audio/french-revolution/4.mp3",
+      "/prebaked/audio/french-revolution/5.mp3",
+      "/prebaked/audio/french-revolution/6.mp3",
+      "/prebaked/audio/french-revolution/7.mp3",
+      "/prebaked/audio/french-revolution/8.mp3",
+      "/prebaked/audio/french-revolution/9.mp3",
+      "/prebaked/audio/french-revolution/10.mp3",
+      "/prebaked/audio/french-revolution/11.mp3",
+      "/prebaked/audio/french-revolution/12.mp3",
+      "/prebaked/audio/french-revolution/13.mp3",
+      "/prebaked/audio/french-revolution/14.mp3",
+      "/prebaked/audio/french-revolution/15.mp3",
+      "/prebaked/audio/french-revolution/16.mp3",
+      "/prebaked/audio/french-revolution/17.mp3"
+    ]
+  },
+  {
+    "slug": "ada-lovelace",
+    "topic": "Ada Lovelace",
+    "title": "The Enchantress of Numbers",
+    "pages": 18,
+    "audioFiles": [
+      "/prebaked/audio/ada-lovelace/0.mp3",
+      "/prebaked/audio/ada-lovelace/1.mp3",
+      "/prebaked/audio/ada-lovelace/2.mp3",
+      "/prebaked/audio/ada-lovelace/3.mp3",
+      "/prebaked/audio/ada-lovelace/4.mp3",
+      "/prebaked/audio/ada-lovelace/5.mp3",
+      "/prebaked/audio/ada-lovelace/6.mp3",
+      "/prebaked/audio/ada-lovelace/7.mp3",
+      "/prebaked/audio/ada-lovelace/8.mp3",
+      "/prebaked/audio/ada-lovelace/9.mp3",
+      "/prebaked/audio/ada-lovelace/10.mp3",
+      "/prebaked/audio/ada-lovelace/11.mp3",
+      "/prebaked/audio/ada-lovelace/12.mp3",
+      "/prebaked/audio/ada-lovelace/13.mp3",
+      "/prebaked/audio/ada-lovelace/14.mp3",
+      "/prebaked/audio/ada-lovelace/15.mp3",
+      "/prebaked/audio/ada-lovelace/16.mp3",
+      "/prebaked/audio/ada-lovelace/17.mp3"
+    ]
+  },
+  {
+    "slug": "unification-of-germany",
+    "topic": "The Unification of Germany",
+    "title": "Blood and Iron: The Unification of Germany",
+    "pages": 19,
+    "audioFiles": [
+      "/prebaked/audio/unification-of-germany/0.mp3",
+      "/prebaked/audio/unification-of-germany/1.mp3",
+      "/prebaked/audio/unification-of-germany/2.mp3",
+      "/prebaked/audio/unification-of-germany/3.mp3",
+      "/prebaked/audio/unification-of-germany/4.mp3",
+      "/prebaked/audio/unification-of-germany/5.mp3",
+      "/prebaked/audio/unification-of-germany/6.mp3",
+      "/prebaked/audio/unification-of-germany/7.mp3",
+      "/prebaked/audio/unification-of-germany/8.mp3",
+      "/prebaked/audio/unification-of-germany/9.mp3",
+      "/prebaked/audio/unification-of-germany/10.mp3",
+      "/prebaked/audio/unification-of-germany/11.mp3",
+      "/prebaked/audio/unification-of-germany/12.mp3",
+      "/prebaked/audio/unification-of-germany/13.mp3",
+      "/prebaked/audio/unification-of-germany/14.mp3",
+      "/prebaked/audio/unification-of-germany/15.mp3",
+      "/prebaked/audio/unification-of-germany/16.mp3",
+      "/prebaked/audio/unification-of-germany/17.mp3",
+      "/prebaked/audio/unification-of-germany/18.mp3"
+    ]
   }
 ]
