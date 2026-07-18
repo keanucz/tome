@@ -1,19 +1,21 @@
 import {
-  Cinzel,
-  Cormorant_Garamond,
+  Baskervville,
+  Bodoni_Moda,
+  Cardo,
   Crimson_Text,
   EB_Garamond,
   Fraunces,
-  IM_Fell_English,
-  Italiana,
+  Grenze_Gotisch,
+  IBM_Plex_Mono,
+  Marcellus,
   Playfair_Display,
   Source_Serif_4,
-  UnifrakturMaguntia,
 } from 'next/font/google'
 import { PAIRING_FONT_VARS, type FontPairing } from '@/lib/story/theme'
 
 /**
- * Era font pairings (display + body) for the five ThemeSpec fontPairing ids.
+ * Era font pairings (display + body) for the five ThemeSpec fontPairing ids,
+ * plus a shared archival mono accent for catalog labels and folios.
  *
  * next/font requires the `variable` option to be a string literal, so the
  * CSS-variable names are written out here AND in
@@ -22,9 +24,12 @@ import { PAIRING_FONT_VARS, type FontPairing } from '@/lib/story/theme'
  * Integration: drop `fontVariables` onto <body> (or any ancestor of <Book/>).
  */
 
-// ── classical: Cinzel + EB Garamond ─────────────────────────────────────────
-const classicalDisplay = Cinzel({
+// ── classical: Marcellus + EB Garamond ──────────────────────────────────────
+// Marcellus is an inscriptional Roman capital face — the classical register
+// without the over-used Cinzel look.
+const classicalDisplay = Marcellus({
   subsets: ['latin'],
+  weight: '400',
   display: 'swap',
   variable: '--font-classical-display',
 })
@@ -35,39 +40,47 @@ const classicalBody = EB_Garamond({
   variable: '--font-classical-body',
 })
 
-// ── enlightenment: Playfair Display + Cormorant Garamond ────────────────────
+// ── enlightenment: Playfair Display + Baskervville ──────────────────────────
+// Baskerville is literally the type of the Enlightenment; Baskervville is its
+// faithful revival and pairs with Playfair's high-contrast display cut.
 const enlightenmentDisplay = Playfair_Display({
   subsets: ['latin'],
   style: ['normal', 'italic'],
   display: 'swap',
   variable: '--font-enlightenment-display',
 })
-const enlightenmentBody = Cormorant_Garamond({
+const enlightenmentBody = Baskervville({
   subsets: ['latin'],
+  weight: '400',
   style: ['normal', 'italic'],
   display: 'swap',
   variable: '--font-enlightenment-body',
 })
 
-// ── gothic: UnifrakturMaguntia + IM Fell English ────────────────────────────
-const gothicDisplay = UnifrakturMaguntia({
+// ── gothic: Grenze Gotisch + Cardo ──────────────────────────────────────────
+// Grenze Gotisch carries the blackletter flavor while staying readable
+// (UnifrakturMaguntia was authentic but illegible); Cardo is a scholarly
+// medievalist text face.
+const gothicDisplay = Grenze_Gotisch({
   subsets: ['latin'],
-  weight: '400',
+  weight: ['400', '500', '600'],
   display: 'swap',
   variable: '--font-gothic-display',
 })
-const gothicBody = IM_Fell_English({
+const gothicBody = Cardo({
   subsets: ['latin'],
-  weight: '400',
+  weight: ['400', '700'],
   style: ['normal', 'italic'],
   display: 'swap',
   variable: '--font-gothic-body',
 })
 
-// ── romantic: Italiana + Crimson Text ───────────────────────────────────────
-const romanticDisplay = Italiana({
+// ── romantic: Bodoni Moda + Crimson Text ────────────────────────────────────
+// The 19th century is Didone territory: Bodoni Moda with optical sizing
+// replaces the too-deco Italiana.
+const romanticDisplay = Bodoni_Moda({
   subsets: ['latin'],
-  weight: '400',
+  style: ['normal', 'italic'],
   display: 'swap',
   variable: '--font-romantic-display',
 })
@@ -93,6 +106,16 @@ const modernBody = Source_Serif_4({
   variable: '--font-modern-body',
 })
 
+// ── archive accent: IBM Plex Mono ───────────────────────────────────────────
+// Shared across all eras for catalog labels, folios, and page counters —
+// the "library apparatus" voice, distinct from every book voice.
+const archiveMono = IBM_Plex_Mono({
+  subsets: ['latin'],
+  weight: ['400', '500'],
+  display: 'swap',
+  variable: '--font-archive',
+})
+
 const ALL_FONTS = [
   classicalDisplay,
   classicalBody,
@@ -104,6 +127,7 @@ const ALL_FONTS = [
   romanticBody,
   modernDisplay,
   modernBody,
+  archiveMono,
 ]
 
 /** className list exposing every era font CSS variable — put on <body>. */

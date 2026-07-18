@@ -1,26 +1,37 @@
 @import "tailwindcss";
 
+/*
+ * Archive palette — the app chrome around the book (landing, buttons, panel
+ * fallbacks). OKLCH, constant hue 75 (warm amber-brown), lightness carries
+ * the hierarchy. The book's own palette comes from the model per story.
+ */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --archive-night: oklch(0.185 0.02 75); /* page background          */
+  --archive-shelf: oklch(0.26 0.028 75); /* raised surfaces          */
+  --archive-line: oklch(0.42 0.045 75); /* hairlines, quiet borders */
+  --archive-brass: oklch(0.72 0.105 75); /* accents, focus, glow     */
+  --archive-vellum: oklch(0.9 0.045 85); /* primary text             */
+  --archive-faint: oklch(0.62 0.045 78); /* secondary text           */
+  --archive-mute: oklch(0.48 0.04 76); /* tertiary text            */
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-night: var(--archive-night);
+  --color-shelf: var(--archive-shelf);
+  --color-line: var(--archive-line);
+  --color-brass: var(--archive-brass);
+  --color-vellum: var(--archive-vellum);
+  --color-faint: var(--archive-faint);
+  --color-mute: var(--archive-mute);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--archive-night);
+  color: var(--archive-vellum);
+  font-synthesis: none;
+}
+
+::selection {
+  background: oklch(0.72 0.105 75 / 0.3);
+  color: var(--archive-vellum);
 }

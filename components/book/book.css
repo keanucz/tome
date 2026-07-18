@@ -263,8 +263,10 @@
 .tome-page-number {
   flex: none;
   text-align: center;
-  font-family: var(--font-display, Georgia, serif);
-  font-size: 0.8rem;
+  font-family: var(--font-archive, monospace);
+  font-size: 0.68rem;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.08em;
   color: color-mix(in srgb, var(--ink) 58%, var(--paper));
   margin-top: 0.45rem;
 }
@@ -467,7 +469,9 @@
   font-family: var(--font-display, Georgia, serif);
   font-size: clamp(1.5rem, 2.5vw, 2.2rem);
   font-weight: 500;
-  line-height: 1.18;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
   color: var(--accent, #7d3b28);
   margin: 0.4rem 0 0.3rem;
 }
@@ -518,6 +522,8 @@
   display: block;
   object-fit: cover;
   filter: sepia(0.14) contrast(1.02) saturate(0.94);
+  outline: 1px solid oklch(0 0 0 / 0.1);
+  outline-offset: -1px;
 }
 
 .tome-portrait-skel {
@@ -573,6 +579,8 @@
   height: 100%;
   object-fit: cover;
   filter: sepia(0.45) contrast(0.92) brightness(0.96) saturate(0.8);
+  outline: 1px solid oklch(0 0 0 / 0.1);
+  outline-offset: -1px;
 }
 
 /* Paper-tint wash so bright modern images sit inside the aged book. */
@@ -906,10 +914,12 @@
 }
 
 .tome-progress-label {
+  font-family: var(--font-archive, monospace);
   font-size: 0.64rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: rgba(240, 224, 190, 0.72);
+  font-variant-numeric: tabular-nums;
+  color: oklch(0.9 0.045 85 / 0.72);
 }
 
 .tome-progress-writing {

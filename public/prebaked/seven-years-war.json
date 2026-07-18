@@ -1,0 +1,321 @@
+{
+  "topic": "The Seven Years' War",
+  "slug": "seven-years-war",
+  "story": {
+    "title": "The Seven Years' War",
+    "subtitle": "A World Set Ablaze, 1756–1763",
+    "theme": {
+      "era": "The Seven Years' War, 1756–1763",
+      "fontPairing": "enlightenment",
+      "palette": {
+        "paper": "#f2e6c8",
+        "ink": "#2b1d12",
+        "accent": "#7a1f1f",
+        "gold": "#af8a3d"
+      },
+      "textureId": "parchment",
+      "ambientPrompt": "An 18th-century oil painting style depicting smoke-wreathed battlefields, marching regiments in tricorne hats, tall ships under full sail, and gilded court interiors, rendered in the muted browns, deep reds, and candlelit golds of period military portraiture"
+    },
+    "chapters": [
+      {
+        "title": "A Spark on the Ohio",
+        "pages": [
+          {
+            "scenes": [
+              {
+                "type": "chapter-header",
+                "title": "The Forks of the Ohio",
+                "narration": "In the tangled forests of the Ohio Valley, two empires collided over a wedge of land where the Allegheny and Monongahela rivers met. France claimed the whole Mississippi basin; Britain's colonists wanted the fertile ground for their own. Peaceful protest failed. The French built Fort Duquesne, and a young Virginia militia colonel named George Washington was sent to stop them. What began as a border scuffle would, within two years, ignite a war spanning five continents.",
+                "citations": [
+                  {
+                    "articleTitle": "Seven Years' War",
+                    "url": "https://en.wikipedia.org/wiki/Seven_Years'_War",
+                    "snippet": "The most important French fort planned was intended to occupy a position at \"the Forks\", where the Allegheny and Monongahela rivers meet to form the Ohio River",
+                    "sectionAnchor": "Background"
+                  }
+                ]
+              },
+              {
+                "type": "map-plate",
+                "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Nouvelle-France_map-en.svg/1280px-Nouvelle-France_map-en.svg.png",
+                "caption": "Map of New France, showing the vast French claims contested by British colonists",
+                "narration": "Look upon the map of New France as it stood before the storm: a crescent of French forts and river routes stretching from the St. Lawrence to the Mississippi delta, hemming in the British colonies along the Atlantic coast. It was this vast, ill-defined boundary that colonists on both sides meant to settle by musket rather than treaty.",
+                "citations": [
+                  {
+                    "articleTitle": "Seven Years' War",
+                    "url": "https://en.wikipedia.org/wiki/Seven_Years'_War",
+                    "snippet": "France had long claimed the entire Mississippi River basin. This was disputed by Britain.",
+                    "sectionAnchor": "Background"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "scenes": [
+              {
+                "type": "letter-quote",
+                "quoteText": "Led by George Washington, they ambushed a small French force at Jumonville Glen on 28 May 1754 killing ten, including commander Joseph Coulon de Jumonville.",
+                "attribution": "Seven Years' War, Background section",
+                "narration": "At dawn on 28 May 1754, Washington's Virginians and their Mingo allies fell upon a French scouting party in a wooded glen. Ten Frenchmen died, among them their commander. It was a skirmish so small that few in Europe would have noticed it — yet the shot fired at Jumonville Glen would echo across oceans, dragging France, Britain, Austria, Prussia, and Russia into a war none of them had chosen to fight there.",
+                "citations": [
+                  {
+                    "articleTitle": "Seven Years' War",
+                    "url": "https://en.wikipedia.org/wiki/Seven_Years'_War",
+                    "snippet": "Led by George Washington, they ambushed a small French force at Jumonville Glen on 28 May 1754 killing ten, including commander Joseph Coulon de Jumonville.",
+                    "sectionAnchor": "Background"
+                  }
+                ]
+              },
+              {
+                "type": "timeline",
+                "events": [
+                  {
+                    "year": "1754",
+                    "label": "Washington's ambush at Jumonville Glen"
+                  },
+                  {
+                    "year": "1754",
+                    "label": "French force defeats Washington at Fort Necessity"
+                  },
+                  {
+                    "year": "1755",
+                    "label": "Braddock's expedition to Fort Duquesne ends in disaster"
+                  },
+                  {
+                    "year": "1755",
+                    "label": "Boscawen captures the French ship Alcide"
+                  },
+                  {
+                    "year": "1756",
+                    "label": "Frederick II invades Saxony, beginning the wider war"
+                  }
+                ],
+                "narration": "Two years of undeclared skirmishing preceded the formal outbreak of war. Fort Necessity fell to French retaliation. General Braddock's grand expedition collapsed in the forest. British warships seized French vessels on the high seas while the two crowns still spoke the language of peace. Then, in August 1756, Frederick of Prussia marched his columns across the Saxon border, and the local brushfire became a conflagration engulfing the world.",
+                "citations": [
+                  {
+                    "articleTitle": "Seven Years' War",
+                    "url": "https://en.wikipedia.org/wiki/Seven_Years'_War",
+                    "snippet": "In July, British Major General Edward Braddock led about 2,000 regular army troops and provincial militia on an expedition to retake Fort Duquesne, but the expedition ended in disastrous defeat.",
+                    "sectionAnchor": "Background"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "The Diplomatic Revolution",
+        "pages": [
+          {
+            "scenes": [
+              {
+                "type": "chapter-header",
+                "title": "Old Enemies, New Friends",
+                "narration": "For centuries Habsburg Austria and Bourbon France had been bitter rivals. Now, faced with the rising menace of Prussia, they turned to one another. Britain, meanwhile, abandoned its old Austrian alliance to back Frederick the Great. Historians call this astonishing realignment the Diplomatic Revolution — a reshuffling of Europe's alliances so complete that former enemies became allies and former friends became foes, all before a single shot had been fired on the continent itself.",
+                "citations": [
+                  {
+                    "articleTitle": "Seven Years' War",
+                    "url": "https://en.wikipedia.org/wiki/Seven_Years'_War",
+                    "snippet": "In response France concluded an alliance with its long-time enemy Austria, an event known as the Diplomatic Revolution.",
+                    "sectionAnchor": "Background"
+                  }
+                ]
+              },
+              {
+                "type": "portrait",
+                "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/e/eb/Andreas_Moeller_-_Erzherzogin_Maria_Theresia_-_Kunsthistorisches_Museum.jpg",
+                "personName": "Maria Theresa",
+                "caption": "Archduchess Maria Theresia, painted by Andreas Møller",
+                "narration": "She had ascended to rule the Habsburg lands as a young woman, inheriting an impoverished treasury and a broken army, only to watch Frederick of Prussia seize her richest province, Silesia, within weeks of her father's death. She never forgave him, calling him thereafter simply 'that evil man.' Two decades later, with her minister Kaunitz's new alliance with France in hand, she meant at last to take Silesia back.",
+                "citations": [
+                  {
+                    "articleTitle": "Maria Theresa",
+                    "url": "https://en.wikipedia.org/wiki/Maria_Theresa",
+                    "snippet": "The invasion of Silesia by Frederick was the start of a lifelong enmity; she referred to him thereafter as \"that evil man\".",
+                    "sectionAnchor": "War_of_the_Austrian_Succession"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "scenes": [
+              {
+                "type": "portrait",
+                "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/4/4f/William_Pitt%2C_1st_Earl_of_Chatham_by_William_Hoare.jpg",
+                "personName": "William Pitt the Elder",
+                "caption": "William Pitt, 1st Earl of Chatham, studio of William Hoare, circa 1754",
+                "narration": "Into the British cabinet in 1756 came a statesman of singular vision. William Pitt saw not a European squabble but a chance to seize the entire French empire — its fur trade in Canada, its sugar islands, its trading posts in India. He would subsidize Frederick the Great to keep French armies pinned down on the continent while the Royal Navy carried British troops to every corner of the globe. It was a strategy that would remake the map of empire.",
+                "citations": [
+                  {
+                    "articleTitle": "Seven Years' War",
+                    "url": "https://en.wikipedia.org/wiki/Seven_Years'_War",
+                    "snippet": "As prime minister, Pitt committed Britain to a grand strategy of seizing the entire French Empire, especially its possessions in North America and India.",
+                    "sectionAnchor": "Europe"
+                  }
+                ]
+              },
+              {
+                "type": "map-plate",
+                "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/b/bf/Europe_1748-1766_en.png",
+                "caption": "Europe, 1748–1766, showing the realigned powers of the Diplomatic Revolution",
+                "narration": "Behold Europe on the eve of the storm: Austria bound now to France, Prussia clinging to Britain, and Russia siding with Vienna to crush the upstart Hohenzollern kingdom before it grew too strong. Every border on this map would soon be tested by musket and cannon, from the Elbe to the Vistula, as old alliances shattered and new ones bore the weight of war.",
+                "citations": [
+                  {
+                    "articleTitle": "Seven Years' War",
+                    "url": "https://en.wikipedia.org/wiki/Seven_Years'_War",
+                    "snippet": "The Russians and the Austrians were determined to reduce the power of Prussia, the new threat on their doorstep, and Austria was anxious to regain Silesia",
+                    "sectionAnchor": "Strategies"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Frederick's Gambit",
+        "pages": [
+          {
+            "scenes": [
+              {
+                "type": "chapter-header",
+                "title": "The March into Saxony",
+                "narration": "On 29 August 1756, Frederick the Great led his Prussian columns across the Saxon frontier, gambling everything on a bold pre-emptive strike. He meant to seize Saxony's army and treasury, winter in Bohemia at Austria's expense, and drive at last on Vienna itself. Three columns converged — under Ferdinand of Brunswick, the Duke of Brunswick-Bevern, and Frederick himself with Field Marshal Keith — while the unprepared Saxon and Austrian forces scattered before them.",
+                "citations": [
+                  {
+                    "articleTitle": "Seven Years' War",
+                    "url": "https://en.wikipedia.org/wiki/Seven_Years'_War",
+                    "snippet": "On 29 August 1756, he led Prussian troops across the border of Saxony, one of the small German states in league with Austria.",
+                    "sectionAnchor": "Europe"
+                  }
+                ]
+              },
+              {
+                "type": "portrait",
+                "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/a/a3/2020_Angelobung_der_Bundesregierung_%2849345113843%29.jpg",
+                "personName": "Duke Ferdinand of Brunswick-Wolfenbüttel",
+                "caption": "Portrait associated with Duke Ferdinand of Brunswick-Wolfenbüttel",
+                "narration": "Among Frederick's most trusted commanders was Ferdinand of Brunswick, who led one of the three converging columns into Saxony. Later given command of the Hanoverian Army of Observation, he found it dejected and defeated — yet within a week he had it attacking again, launching the string of victories in western Germany that would make his name synonymous with steady, relentless soldiering.",
+                "citations": [
+                  {
+                    "articleTitle": "Duke Ferdinand of Brunswick-Wolfenbüttel",
+                    "url": "https://en.wikipedia.org/wiki/Duke_Ferdinand_of_Brunswick-Wolfenb%C3%BCttel",
+                    "snippet": "He found this army dejected by a reverse and a capitulation, yet within a week of his taking up the command, he assumed the offensive",
+                    "sectionAnchor": "Seven_Years'_War"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "scenes": [
+              {
+                "type": "map-plate",
+                "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/0/0a/Battle_of_Lobositz.png",
+                "caption": "Map of the Battle of Lobositz, 1756",
+                "narration": "At Lobositz that October, Frederick's advancing army met an Austrian force determined to relieve besieged Saxony. Ferdinand of Brunswick led the right wing of Prussian infantry through smoke and confusion on broken, vineyard-terraced ground. It was the first major clash of the continental war — a foretaste of the grinding battles of maneuver and attrition that would define the years ahead.",
+                "citations": [
+                  {
+                    "articleTitle": "Duke Ferdinand of Brunswick-Wolfenbüttel",
+                    "url": "https://en.wikipedia.org/wiki/Duke_Ferdinand_of_Brunswick-Wolfenb%C3%BCttel",
+                    "snippet": "At the Battle of Lobositz, he led the right wing of the Prussian infantry.",
+                    "sectionAnchor": "Seven_Years'_War"
+                  }
+                ]
+              },
+              {
+                "type": "portrait",
+                "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/f/fc/Frederick_the_Great_and_his_staff_at_the_Battle_of_Leuthen_by_Hugo_Ungewitter.jpg",
+                "personName": "Frederick the Great",
+                "caption": "Frederick the Great and his staff at the Battle of Leuthen, by Hugo Ungewitter, 1922",
+                "narration": "Frederick had inherited from his father a militarized state unlike any other in Europe — one soldier for every twenty-eight subjects, and the army swallowing eighty-six percent of the treasury. Now that inheritance was tested in earnest. Contemporaries would later say of Prussia, in words attributed to Mirabeau, that it was not a state possessing an army, but an army possessing a state — and on the battlefields of Saxony and Silesia, that army fought for its king's very survival.",
+                "citations": [
+                  {
+                    "articleTitle": "Frederick the Great",
+                    "url": "https://en.wikipedia.org/wiki/Frederick_the_Great",
+                    "snippet": "\"La Prusse n'est pas un pays qui a une armée, c'est une armée qui a un pays\" (\"Prussia is not a state that has an army, but an army that has a state\").",
+                    "sectionAnchor": "Inheritance"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Empires Across the Sea",
+        "pages": [
+          {
+            "scenes": [
+              {
+                "type": "chapter-header",
+                "title": "Quebec, India, and the Sugar Islands",
+                "narration": "While armies clashed in Saxony and Bohemia, the war's greatest stakes lay overseas. British fleets harried French shipping from Senegal to the Caribbean; in India, French power crumbled before British-backed clients; and in North America, the fate of an entire continent turned on the walls of a single fortress city perched above the St. Lawrence River — Quebec.",
+                "citations": [
+                  {
+                    "articleTitle": "Seven Years' War",
+                    "url": "https://en.wikipedia.org/wiki/Seven_Years'_War",
+                    "snippet": "More importantly, the British defeated the French in its defence of New France in 1759, with the fall of Quebec.",
+                    "sectionAnchor": "Other_continents"
+                  }
+                ]
+              },
+              {
+                "type": "portrait",
+                "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/f/f8/The_Death_of_General_Wolfe_B.West%2C1770.jpg",
+                "personName": "General James Wolfe",
+                "caption": "The Death of General Wolfe, by Benjamin West, 1770",
+                "narration": "On 13 September 1759, British soldiers scaled the dark cliffs beneath Quebec City and formed their ranks upon a plateau known as the Plains of Abraham. A single devastating volley of musket fire ended the battle within half an hour. Both commanders, Wolfe and Montcalm, fell mortally wounded in the fighting — but it was the British flag that would fly over Quebec, and with it, the beginning of the end for French Canada.",
+                "citations": [
+                  {
+                    "articleTitle": "Plains of Abraham",
+                    "url": "https://en.wikipedia.org/wiki/Plains_of_Abraham",
+                    "snippet": "British soldiers under the command of General Wolfe, climbed the steep cliff under the city in darkness, surprising and defeating the French, through a single deadly volley of musket fire, causing the battle to be over within 30 minutes. Both Wolfe and the French commander, the Marquis de Montcalm, died of their wounds",
+                    "sectionAnchor": "History"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "scenes": [
+              {
+                "type": "map-plate",
+                "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/f/f1/NorthAmerica1762-83.png",
+                "caption": "North America, 1762–1783, after the redrawing of colonial borders",
+                "narration": "When the Treaty of Paris was signed in 1763, the map of North America was transformed. France ceded Louisiana to Spain and surrendered the whole of New France to Britain, keeping only her Caribbean sugar islands, which she judged more profitable than the snowy expanses of Canada. Spain lost Florida to Britain but gained French lands west of the Mississippi. Britain now commanded every acre east of that great river.",
+                "citations": [
+                  {
+                    "articleTitle": "Seven Years' War",
+                    "url": "https://en.wikipedia.org/wiki/Seven_Years'_War",
+                    "snippet": "Faced with the choice of regaining either New France or its Caribbean Island colonies of Guadeloupe and Martinique, France chose the islands to retain these lucrative sources of sugar, writing off New France as an unproductive, costly territory.",
+                    "sectionAnchor": "Outcomes"
+                  }
+                ]
+              },
+              {
+                "type": "portrait",
+                "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/4/46/LindsayCambridge.jpg",
+                "personName": "Siege scene, Havana",
+                "caption": "Bombardment of the Morro Castle, Havana, 1 July 1762, by Richard Paton",
+                "narration": "Spain, entering the war too late as France's ally, paid dearly. British forces seized Havana in Cuba and Manila in the Philippines, striking at the very heart of Spanish imperial commerce. Though both cities were returned under the peace, the message was unmistakable: nowhere on the globe now lay beyond the reach of British sea power, and the balance of empire had shifted for a generation to come.",
+                "citations": [
+                  {
+                    "articleTitle": "Seven Years' War",
+                    "url": "https://en.wikipedia.org/wiki/Seven_Years'_War",
+                    "snippet": "The British Royal Navy took the French Caribbean sugar colonies of Guadeloupe in 1759 and Martinique in 1762 as well as the Spanish Empire's main port in the West Indies, Havana in Cuba, and its main Asian port of Manila in the Philippines",
+                    "sectionAnchor": "Other_continents"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "bakedAt": "2026-07-18T16:54:11.516Z"
+}
