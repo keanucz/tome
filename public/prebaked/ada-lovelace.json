@@ -5,27 +5,27 @@
     "title": "The Enchantress of Numbers",
     "subtitle": "Ada Lovelace and the Dream of the Analytical Engine",
     "theme": {
-      "era": "Regency and Victorian England, 1815–1852",
+      "era": "Regency & Victorian England, 1815–1852",
       "fontPairing": "romantic",
       "palette": {
         "paper": "#f2e8d5",
-        "ink": "#2b2118",
+        "ink": "#2b2420",
         "accent": "#7a2e2e",
-        "gold": "#b08d3e"
+        "gold": "#b8892f"
       },
       "textureId": "parchment",
-      "ambientPrompt": "A candlelit Victorian drawing room engraving in sepia ink-wash, brass gears and calculation tables scattered beside lace and quill pens, a young woman in Regency dress bent over mathematical diagrams by lamplight, in the style of a period steel engraving"
+      "ambientPrompt": "A candlelit Victorian drawing room with brass gears and mechanical engine diagrams scattered across a mahogany desk, quill pens and mathematical notebooks, soft gaslight, oil-painting style reminiscent of early 19th century English portraiture, warm sepia and burgundy tones"
     },
     "chapters": [
       {
-        "title": "A Byronic Inheritance",
+        "title": "Chapter I: A Poet's Daughter",
         "pages": [
           {
             "scenes": [
               {
                 "type": "chapter-header",
-                "title": "The Poet's Daughter",
-                "narration": "She was born in the last days of 1815, in a house already cracking apart. Augusta Ada Byron entered the world as her father, the most famous poet in England, waited for a son he could call glorious. He got a daughter instead, and within weeks the marriage that made her was over. Her name carried her father's blood and her mother's steel, and the two would war over her for the rest of her short life.",
+                "title": "The Glorious Boy Who Was a Girl",
+                "narration": "In December of 1815, in a London townhouse, Lord Byron waited for a son. He received instead a daughter, Augusta Ada, and within weeks his marriage lay in ruins. Before she could form a memory of him, the child who would reshape the idea of the machine was already caught between two towering, warring legacies: a mad, bad poet and a mother determined to erase every trace of him from her mind.",
                 "citations": [
                   {
                     "articleTitle": "Ada Lovelace",
@@ -34,22 +34,18 @@
                     "sectionAnchor": "Biography"
                   }
                 ]
-              }
-            ]
-          },
-          {
-            "scenes": [
+              },
               {
                 "type": "portrait",
                 "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/e/e7/Miniature_of_Ada_Byron.jpg",
-                "personName": "Ada Byron",
+                "personName": "Ada Byron (infant)",
                 "caption": "Miniature of Ada Byron, 1819",
-                "narration": "Five weeks old, she was carried away from London by a mother who would never bring her back. English law of the time granted fathers total custody, yet Lord Byron made no move to claim her. He asked only that his sister send word of the child's welfare, a strange, distant tenderness from a man who signed the deed of separation with obvious reluctance before sailing from England forever.",
+                "narration": "This small painted likeness captures Ada in her earliest years, a child already parted from her father by continents and scandal. At five weeks old she was carried by her mother to Kirkby Mallory, and Lord Byron, though legally entitled to keep her, made no claim. He asked only that his sister write to him of the girl's welfare — a request that would go unanswered by fate, for he died when Ada was eight.",
                 "citations": [
                   {
                     "articleTitle": "Ada Lovelace",
                     "url": "https://en.wikipedia.org/wiki/Ada_Lovelace",
-                    "snippet": "Although English law at the time granted full custody of children to the father in cases of separation, Lord Byron made no attempt to claim his parental rights.",
+                    "snippet": "Although English law at the time granted full custody of children to the father in cases of separation, Lord Byron made no attempt to claim his parental rights, but did request that his sister keep him informed of Ada's welfare.",
                     "sectionAnchor": "Biography"
                   }
                 ]
@@ -62,7 +58,8 @@
                 "type": "letter-quote",
                 "quoteText": "I talk to it for your satisfaction, not my own, and shall be very glad when you have it under your own.",
                 "attribution": "Lady Byron, in a letter to Lady Milbanke",
-                "narration": "Even affection in this family came wrapped in performance. Lady Byron, watched by a judgmental society that blamed wives for broken marriages, wrote careful letters proving her maternal devotion, keeping copies in case she ever needed them as evidence. In one she called her own infant daughter simply \"it\" — a chilling slip that reveals how much of Ada's childhood was staged for an audience of Regency gossips.",
+                "date": "circa 1816",
+                "narration": "Even the woman who fought to keep her could seem, in private correspondence, chillingly detached — referring to her own daughter not as 'she' but as 'it'. Behind the public face of a devoted mother lay a colder truth: Lady Byron's tender letters were partly performance, written to be kept as proof of maternal concern should society ever demand it.",
                 "citations": [
                   {
                     "articleTitle": "Ada Lovelace",
@@ -71,44 +68,18 @@
                     "sectionAnchor": "Biography"
                   }
                 ]
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "title": "Furies and Flying Machines",
-        "pages": [
-          {
-            "scenes": [
-              {
-                "type": "chapter-header",
-                "title": "A Watched Childhood",
-                "narration": "Lord Byron died in the marshes of Greece when Ada was eight, a father she never knew replaced by a portrait she was not allowed to see until she turned twenty. Her mother, terrified the girl had inherited Byron's wildness, set friends to spy on her daughter's every mood. Ada called them the Furies, and complained bitterly that they invented scandals where there were none. Yet within that surveillance, a fierce young mind was already building its own machines of imagination.",
-                "citations": [
-                  {
-                    "articleTitle": "Ada Lovelace",
-                    "url": "https://en.wikipedia.org/wiki/Ada_Lovelace",
-                    "snippet": "Lady Byron had her teenage daughter watched by close friends for any sign of moral deviation. Lovelace dubbed these observers the \"Furies\".",
-                    "sectionAnchor": "Biography"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "scenes": [
+              },
               {
                 "type": "portrait",
                 "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/d/de/Ada_Lovelace_child_portrait_Somerville_College.jpg",
-                "personName": "Ada Byron, child",
-                "caption": "Child portrait attributed to Alfred d'Orsay, circa 1822",
-                "narration": "Illness haunted her from the start. At eight she suffered headaches that blurred her sight; at fourteen, measles left her paralyzed, and nearly a year of forced bed rest followed, a stillness that might have broken a lesser will. Instead Ada Byron emerged, by 1831, walking again on crutches, her mind sharpened rather than dulled by confinement, already hungry for numbers and mechanisms.",
+                "personName": "Ada Byron (child)",
+                "caption": "Child portrait attributed to Alfred d'Orsay, c. 1822",
+                "narration": "Lady Byron, fearing her daughter had inherited Byron's dangerous temperament, set watchers upon her — friends and relations whom young Ada nicknamed the 'Furies', certain they invented and exaggerated tales of her misbehaviour. It was a childhood conducted under surveillance, its subject only dimly aware that she was being tested against the ghost of a father she had never known.",
                 "citations": [
                   {
                     "articleTitle": "Ada Lovelace",
                     "url": "https://en.wikipedia.org/wiki/Ada_Lovelace",
-                    "snippet": "In June 1829, she was paralyzed after a bout of measles. She was subjected to continuous bed rest for nearly a year.",
+                    "snippet": "Lady Byron had her teenage daughter watched by close friends for any sign of moral deviation. Lovelace dubbed these observers the \"Furies\" and later complained they exaggerated and invented stories about her.",
                     "sectionAnchor": "Biography"
                   }
                 ]
@@ -118,11 +89,45 @@
           {
             "scenes": [
               {
+                "type": "timeline",
+                "events": [
+                  {
+                    "year": "1815",
+                    "label": "Born Augusta Ada Byron in London"
+                  },
+                  {
+                    "year": "1816",
+                    "label": "Parents separate; taken to Kirkby Mallory"
+                  },
+                  {
+                    "year": "1824",
+                    "label": "Lord Byron dies in Greece; Ada is eight"
+                  },
+                  {
+                    "year": "1829",
+                    "label": "Paralyzed by measles, bedridden nearly a year"
+                  },
+                  {
+                    "year": "1831",
+                    "label": "Learns to walk again with crutches"
+                  }
+                ],
+                "narration": "Illness haunted her youth as much as scandal did. At eight, blinding headaches obscured her sight. By fourteen, a bout of measles left her paralyzed, confined to nearly a year of continuous bed rest — a sentence that may have prolonged her disability rather than cured it. Only by 1831, aided by crutches, could she walk again. Yet through all of it, her appetite for mathematics and mechanism only sharpened.",
+                "citations": [
+                  {
+                    "articleTitle": "Ada Lovelace",
+                    "url": "https://en.wikipedia.org/wiki/Ada_Lovelace",
+                    "snippet": "In June 1829, she was paralyzed after a bout of measles. She was subjected to continuous bed rest for nearly a year, something which may have extended her period of disability.",
+                    "sectionAnchor": "Biography"
+                  }
+                ]
+              },
+              {
                 "type": "portrait",
-                "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/1/16/Ada_Lovelace_sonnet_The_Rainbow_Somerville_College.JPG",
+                "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/b/b1/Ada_Byron_aged_seventeen_%281832%29.jpg",
                 "personName": "Ada Byron",
-                "caption": "Manuscript page from Ada's youth, Somerville College",
-                "narration": "At twelve she decided she wanted to fly. Not idly — methodically. She tested paper, oilsilk, wire, and feather, dissected the proportions of birds to find the true ratio between wing and body, and began a manuscript she called Flyology, filled with her own careful plates. Charles Babbage would later call her his \"Lady Fairy,\" but the nickname undersold a mind already engineering the impossible with total seriousness.",
+                "caption": "Ada Byron, aged seventeen, 1832",
+                "narration": "By seventeen, the sickly child had become a keen-eyed young woman whom Charles Babbage would soon dub his 'Lady Fairy'. Even at twelve, confined by no illness yet, she had thrown herself into an ambition of pure engineering daring: to fly. She studied bird anatomy, tested paper and oilsilk and feathers, and wrote up her findings in a manuscript she titled, with schoolgirl confidence, Flyology.",
                 "citations": [
                   {
                     "articleTitle": "Ada Lovelace",
@@ -137,20 +142,20 @@
         ]
       },
       {
-        "title": "The Enchantress of Numbers",
+        "title": "Chapter II: The Enchantress of Numbers",
         "pages": [
           {
             "scenes": [
               {
                 "type": "chapter-header",
-                "title": "A Soirée in London",
-                "narration": "On the fifth of June, 1833, eighteen-year-old Ada attended one of Charles Babbage's famous Saturday soirées, brought by her mother and by Mary Somerville, the mathematician who would become both tutor and lifelong friend. Within weeks Babbage had shown her the prototype of his difference engine, a maze of brass gears meant to calculate without human error. Ada was transfixed. It was the beginning of a partnership that would define her life and, unknowingly, the future of computing.",
+                "title": "A Soirée in Marylebone",
+                "narration": "On the fifth of June, 1833, an eighteen-year-old Ada Byron walked with her mother into one of Charles Babbage's celebrated Saturday soirées, introduced by her tutor and friend Mary Somerville. In that crowded, gaslit room stood a strange brass contraption, half-built and gleaming — the prototype of a difference engine. It would prove the single most consequential meeting of Ada's life.",
                 "citations": [
                   {
                     "articleTitle": "Ada Lovelace",
                     "url": "https://en.wikipedia.org/wiki/Ada_Lovelace",
-                    "snippet": "Lovelace first met Charles Babbage in June 1833, through their mutual friend Mary Somerville. Later that month, Babbage invited Lovelace to see the prototype for his difference engine.",
-                    "sectionAnchor": "Work"
+                    "snippet": "Lovelace first met him on 5 June 1833, when she and her mother attended one of Charles Babbage's Saturday night soirées with their mutual friend, and Lovelace's private tutor, Mary Somerville.",
+                    "sectionAnchor": null
                   }
                 ]
               }
@@ -160,34 +165,31 @@
             "scenes": [
               {
                 "type": "portrait",
-                "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/b/b1/Ada_Byron_aged_seventeen_%281832%29.jpg",
-                "personName": "Ada Byron, aged seventeen",
-                "caption": "Ada Byron aged seventeen, 1832",
-                "narration": "Babbage was captivated by her analytic gifts, and gave her a nickname that has outlived every dry biography: the Enchantress of Number. In 1843 he wrote to her longing for escape from the world's noise into her company alone, urging her to forget every charlatan but her. It was an unusual friendship, forged across a generation, built on differential calculus and mutual fascination with a machine that did not yet exist beyond brass fragments and blueprints.",
+                "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/8/8b/Babbage_Difference_Engine.jpg",
+                "personName": "Difference Engine",
+                "caption": "Babbage's Difference Engine prototype",
+                "narration": "Later that same month Babbage invited her to see this very machine at close hand, and Ada was captivated. She used her friendship with Somerville as a passport, visiting Babbage's workshop as often as she was able, drawn again and again to the clicking wheels and levers that seemed, to most observers, mere calculating brass — but to her, something far stranger and more alive.",
                 "citations": [
                   {
                     "articleTitle": "Ada Lovelace",
                     "url": "https://en.wikipedia.org/wiki/Ada_Lovelace",
-                    "snippet": "Babbage was impressed by Lovelace's intellect and analytic skills. He called her \"The Enchantress of Number\".",
+                    "snippet": "Later that month, Babbage invited Lovelace to see the prototype for his difference engine. She became fascinated with the machine and used her relationship with Somerville to visit Babbage as often as she could.",
                     "sectionAnchor": "Work"
                   }
                 ]
-              }
-            ]
-          },
-          {
-            "scenes": [
+              },
               {
                 "type": "letter-quote",
                 "quoteText": "Forget this world and all its troubles and if possible its multitudinous Charlatans—every thing in short but the Enchantress of Number.",
-                "attribution": "Charles Babbage, letter to Ada Lovelace, 1843",
-                "narration": "By then Ada had married. At nineteen she wed William King, later made Earl of Lovelace, a title drawn from her own extinct ancestral barony — and so Ada Byron became the Countess of Lovelace, a name history would remember far longer than any of her husband's honors, bound forever to the machine she was about to explain to the world.",
+                "attribution": "Charles Babbage, in a letter to Ada Lovelace, 1843",
+                "date": "1843",
+                "narration": "Babbage, impressed by her analytic mind, gave her a nickname that would outlive them both: the Enchantress of Number. Their bond was one of true intellectual partnership, rare for its era — a friendship built not on courtship but on shared fascination with the mechanics of thought itself, conducted across a decade of letters, visits, and disagreements.",
                 "citations": [
                   {
                     "articleTitle": "Ada Lovelace",
                     "url": "https://en.wikipedia.org/wiki/Ada_Lovelace",
-                    "snippet": "The name Lovelace was chosen because Ada was descended from the extinct Baron Lovelaces.",
-                    "sectionAnchor": ""
+                    "snippet": "Forget this world and all its troubles and if possible its multitudinous Charlatans—every thing in short but the Enchantress of Number.",
+                    "sectionAnchor": "Work"
                   }
                 ]
               }
@@ -199,14 +201,29 @@
                 "type": "portrait",
                 "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/8/87/Ada_Lovelace.jpg",
                 "personName": "Ada Lovelace",
-                "caption": "Portrait by Margaret Sarah Carpenter, 1836",
-                "narration": "She called her own method 'poetical science,' insisting imagination and rigor were not opposites but partners. She named herself an Analyst and Metaphysician, a self-description that fused mathematics with philosophy long before either discipline welcomed such trespassing. It was this fusion of art and calculation that would let her see further into Babbage's machine than Babbage himself ever did.",
+                "caption": "Ada Lovelace, by Margaret Sarah Carpenter, 1836",
+                "narration": "In 1835, the year after this portrait, Ada married William King, soon elevated to Earl of Lovelace, a title chosen for her descent from the extinct Barons Lovelace. She became, in name, the Countess of Lovelace — but her deeper identity she reserved for herself, describing her method not as mere mathematics but as 'poetical science,' and calling herself an 'Analyst (& Metaphysician).'",
                 "citations": [
                   {
                     "articleTitle": "Ada Lovelace",
                     "url": "https://en.wikipedia.org/wiki/Ada_Lovelace",
                     "snippet": "Lovelace described her approach as \"poetical science\" and herself as an \"Analyst (& Metaphysician)\".",
-                    "sectionAnchor": ""
+                    "sectionAnchor": null
+                  }
+                ]
+              },
+              {
+                "type": "portrait",
+                "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/c/c6/Ada_Lovelace%27s_husband_William_King_in_uniform.webp",
+                "personName": "William King, Earl of Lovelace",
+                "caption": "William King in uniform, 1835",
+                "narration": "Her husband King, a Baron made Viscount Ockham and then first Earl of Lovelace in 1838, gave her both a title and, it seems, the freedom to pursue her intellectual passions largely undisturbed. Through her marriage and her widening circle — Somerville, Babbage, Faraday, Dickens, Crosse, Wheatstone, Brewster — Ada built a life stitched together from the finest scientific minds of Victorian London.",
+                "citations": [
+                  {
+                    "articleTitle": "Ada Lovelace",
+                    "url": "https://en.wikipedia.org/wiki/Ada_Lovelace",
+                    "snippet": "She married William King in 1835. King was a Baron, and was created Viscount Ockham and 1st Earl of Lovelace in 1838.",
+                    "sectionAnchor": null
                   }
                 ]
               }
@@ -215,14 +232,14 @@
         ]
       },
       {
-        "title": "Notes on the Analytical Engine",
+        "title": "Chapter III: The Notes",
         "pages": [
           {
             "scenes": [
               {
                 "type": "chapter-header",
-                "title": "The Translator's Task",
-                "narration": "In 1840, Babbage traveled to Turin to lecture on his unbuilt Analytical Engine. A young Italian engineer, Luigi Menabrea, transcribed the talk into French, and it was published two years later in a Swiss journal. Charles Wheatstone then asked Ada to translate it into English. What followed, across nine laboring months in 1842 and 1843, was not a simple act of translation but the birth of an entirely new kind of document.",
+                "title": "Menabrea's Sketch",
+                "narration": "In 1840, Babbage travelled to Turin to lecture on his most ambitious design yet — the Analytical Engine, a machine conceived not merely to calculate but to compute anything expressible in number. A young Italian engineer, Luigi Menabrea, transcribed the lecture into French. When Charles Wheatstone sought an English translator worthy of the task, he turned to Ada Lovelace.",
                 "citations": [
                   {
                     "articleTitle": "Ada Lovelace",
@@ -238,16 +255,31 @@
             "scenes": [
               {
                 "type": "portrait",
-                "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/c/cf/Diagram_for_the_computation_of_Bernoulli_numbers.jpg",
-                "personName": "Ada Lovelace's diagram",
-                "caption": "Diagram for the computation of Bernoulli numbers, 1842",
-                "narration": "Ada appended seven notes to her translation, lettered A through G, running nearly three times longer than Menabrea's original text. Buried in Note G was a step-by-step method for the Analytical Engine to compute Bernoulli numbers — an algorithm now widely regarded as the first published computer program, a sequence of operations meant not for a person but for a machine that could branch, loop, and remember.",
+                "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/c/cc/Babbages_Analytical_Engine%2C_1834-1871._%289660574685%29.jpg",
+                "personName": "Analytical Engine",
+                "caption": "Design for Babbage's Analytical Engine, 1834–1871",
+                "narration": "Over nine laborious months in 1842 and 1843, Ada translated Menabrea's French article — and then went far beyond it. She appended seven notes, labelled A through G, running three times the length of the original text, transforming a technical sketch into a visionary treatise on what a machine of gears and cards might someday achieve.",
                 "citations": [
                   {
                     "articleTitle": "Ada Lovelace",
                     "url": "https://en.wikipedia.org/wiki/Ada_Lovelace",
-                    "snippet": "She augmented the paper with seven notes, A to G, about three times longer than the translation.",
+                    "snippet": "During a nine-month period in 1842–43, Lovelace translated Menabrea's article. She augmented the paper with seven notes, A to G, about three times longer than the translation.",
                     "sectionAnchor": "Work"
+                  }
+                ]
+              },
+              {
+                "type": "portrait",
+                "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/c/cf/Diagram_for_the_computation_of_Bernoulli_numbers.jpg",
+                "personName": "Bernoulli Number Diagram",
+                "caption": "Ada Lovelace's diagram for computing Bernoulli numbers, 1842",
+                "narration": "Within Note G lay the diagram that would earn Ada her lasting fame: a step-by-step method for the Analytical Engine to compute Bernoulli numbers, a sequence of formidable complexity. Historians would come to call this the first published computer program — an algorithm designed for a machine that, in her lifetime, would never actually be built.",
+                "citations": [
+                  {
+                    "articleTitle": "Ada Lovelace",
+                    "url": "https://en.wikipedia.org/wiki/Ada_Lovelace",
+                    "snippet": "These described a method of using the machine to calculate Bernoulli numbers which is often called the first published computer program.",
+                    "sectionAnchor": null
                   }
                 ]
               }
@@ -256,35 +288,31 @@
           {
             "scenes": [
               {
-                "type": "timeline",
-                "events": [
-                  {
-                    "year": "1833",
-                    "label": "Meets Babbage at his Saturday soirée"
-                  },
-                  {
-                    "year": "1835",
-                    "label": "Marries William King"
-                  },
-                  {
-                    "year": "1840",
-                    "label": "Babbage lectures on the Analytical Engine in Turin"
-                  },
-                  {
-                    "year": "1842–43",
-                    "label": "Translates Menabrea and writes her seven Notes"
-                  },
-                  {
-                    "year": "1843",
-                    "label": "Published in Taylor's Scientific Memoirs under initials AAL"
-                  }
-                ],
-                "narration": "Her published work carried only the initials AAL, a common shield for women writing science in an era that preferred them silent. Yet within scientific circles the authorship was known, and it earned real respect: Michael Faraday, one of the great experimentalists of the age, declared himself a supporter of her writing, recognizing in her notes a clarity that even many trained scientists could not match when confronting Babbage's baffling engine.",
+                "type": "letter-quote",
+                "quoteText": "the first to recognise the machine had applications beyond pure calculation",
+                "attribution": "from the Wikipedia lead summary of Ada Lovelace's legacy",
+                "date": null,
+                "narration": "Where Babbage and most of his contemporaries saw only a superior calculator, Ada saw further. She proposed that numbers might stand for anything at all — musical notes, letters, symbols of any kind — and that a machine which manipulated numbers might therefore manipulate music, language, even art itself. It was a leap of imagination decades ahead of any working machine that could prove it.",
                 "citations": [
                   {
                     "articleTitle": "Ada Lovelace",
                     "url": "https://en.wikipedia.org/wiki/Ada_Lovelace",
-                    "snippet": "The translation and notes were then published in the September 1843 edition of Taylor's Scientific Memoirs under her initials AAL.",
+                    "snippet": "Lovelace was the first to point out the possibility of encoding information besides mere arithmetical figures, such as music, and manipulating it with such a machine.",
+                    "sectionAnchor": null
+                  }
+                ]
+              },
+              {
+                "type": "portrait",
+                "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/4/4c/Ada_Lovelace_daguerreotype_by_Antoine_Claudet_1843_-_cropped.png",
+                "personName": "Ada Lovelace",
+                "caption": "Daguerreotype by Antoine Claudet, c. 1843",
+                "narration": "This daguerreotype, taken the very year her Notes appeared in Taylor's Scientific Memoirs under the modest initials 'A.A.L.', shows the woman behind that leap. Michael Faraday himself declared his support for her writing, though the wider British scientific establishment, still lukewarm toward Babbage's unbuilt engine, gave the work far less attention than it deserved.",
+                "citations": [
+                  {
+                    "articleTitle": "Ada Lovelace",
+                    "url": "https://en.wikipedia.org/wiki/Ada_Lovelace",
+                    "snippet": "Her work was well received at the time; the scientist Michael Faraday described himself as a supporter of her writing.",
                     "sectionAnchor": "Work"
                   }
                 ]
@@ -295,16 +323,16 @@
             "scenes": [
               {
                 "type": "portrait",
-                "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/c/cc/Babbages_Analytical_Engine%2C_1834-1871._%289660574685%29.jpg",
-                "personName": "The Analytical Engine",
-                "caption": "Babbage's Analytical Engine, designed 1834–1871",
-                "narration": "Where Babbage saw an arithmetic engine, Ada saw something stranger and larger. She was the first to argue the machine could manipulate any symbols, not just numbers — that it might one day compose music if musical notes could be expressed in its symbolic language. It was a leap of imagination decades ahead of any working computer, springing directly from her conviction that poetry and mathematics were kindred disciplines.",
+                "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/a/a4/Ada_Lovelace_portrait.jpg",
+                "personName": "Ada Lovelace",
+                "caption": "Portrait by Alfred Edward Chalon, c. 1840",
+                "narration": "Publication brought a small storm as well as praise. Babbage tried to attach his own unsigned preface — a bitter complaint about the government's neglect of his Engine — to Ada's translation, risking the impression it was a joint declaration. The disagreement briefly strained their partnership, a reminder that even the closest collaborators could clash over how their shared work should be presented to the world.",
                 "citations": [
                   {
                     "articleTitle": "Ada Lovelace",
                     "url": "https://en.wikipedia.org/wiki/Ada_Lovelace",
-                    "snippet": "Lovelace was the first to point out the possibility of encoding information besides mere arithmetical figures, such as music, and manipulating it with such a machine.",
-                    "sectionAnchor": ""
+                    "snippet": "Lovelace and Babbage had a minor falling out when the papers were published, when he tried to leave his own statement (criticising the government's treatment of his Engine) as an unsigned preface.",
+                    "sectionAnchor": "Work"
                   }
                 ]
               }
@@ -313,14 +341,14 @@
         ]
       },
       {
-        "title": "The Enchantress Remembered",
+        "title": "Chapter IV: Calculus of the Nervous System",
         "pages": [
           {
             "scenes": [
               {
                 "type": "chapter-header",
-                "title": "Fading Light, Long Shadow",
-                "narration": "After the Notes, Ada's ambitions only grew larger. She dreamed of a 'calculus of the nervous system,' a mathematics of thought and feeling itself, visited the electrician Andrew Crosse to learn his experiments, and kept circling the boundary where science met the mind. But illness closed in. In 1852, at only thirty-six — the same age her father had been at his death — uterine cancer took her, her mother at her deathbed to the end.",
+                "title": "Electricity, Madness, and Music",
+                "narration": "After the Notes, Ada's restless mind turned elsewhere. She chased the scientific fashions of her age — phrenology, mesmerism — and nursed an ambition stranger than any of them: to build a mathematical model of thought itself, what she called 'a calculus of the nervous system.' It was a project she would never complete, driven in part by a private terror, inherited from her mother, that she might carry her father's madness within her.",
                 "citations": [
                   {
                     "articleTitle": "Ada Lovelace",
@@ -335,17 +363,32 @@
           {
             "scenes": [
               {
+                "type": "letter-quote",
+                "quoteText": "a calculus of the nervous system",
+                "attribution": "Ada Lovelace, to Woronzow Greig, 1844",
+                "date": "1844",
+                "narration": "To pursue this dream she sought out Andrew Crosse, the reclusive Somerset electrician famous for his experiments in electrocrystallization, visiting him in 1844 to learn the practical art of electrical experiment. That same year she drafted a review of Baron von Reichenbach's Researches on Magnetism — though it never reached publication, abandoned after only a first draft.",
+                "citations": [
+                  {
+                    "articleTitle": "Ada Lovelace",
+                    "url": "https://en.wikipedia.org/wiki/Ada_Lovelace",
+                    "snippet": "As part of her research into this project, she visited the electrical engineer Andrew Crosse in 1844 to learn how to carry out electrical experiments.",
+                    "sectionAnchor": "Work"
+                  }
+                ]
+              },
+              {
                 "type": "portrait",
                 "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/b/ba/Ada_Lovelace_in_1852.jpg",
                 "personName": "Ada Lovelace",
-                "caption": "Ada Lovelace in 1852, the year of her death",
-                "narration": "Her final months brought an unexpected softening. Under her mother's influence at the end, Ada underwent a religious conversion, closing a lifetime of tension between the two women with something like peace. She was buried, at her own request, beside the father she had barely known, in the Byron family vault at Hucknall — poet and mathematician reunited at last in the ground.",
+                "caption": "Ada Lovelace, 1852, the year of her death",
+                "narration": "In 1851, gravely though not yet knowingly ill, she wrote to her mother of 'certain productions' concerning the relation between mathematics and music — one more unfinished thread in a life full of them. The following year, uterine cancer claimed her at thirty-six, the same age at which her father had died, a symmetry she surely would have noted with her poet's eye.",
                 "citations": [
                   {
-                    "articleTitle": "Lady Byron",
-                    "url": "https://en.wikipedia.org/wiki/Lady_Byron",
-                    "snippet": "Ada died from uterine cancer on 27 November 1852. Lady Byron attended her daughter's deathbed and, under her influence, Ada underwent a religious conversion.",
-                    "sectionAnchor": "Daughter"
+                    "articleTitle": "Ada Lovelace",
+                    "url": "https://en.wikipedia.org/wiki/Ada_Lovelace",
+                    "snippet": "In 1851, the year before her cancer struck, she wrote to her mother mentioning \"certain productions\" she was working on regarding the relation of maths and music.",
+                    "sectionAnchor": "Work"
                   }
                 ]
               }
@@ -355,15 +398,94 @@
             "scenes": [
               {
                 "type": "portrait",
-                "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/ef/Ada_Lovelace_statue_2024-10-03.jpg",
-                "personName": "Ada Lovelace memorial",
-                "caption": "Modern statue commemorating Ada Lovelace",
-                "narration": "For over a century her contribution waited in archive boxes. Then computing itself caught up with her vision. The United States Department of Defense named an entire programming language Ada in her honor in 1980, its military standard numbered 1815 for the year of her birth. The British Computer Society struck the Lovelace Medal; an annual colloquium bears her name; and since 2009, Ada Lovelace Day each October has championed women in science across the world.",
+                "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/1/16/Ada_Lovelace_sonnet_The_Rainbow_Somerville_College.JPG",
+                "personName": "Ada Lovelace manuscript",
+                "caption": "Manuscript sonnet, 'The Rainbow', Somerville College",
+                "narration": "Whatever science she pursued, Ada never abandoned the poetical instinct she named her method by — the fusion of rigorous number and imaginative reach that she called 'poetical science.' This surviving sonnet, held today among the Somerville College archives, is a small testament to a mind that refused to separate the language of verse from the language of mathematics.",
                 "citations": [
                   {
                     "articleTitle": "Ada Lovelace",
                     "url": "https://en.wikipedia.org/wiki/Ada_Lovelace",
-                    "snippet": "The computer language Ada, created on behalf of the United States Department of Defense, was named after Lovelace.",
+                    "snippet": "Lovelace described her approach as \"poetical science\" and herself as an \"Analyst (& Metaphysician)\".",
+                    "sectionAnchor": null
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Chapter V: The Enchantress Remembered",
+        "pages": [
+          {
+            "scenes": [
+              {
+                "type": "chapter-header",
+                "title": "A Name Cast in Ada",
+                "narration": "Ada Lovelace died in November of 1852, three decades before anyone would build the machine she had helped imagine. Yet her name would travel further than she could have dreamed — into programming languages, satellites, university buildings, passports, and the annual celebration each October now known simply as Ada Lovelace Day.",
+                "citations": [
+                  {
+                    "articleTitle": "Ada Lovelace",
+                    "url": "https://en.wikipedia.org/wiki/Ada_Lovelace",
+                    "snippet": "Ada Lovelace Day is an annual event celebrated on the second Tuesday of October, which began in 2009.",
+                    "sectionAnchor": "Commemoration"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "scenes": [
+              {
+                "type": "timeline",
+                "events": [
+                  {
+                    "year": "1980",
+                    "label": "US DoD names the Ada programming language after her"
+                  },
+                  {
+                    "year": "1981",
+                    "label": "Association for Women in Computing creates Ada Lovelace Award"
+                  },
+                  {
+                    "year": "1998",
+                    "label": "British Computer Society begins awarding the Lovelace Medal"
+                  },
+                  {
+                    "year": "2009",
+                    "label": "First Ada Lovelace Day celebrated"
+                  },
+                  {
+                    "year": "2015",
+                    "label": "British passports begin featuring Lovelace and Babbage"
+                  },
+                  {
+                    "year": "2018",
+                    "label": "Satellogic launches a micro-satellite named for her"
+                  }
+                ],
+                "narration": "The tributes accumulated across two centuries, each honoring a different facet of her legacy. The Department of Defense's Ada programming language bore the number MIL-STD-1815 — the very year of her birth. Passports, satellites, colloquia, and colleges all now carry her name, a slow-building recognition of a mind once relegated to a translator's footnotes.",
+                "citations": [
+                  {
+                    "articleTitle": "Ada Lovelace",
+                    "url": "https://en.wikipedia.org/wiki/Ada_Lovelace",
+                    "snippet": "The reference manual for the language was approved on 10 December 1980 and the Department of Defense Military Standard for the language, MIL-STD-1815, was given the number of the year of her birth.",
+                    "sectionAnchor": "Commemoration"
+                  }
+                ]
+              },
+              {
+                "type": "portrait",
+                "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/e/ef/Ada_Lovelace_statue_2024-10-03.jpg",
+                "personName": "Ada Lovelace",
+                "caption": "Modern statue of Ada Lovelace, 2024",
+                "narration": "Statues, plaques, and paintings now mark the places she lived and worked, monuments to a legacy that took over a century to be fully understood. In March 2018 The New York Times, in its series correcting historic oversights, published a belated obituary for Ada Lovelace — a strange and fitting tribute to a woman whose true significance the world had been slow to recognize.",
+                "citations": [
+                  {
+                    "articleTitle": "Ada Lovelace",
+                    "url": "https://en.wikipedia.org/wiki/Ada_Lovelace",
+                    "snippet": "In March 2018, The New York Times published a belated obituary for Ada Lovelace.",
                     "sectionAnchor": "Commemoration"
                   }
                 ]
@@ -375,15 +497,30 @@
               {
                 "type": "portrait",
                 "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/9/9b/Ada_Lovelace_blue_plaque%2C_Mallory_Park_01.jpg",
-                "personName": "Ada Lovelace commemorative plaque",
-                "caption": "Blue plaque near Kirkby Mallory, where Ada spent part of her childhood",
-                "narration": "Every British passport issued since late 2015 carries her image beside Babbage's, two silhouettes of a partnership that imagined machines before the age of electricity could build them. In 2018, The New York Times published the obituary she never received in her own century. The girl once called 'it' by her own mother is now remembered by name on plaques, buildings, satellites, and code — the first to see that a calculating engine might one day think in more than numbers.",
+                "personName": "Ada Lovelace memorial",
+                "caption": "Blue plaque, Mallory Park",
+                "narration": "Near Kirkby Mallory, where she was carried as a five-week-old infant fleeing her father's household, a plaque now marks her connection to the place. It is a quiet echo of the turbulent Regency scandal that shaped her infancy — proof that even the bitterest beginnings can be folded, eventually, into a story of enduring achievement.",
                 "citations": [
                   {
                     "articleTitle": "Ada Lovelace",
                     "url": "https://en.wikipedia.org/wiki/Ada_Lovelace",
-                    "snippet": "As of November 2015, all new British passports have included an illustration of Lovelace and Babbage.",
-                    "sectionAnchor": "Commemoration"
+                    "snippet": "On 16 January 1816, at Lord Byron's command, Lady Byron left for her parents' home at Kirkby Mallory, taking their five-week-old daughter with her.",
+                    "sectionAnchor": "Biography"
+                  }
+                ]
+              },
+              {
+                "type": "portrait",
+                "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/f/f5/Closeup_of_the_Ada_Lovelace_memorial_-_geograph.org.uk_-_6290702.jpg",
+                "personName": "Ada Lovelace memorial detail",
+                "caption": "Detail of a Lovelace memorial",
+                "narration": "Every plaque and portrait tells the same underlying story: a woman who looked at a cabinet of brass gears meant only for arithmetic and saw, instead, the shape of a coming age — an age of encoded music, encoded language, encoded thought. She remains, in the words history has settled on, the Enchantress of Number, and often considered the first computer programmer.",
+                "citations": [
+                  {
+                    "articleTitle": "Ada Lovelace",
+                    "url": "https://en.wikipedia.org/wiki/Ada_Lovelace",
+                    "snippet": "Lovelace is often considered the first computer programmer.",
+                    "sectionAnchor": null
                   }
                 ]
               }
@@ -393,5 +530,5 @@
       }
     ]
   },
-  "bakedAt": "2026-07-18T17:11:52.013Z"
+  "bakedAt": "2026-07-18T21:17:35.777Z"
 }

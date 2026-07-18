@@ -2,19 +2,19 @@
   "topic": "The French Revolution",
   "slug": "french-revolution",
   "story": {
-    "title": "Liberty, Equality, Terror",
+    "title": "Liberty, Equality, Blood",
     "subtitle": "A Chronicle of the French Revolution, 1789–1799",
     "theme": {
       "era": "Revolutionary France, 1789–1799",
       "fontPairing": "enlightenment",
       "palette": {
         "paper": "#f2e8d5",
-        "ink": "#2b2318",
-        "accent": "#8c1c1c",
-        "gold": "#b08d3e"
+        "ink": "#241c14",
+        "accent": "#8b1e2b",
+        "gold": "#b8973f"
       },
       "textureId": "parchment",
-      "ambientPrompt": "A period oil-painting style rendering in the manner of Jacques-Louis David and Jean-Baptiste Le Paon, tricolor cockades and torn royal banners, smoke over cobblestone Parisian streets lit by candle and cannon-flash, muted ochres and blood reds on aged parchment texture"
+      "ambientPrompt": "A candlelit engraving in the style of a late 18th-century French revolutionary print: tricolor cockades, crowded Parisian streets, the Bastille silhouetted against a stormy sky, rendered in sepia ink and muted red and gold washes on aged parchment."
     },
     "chapters": [
       {
@@ -24,8 +24,8 @@
             "scenes": [
               {
                 "type": "chapter-header",
-                "title": "A Kingdom in Debt",
-                "narration": "Before the storm, there was the ledger. France, vast and populous, groaned under a monarchy that borrowed to fight wars and never learned to tax fairly. Nobles and clergy kept their exemptions while peasants and wage-earners watched bread prices climb. By the late 1780s, recession, bad harvests, and a broken exchequer had brought the whole apparatus of privilege to the edge of collapse.",
+                "title": "The Old Order Cracks",
+                "narration": "Long before the mobs and the guillotine, France groaned beneath a system centuries old: a kingdom of privilege, exemption, and unpaid debt. By the 1780s the treasury was empty, the harvests were failing, and the men who ruled from Versailles could no longer patch over the cracks. This is where the story begins — not with a single spark, but with a slow-building pressure that no minister could relieve.",
                 "citations": [
                   {
                     "articleTitle": "French Revolution",
@@ -34,44 +34,25 @@
                     "sectionAnchor": "Causes"
                   }
                 ]
-              },
+              }
+            ]
+          },
+          {
+            "scenes": [
               {
                 "type": "map-plate",
                 "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/8/80/Carte_de_France_divis%C3%A9e_suivant_les_quatre_d%C3%A9partements_de_Messieurs_les_secretaires_d%27Etat_-_par_Philippe_Buache_-_btv1b8593230j.jpg",
-                "caption": "France divided by administrative departments, mid-18th century",
-                "narration": "Look upon this map of the old kingdom, stitched together from provinces of unequal privilege — Brittany here, Languedoc there, each with its own tax customs and courts. Such patchwork governance made simple reform nearly impossible, for what pleased one province enraged another, and the crown's authority frayed at every border of custom and law.",
+                "caption": "A pre-revolutionary map of the French provinces, still divided by ancient jurisdictions",
+                "narration": "This map shows the France that the Revolution would dismantle: a patchwork of provinces, each with its own customs, courts, and tax rates, some still governed as if they were separate kingdoms. Border regions like Béarn, Navarre, and Franche-Comté kept old privileges the crown had never fully absorbed. Reform meant untangling centuries of local law — one reason simplifying taxation proved so fiercely resisted by provincial parlements.",
                 "citations": [
                   {
                     "articleTitle": "Ancien régime",
                     "url": "https://en.wikipedia.org/wiki/Ancien_r%C3%A9gime",
-                    "snippet": "French territory greatly expanded and it attempted to better integrate its provinces into an administrative whole.",
+                    "snippet": "numerous border provinces...were autonomous or belonged to the Holy Roman Empire, the Crown of Aragon or the Kingdom of Navarra",
                     "sectionAnchor": "Provinces_and_administrative_divisions"
                   }
                 ]
-              }
-            ]
-          },
-          {
-            "scenes": [
-              {
-                "type": "letter-quote",
-                "quoteText": "the only way to bring real order to the finances would be to revitalise the entire state by reforming everything that was defective in its constitution",
-                "attribution": "Charles Alexandre de Calonne, finance minister, to the king, 1786",
-                "date": "1786",
-                "narration": "In a private memorandum, the finance minister confessed what the court dared not say aloud: taxes could not rise, borrowing could not continue, and half-measures would not save the throne. Only sweeping reform could rescue France's finances — and reform meant confronting the very nobles Calonne served.",
-                "citations": [
-                  {
-                    "articleTitle": "Estates General of 1789",
-                    "url": "https://en.wikipedia.org/wiki/Estates_General_of_1789",
-                    "snippet": "the only way to bring real order to the finances would be to revitalise the entire state by reforming everything that was defective in its constitution",
-                    "sectionAnchor": "Background"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "scenes": [
+              },
               {
                 "type": "timeline",
                 "events": [
@@ -80,66 +61,24 @@
                     "label": "Calonne proposes universal land tax"
                   },
                   {
-                    "year": "1787",
-                    "label": "Assembly of Notables rejects reform"
-                  },
-                  {
                     "year": "Aug 1788",
-                    "label": "Brienne announces Estates-General will meet"
-                  },
-                  {
-                    "year": "Sep 1788",
-                    "label": "Parlement rules on 1614 voting form"
+                    "label": "Brienne calls Estates-General for May 1789"
                   },
                   {
                     "year": "Dec 1788",
                     "label": "King doubles Third Estate representation"
+                  },
+                  {
+                    "year": "5 May 1789",
+                    "label": "Estates-General opens at Versailles"
                   }
                 ],
-                "narration": "Month by month the crisis deepened. Reform proposals died in the halls of privilege, the treasury bled, and public pamphlets multiplied by the hundreds. Each failed fix pushed France closer to the one instrument no king had summoned in over a century and a half: the Estates-General.",
-                "citations": [
-                  {
-                    "articleTitle": "French Revolution",
-                    "url": "https://en.wikipedia.org/wiki/French_Revolution",
-                    "snippet": "on 8 August 1788, he announced that the king would summon an Estates-General to convene the following May.",
-                    "sectionAnchor": "Crisis_of_the_Ancien_Régime"
-                  }
-                ]
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "title": "From Estates to Nation",
-        "pages": [
-          {
-            "scenes": [
-              {
-                "type": "chapter-header",
-                "title": "Versailles, May 1789",
-                "narration": "Twelve hundred deputies converged on Versailles that spring, clergy, nobles, and commoners summoned to a body unseen since 1614. But the old ritual soon collapsed into deadlock: would votes be counted by estate, favoring privilege, or by head, favoring the people? Six weeks of paralysis followed, and out of that stalemate a new idea was born — the nation itself, speaking through its Commons.",
+                "narration": "The road to crisis ran through failed reforms. Calonne's tax plan was rejected by nobles handpicked to approve it; his successor Brienne fared no better against the parlements. Each refusal pushed the monarchy closer to summoning a body it had ignored for 175 years — the Estates-General, last seen in the reign of Louis XIII's father.",
                 "citations": [
                   {
                     "articleTitle": "Estates General of 1789",
                     "url": "https://en.wikipedia.org/wiki/Estates_General_of_1789",
-                    "snippet": "This procedural dispute paralyzed the body for six weeks, preventing any progress on the financial crisis.",
-                    "sectionAnchor": "Proceedings_and_dissolution"
-                  }
-                ]
-              },
-              {
-                "type": "portrait",
-                "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/f/f8/AduC_043_P%C3%A9tion_%28J%C3%A9r%C3%B4me%2C_1753-1794%29.JPG",
-                "personName": "Jérôme Pétion",
-                "caption": "Jérôme Pétion, deputy of the Third Estate",
-                "narration": "Among the six hundred commoner deputies sat men like Pétion, provincial lawyers and merchants unaccustomed to royal ceremony but sharpened by years of pamphlet debate. They arrived believing they spoke for twenty-five million French men and women — and refused to be silenced by a seating chart.",
-                "citations": [
-                  {
-                    "articleTitle": "Estates General of 1789",
-                    "url": "https://en.wikipedia.org/wiki/Estates_General_of_1789",
-                    "snippet": "every male taxpayer over the age of 25 had the right to attend a primary assembly.",
-                    "sectionAnchor": "Convening"
+                    "snippet": "Summoned by King Louis XVI, it opened on 5 May 1789 at Versailles, marking the first such meeting since 1614."
                   }
                 ]
               }
@@ -149,10 +88,10 @@
             "scenes": [
               {
                 "type": "letter-quote",
-                "quoteText": "Nous avons besoin du concours de nos fidèles Sujets, pour nous aider à surmonter toutes les difficultés où nous nous trouvons relativement à l'état de nos finances",
-                "attribution": "Royal edict of Louis XVI, 24 January 1789",
+                "quoteText": "We have need of a concourse of our faithful subjects, to assist us surmount all the difficulties we find relative to the state of our finances",
+                "attribution": "Royal edict summoning the Estates-General, 24 January 1789",
                 "date": "24 January 1789",
-                "narration": "The king's own summons betrayed his predicament: he needed his subjects' help to surmount the ruin of his finances. It was an admission, however courtly in phrasing, that the crown alone could no longer govern France — and it opened a door that would never again be closed.",
+                "narration": "In the king's own words, issued from Versailles, lies the confession of a government at the end of its rope. Louis XVI asked his 'faithful subjects' for help he could no longer manufacture himself. The edict summoned deputies from every bailliage and sénéchaussée in the realm — a vast, untested electoral machine set in motion by desperation rather than design.",
                 "citations": [
                   {
                     "articleTitle": "Estates General of 1789",
@@ -168,29 +107,86 @@
             "scenes": [
               {
                 "type": "portrait",
-                "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/2/26/Anonyme_-_Portrait_de_Georges_Danton_%281759-1794%29%2C_orateur_et_homme_politique_-_P712_-_mus%C3%A9e_Carnavalet.jpg",
-                "personName": "Georges Danton",
-                "caption": "Georges Danton, orator and revolutionary politician",
-                "narration": "Not yet a national figure, Danton was one of countless activists organizing petitions and regional meetings during these months of ferment. His booming voice and blunt conviction would soon carry him from the clubs of Paris to the very center of revolutionary power.",
+                "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/f/f8/AduC_043_P%C3%A9tion_%28J%C3%A9r%C3%B4me%2C_1753-1794%29.JPG",
+                "personName": "Jérôme Pétion",
+                "caption": "Jérôme Pétion (1753–1794), a Third Estate deputy who would rise with the Revolution's radical tide",
+                "narration": "Men like Jérôme Pétion arrived at Versailles as obscure provincial lawyers and left as architects of a new nation. Elected among the Third Estate's deputies, he found himself part of a chamber ordered to vote separately from the clergy and nobility — a structure guaranteeing the common people could always be outvoted despite representing the overwhelming majority of France.",
                 "citations": [
                   {
                     "articleTitle": "French Revolution",
                     "url": "https://en.wikipedia.org/wiki/French_Revolution",
-                    "snippet": "Activists such as Jean Joseph Mounier, Antoine Barnave and Maximilien Robespierre organised regional meetings, petitions and literature in support of these demands.",
+                    "snippet": "the clergy and nobility could combine to outvote the Third Estate, despite representing less than 5% of the population",
                     "sectionAnchor": "Crisis_of_the_Ancien_Régime"
                   }
                 ]
               },
               {
-                "type": "map-plate",
-                "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/5/57/Anonymous_-_Prise_de_la_Bastille.jpg",
-                "caption": "Prise de la Bastille, 14 July 1789",
-                "narration": "On the fourteenth of July, soldiers of the Gardes Françaises joined an armed crowd against the fortress of the Bastille. After hours of fighting that killed eighty-three attackers, its governor surrendered, was dragged to the Hôtel de Ville, and killed, his head paraded on a pike through streets suddenly alive with revolution.",
+                "type": "letter-quote",
+                "quoteText": "the deputies voted 491 to 89 to adopt the title National Assembly",
+                "attribution": "Estates General of 1789, 17 June 1789",
+                "date": "17 June 1789",
+                "narration": "Six weeks of deadlock ended in an act of open defiance. Following a motion by the Abbé Sieyès, the Third Estate declared itself no longer bound to the old order of separate chambers, casting off the very name 'Estates' and proclaiming itself the National Assembly — the voice, they insisted, of the nation itself.",
+                "citations": [
+                  {
+                    "articleTitle": "Estates General of 1789",
+                    "url": "https://en.wikipedia.org/wiki/Estates_General_of_1789",
+                    "snippet": "the deputies voted 491 to 89 to adopt the title National Assembly",
+                    "sectionAnchor": "Proceedings_and_dissolution"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "The Bastille and the August Fires",
+        "pages": [
+          {
+            "scenes": [
+              {
+                "type": "chapter-header",
+                "title": "The Bastille and the August Fires",
+                "narration": "In the sweltering July of 1789, rumor and fear did what pamphlets could not: they turned deputies into revolutionaries and Parisians into an army. A fortress fell, a governor's head rode a pike through the streets, and within weeks a thousand years of feudal privilege were burned away in a single overnight session of the Assembly. France would never again be governed as it had been governed before.",
                 "citations": [
                   {
                     "articleTitle": "French Revolution",
                     "url": "https://en.wikipedia.org/wiki/French_Revolution",
-                    "snippet": "Its governor, Bernard-René de Launay, surrendered after several hours of fighting that cost the lives of 83 attackers.",
+                    "snippet": "On 14 July many of these soldiers joined a crowd attacking the Bastille, a royal fortress with large stores of arms and ammunition.",
+                    "sectionAnchor": "Constitutional_monarchy_(July_1789_–_September_1792)"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "scenes": [
+              {
+                "type": "portrait",
+                "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/2/26/Anonyme_-_Portrait_de_Georges_Danton_%281759-1794%29%2C_orateur_et_homme_politique_-_P712_-_mus%C3%A9e_Carnavalet.jpg",
+                "personName": "Georges Danton",
+                "caption": "Georges Danton (1759–1794), orator and revolutionary politician",
+                "narration": "Georges Danton's booming voice would soon fill the halls of revolutionary Paris, but in the summer of 1789 he was one of thousands swept up in a city gone electric with rumor. Word spread that the king meant to use his Swiss Guards to crush the Assembly; crowds poured into the streets, and soldiers of the Gardes Françaises refused to fire on them. The stage was set for the Bastille.",
+                "citations": [
+                  {
+                    "articleTitle": "French Revolution",
+                    "url": "https://en.wikipedia.org/wiki/French_Revolution",
+                    "snippet": "On 12 July, the Assembly went into a non-stop session following rumours that the king was planning to use the Swiss Guards to force it to close.",
+                    "sectionAnchor": "Constitutional_monarchy_(July_1789_–_September_1792)"
+                  }
+                ]
+              },
+              {
+                "type": "portrait",
+                "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/5/57/Anonymous_-_Prise_de_la_Bastille.jpg",
+                "personName": "Storming of the Bastille",
+                "caption": "The storming of the Bastille, 14 July 1789",
+                "narration": "The fighting cost eighty-three attackers their lives before the governor, Bernard-René de Launay, surrendered. He was marched to the Hôtel de Ville and killed by the crowd, his head raised on a pike and paraded through Paris. Inside the fortress rumored to hold hundreds of prisoners, the mob found only seven — four forgers, a lunatic, a failed assassin, and one wayward nobleman. Symbol mattered more than substance; the Bastille fell, and with it the myth of royal invincibility.",
+                "citations": [
+                  {
+                    "articleTitle": "French Revolution",
+                    "url": "https://en.wikipedia.org/wiki/French_Revolution",
+                    "snippet": "Although rumoured to hold many prisoners, the Bastille held only seven: four forgers, a lunatic, a failed assassin, and a deviant nobleman.",
                     "sectionAnchor": "Constitutional_monarchy_(July_1789_–_September_1792)"
                   }
                 ]
@@ -203,29 +199,62 @@
                 "type": "timeline",
                 "events": [
                   {
-                    "year": "17 Jun 1789",
-                    "label": "Third Estate declares itself National Assembly"
-                  },
-                  {
                     "year": "14 Jul 1789",
                     "label": "Storming of the Bastille"
                   },
                   {
-                    "year": "4 Aug 1789",
-                    "label": "Night of abolishing feudalism"
+                    "year": "22 Jul 1789",
+                    "label": "Lynching of Foullon and his son"
                   },
                   {
-                    "year": "26 Aug 1789",
-                    "label": "Declaration of the Rights of Man adopted"
+                    "year": "Late Jul 1789",
+                    "label": "The Great Fear sweeps rural France"
+                  },
+                  {
+                    "year": "4–11 Aug 1789",
+                    "label": "August Decrees abolish feudalism"
                   }
                 ],
-                "narration": "In a single frantic season, the deputies who had once merely petitioned the king now abolished the feudal order outright. Tithes, seigneurial dues, and provincial privilege all fell in one nocturnal session, and by month's end France possessed a Declaration proclaiming rights once unthinkable for commoners to claim.",
+                "narration": "Violence did not stay confined to Paris. Rumors of aristocratic plots ignited a countryside panic historians call the Great Fear — peasants forming militias, burning manor records, attacking chateaux they believed sheltered brigands hired by nobles. Faced with a nation unraveling, the Assembly chose a radical remedy: abolish the very system peasants were rebelling against.",
                 "citations": [
                   {
                     "articleTitle": "Abolition of feudalism in France",
                     "url": "https://en.wikipedia.org/wiki/Abolition_of_feudalism_in_France",
-                    "snippet": "The National Assembly abolishes the feudal system entirely.",
-                    "sectionAnchor": null
+                    "snippet": "The season of La Grande Peur – the Great Fear – was characterised by social hysteria and anxiety over who was going to be the next victim.",
+                    "sectionAnchor": "Background"
+                  }
+                ]
+              },
+              {
+                "type": "letter-quote",
+                "quoteText": "The National Assembly abolishes the feudal system entirely.",
+                "attribution": "National Constituent Assembly, night session, 4 August 1789",
+                "date": "4 August 1789",
+                "narration": "Through a single overnight session, nobles and bishops rose one after another to renounce their own privileges — hunting rights, tithes, seigneurial dues, venal offices, provincial exemptions — until, as one deputy proposed, the Assembly declared the whole feudal edifice dissolved. A medal was struck to commemorate the night; Louis XVI himself was named 'Restorer of French Liberty,' though he privately seethed at the loss.",
+                "citations": [
+                  {
+                    "articleTitle": "Abolition of feudalism in France",
+                    "url": "https://en.wikipedia.org/wiki/Abolition_of_feudalism_in_France",
+                    "snippet": "The National Constituent Assembly, after deliberating on the night of 4 August 1789, announced, \"The National Assembly abolishes the feudal system entirely.\""
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "scenes": [
+              {
+                "type": "letter-quote",
+                "quoteText": "I will never consent to the despoliation of my clergy and my nobility ... I will never give my sanction to the decrees that despoil them",
+                "attribution": "Louis XVI, private letter following the August Decrees",
+                "date": "August 1789",
+                "narration": "Publicly gracious, privately furious — Louis XVI's own letter reveals the gulf between what the Revolution demanded and what the king could bear to accept. He praised the 'noble and generous demarche' of clergy and nobility even as he vowed never to truly sanction their despoiling. That contradiction, more than any mob, would prove fatal to his throne.",
+                "citations": [
+                  {
+                    "articleTitle": "Abolition of feudalism in France",
+                    "url": "https://en.wikipedia.org/wiki/Abolition_of_feudalism_in_France",
+                    "snippet": "I will never consent to the despoliation of my clergy and my nobility ... I will never give my sanction to the decrees that despoil them",
+                    "sectionAnchor": "Impact"
                   }
                 ]
               }
@@ -234,33 +263,19 @@
         ]
       },
       {
-        "title": "The Fall of the Crown",
+        "title": "From Crown to Republic",
         "pages": [
           {
             "scenes": [
               {
                 "type": "chapter-header",
-                "title": "Flight and War",
-                "narration": "The king's own actions doomed him. His secret flight to Varennes in June 1791 shattered the fragile trust that remained, and when France went to war against Austria the following spring, defeat after defeat radicalized a public already primed for insurrection. By August 1792 the crowd would storm the Tuileries itself, and the monarchy would not survive the year.",
+                "title": "From Crown to Republic",
+                "narration": "By 1792 the compromise of constitutional monarchy had collapsed under the weight of war, suspicion, and a king who could not stop conspiring against the very revolution he was meant to lead. The storming of the Tuileries, the fall of the crown, and finally the fall of a king's own head — this chapter follows France's violent leap from monarchy into republic, and from republic into terror.",
                 "citations": [
                   {
                     "articleTitle": "French Revolution",
                     "url": "https://en.wikipedia.org/wiki/French_Revolution",
-                    "snippet": "King Louis XVI's attempted flight to Varennes in June 1791 further discredited the monarchy, and military defeats after the outbreak of the French Revolutionary Wars in April 1792 led to the insurrection of 10 August 1792.",
-                    "sectionAnchor": null
-                  }
-                ]
-              },
-              {
-                "type": "map-plate",
-                "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/3/3e/Jacques_Bertaux_-_Der_Tuileriensturm_am_10._August_1792.jpg",
-                "caption": "Storming of the Tuileries, 10 August 1792",
-                "narration": "Crowds and National Guardsmen surged into the royal palace on the tenth of August, overwhelming the Swiss Guard in brutal close combat. Within weeks the monarchy that had ruled France for centuries was formally abolished, replaced by a Republic that dated its calendar anew from this rupture.",
-                "citations": [
-                  {
-                    "articleTitle": "French Revolution",
-                    "url": "https://en.wikipedia.org/wiki/French_Revolution",
-                    "snippet": "Emboldened by this, on 22 September the Convention replaced the monarchy with the French First Republic and introduced a new calendar, with 1792 becoming \"Year One\".",
+                    "snippet": "On 22 September the Convention replaced the monarchy with the French First Republic and introduced a new calendar, with 1792 becoming \"Year One\".",
                     "sectionAnchor": "First_Republic_(1792–1795)"
                   }
                 ]
@@ -270,10 +285,26 @@
           {
             "scenes": [
               {
-                "type": "map-plate",
+                "type": "portrait",
+                "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/3/3e/Jacques_Bertaux_-_Der_Tuileriensturm_am_10._August_1792.jpg",
+                "personName": "Storming of the Tuileries",
+                "caption": "The storming of the Tuileries Palace, 10 August 1792",
+                "narration": "Military defeat abroad and royal betrayal at home converged on a single August morning. Crowds and National Guardsmen stormed the Tuileries Palace, overwhelming the king's Swiss Guard in brutal street fighting. Within weeks the monarchy that had ruled France for centuries would be formally abolished — the insurrection of 10 August proved the point of no return.",
+                "citations": [
+                  {
+                    "articleTitle": "French Revolution",
+                    "url": "https://en.wikipedia.org/wiki/French_Revolution",
+                    "snippet": "military defeats after the outbreak of the French Revolutionary Wars in April 1792 led to the insurrection of 10 August 1792",
+                    "sectionAnchor": ""
+                  }
+                ]
+              },
+              {
+                "type": "portrait",
                 "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/c/c8/Valmy_Battle_painting.jpg",
+                "personName": "Battle of Valmy",
                 "caption": "The Battle of Valmy, 20 September 1792",
-                "narration": "At Valmy, ragtag French conscripts and veteran gunners stood their ground against the Prussian army and, astonishingly, won. It was the Revolution's first true battlefield triumph, and it emboldened the Convention to declare the Republic just two days later.",
+                "narration": "Just ten days after the Tuileries fell, ragtag French volunteers stood their ground against seasoned Prussian regulars at Valmy — and won. It was the first great victory of the Revolutionary Wars, and it emboldened the National Convention. Two days later, on 22 September, they abolished the monarchy outright and declared the First Republic, resetting the calendar itself to 'Year One.'",
                 "citations": [
                   {
                     "articleTitle": "French Revolution",
@@ -282,18 +313,56 @@
                     "sectionAnchor": "First_Republic_(1792–1795)"
                   }
                 ]
-              },
+              }
+            ]
+          },
+          {
+            "scenes": [
               {
                 "type": "portrait",
-                "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/5/57/AduC_132_Pierre_Vergniaud_%28P.V.%2C_1758-1793%29.jpg",
-                "personName": "Pierre Vergniaud",
-                "caption": "Pierre Vergniaud, leading Girondin orator",
-                "narration": "Vergniaud's eloquence had helped push France toward war, hoping conflict would unify the nation behind the Revolution. Instead the Girondins he led found themselves blamed for shortages and defeats, a miscalculation that would soon cost many of them their lives.",
+                "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/d/d4/Execution_of_Louis_XVI.jpg",
+                "personName": "Execution of Louis XVI",
+                "caption": "The execution of Louis XVI, Place de la Révolution, 21 January 1793",
+                "narration": "Citoyen Louis Capet, once King Louis XVI, was condemned by a Convention divided almost evenly on his guilt. Letters found in his own hand, conspiring with royalist exiles, sealed his fate: 361 deputies voted for death, 288 against. On 21 January 1793, on the square now called the Place de la Concorde, the blade fell — and the Revolution crossed a threshold from which there was no retreat.",
                 "citations": [
                   {
                     "articleTitle": "French Revolution",
                     "url": "https://en.wikipedia.org/wiki/French_Revolution",
-                    "snippet": "The Girondins hoped war would unite the people behind the government and provide an excuse for rising prices and food shortages. Instead, they found themselves the target of popular anger",
+                    "snippet": "On 17 January 1793, Louis was sentenced to death for \"conspiracy against public liberty and general safety\". 361 deputies were in favour, 288 against",
+                    "sectionAnchor": "First_Republic_(1792–1795)"
+                  }
+                ]
+              },
+              {
+                "type": "timeline",
+                "events": [
+                  {
+                    "year": "Aug 1792",
+                    "label": "September Massacres begin in Paris jails"
+                  },
+                  {
+                    "year": "22 Sep 1792",
+                    "label": "First Republic proclaimed, Year One begins"
+                  },
+                  {
+                    "year": "21 Jan 1793",
+                    "label": "Execution of Louis XVI"
+                  },
+                  {
+                    "year": "Feb 1793",
+                    "label": "France declares war on Britain and the Dutch"
+                  },
+                  {
+                    "year": "Mar 1793",
+                    "label": "Vendée rises in royalist revolt"
+                  }
+                ],
+                "narration": "The winter of 1792 into 1793 compressed a revolution's worth of upheaval into a few violent months: mob executions in the jails of Paris, the fall of a thousand-year monarchy, the death of a king, and a widening war that would soon draw in Britain, Spain, and half of Europe. In the conservative Vendée, rural France rose against Paris itself, horrified by the changes forced upon its churches.",
+                "citations": [
+                  {
+                    "articleTitle": "French Revolution",
+                    "url": "https://en.wikipedia.org/wiki/French_Revolution",
+                    "snippet": "already unsettled by changes imposed on the church, in March the traditionally conservative and royalist Vendée rose in revolt",
                     "sectionAnchor": "First_Republic_(1792–1795)"
                   }
                 ]
@@ -303,16 +372,17 @@
           {
             "scenes": [
               {
-                "type": "map-plate",
-                "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/d/d4/Execution_of_Louis_XVI.jpg",
-                "caption": "Execution of Louis XVI, Place de la Révolution, 21 January 1793",
-                "narration": "Tried as Citoyen Louis Capet, the former king was condemned for conspiracy against public liberty by a narrow margin of deputies. On the twenty-first of January the sentence was carried out before a vast crowd, and the blade fell on an institution as much as a man.",
+                "type": "portrait",
+                "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/0/05/Olympe_de_Gouges.png",
+                "personName": "Olympe de Gouges",
+                "caption": "Olympe de Gouges, author of the Declaration of the Rights of Woman and of the Female Citizen",
+                "narration": "Not every revolutionary voice was male. Olympe de Gouges insisted that the Revolution's promises of liberty and equality must extend to women too — in matters of divorce, property, and the recognition of illegitimate children. Yet the National Assembly denied women political rights outright, and de Gouges herself would be executed in November 1793, a Girondist swept up in the Terror she had helped inspire debate about.",
                 "citations": [
                   {
                     "articleTitle": "French Revolution",
                     "url": "https://en.wikipedia.org/wiki/French_Revolution",
-                    "snippet": "On 17 January 1793, Louis was sentenced to death for \"conspiracy against public liberty and general safety\". 361 deputies were in favour, 288 against",
-                    "sectionAnchor": "First_Republic_(1792–1795)"
+                    "snippet": "Along with other Girondists, she was executed in November 1793 during the Terror.",
+                    "sectionAnchor": "Role_of_women"
                   }
                 ]
               }
@@ -327,100 +397,96 @@
             "scenes": [
               {
                 "type": "chapter-header",
-                "title": "Committee and Tribunal",
-                "narration": "War on every frontier and revolt in the Vendée forced the Convention to hand vast powers to a twelve-man Committee of Public Safety. Charged with defending the Republic against enemies foreign and domestic, it soon claimed near-total command over armies, courts, and ministers alike — the machinery of a Terror about to consume its own architects.",
-                "citations": [
-                  {
-                    "articleTitle": "Committee of Public Safety",
-                    "url": "https://en.wikipedia.org/wiki/Committee_of_Public_Safety",
-                    "snippet": "It was charged with protecting the new republic against its foreign and domestic enemies, fighting the First Coalition and the Vendée revolt.",
-                    "sectionAnchor": null
-                  }
-                ]
-              },
-              {
-                "type": "portrait",
-                "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/a/aa/Death_of_Marat_by_David.jpg",
-                "personName": "Jean-Paul Marat",
-                "caption": "The Death of Marat, by Jacques-Louis David, 1793",
-                "narration": "Marat, whose fierce newspaper L'Ami du peuple had stoked revolutionary fury for years, was stabbed in his medicinal bath by Charlotte Corday, a Girondin sympathizer. David's painting transformed the radical journalist into a martyr, and his death deepened the fracture between Montagnards and Girondins beyond any hope of reconciliation.",
-                "citations": [
-                  {
-                    "articleTitle": "French Revolution",
-                    "url": "https://en.wikipedia.org/wiki/French_Revolution",
-                    "snippet": "Charlotte Corday, killer of Marat.",
-                    "sectionAnchor": "Role_of_women"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "scenes": [
-              {
-                "type": "portrait",
-                "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/0/05/Olympe_de_Gouges.png",
-                "personName": "Olympe de Gouges",
-                "caption": "Olympe de Gouges, author of the Declaration of the Rights of Woman",
-                "narration": "De Gouges insisted that if women could mount the scaffold, they should also mount the speaker's podium — that equality under the law meant nothing if half the nation was denied it. Her Declaration demanded rights in marriage, divorce, and inheritance long before such claims were fashionable, and for her Girondin sympathies she was sent to the guillotine in November 1793.",
-                "citations": [
-                  {
-                    "articleTitle": "French Revolution",
-                    "url": "https://en.wikipedia.org/wiki/French_Revolution",
-                    "snippet": "Along with other Girondists, she was executed in November 1793 during the Terror.",
-                    "sectionAnchor": "Role_of_women"
-                  }
-                ]
-              },
-              {
-                "type": "portrait",
-                "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/1/1f/AduC_143_Jean-Marie_Collot_d%27Herbois_%28J.M.%2C_1750-1796%29.jpg",
-                "personName": "Jean-Marie Collot d'Herbois",
-                "caption": "Jean-Marie Collot d'Herbois, member of the Committee of Public Safety",
-                "narration": "Collot d'Herbois sat among the twelve who governed France by decree during the Terror's harshest months, men entrusted with executive power the Convention itself had surrendered. Their committee grew ever more feared as the guillotine's work multiplied across Paris and the provinces alike.",
-                "citations": [
-                  {
-                    "articleTitle": "Committee of Public Safety",
-                    "url": "https://en.wikipedia.org/wiki/Committee_of_Public_Safety",
-                    "snippet": "In December 1793, the Convention formally conferred executive power upon the committee.",
-                    "sectionAnchor": null
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "scenes": [
-              {
-                "type": "timeline",
-                "events": [
-                  {
-                    "year": "Apr 1793",
-                    "label": "Committee of Public Safety created"
-                  },
-                  {
-                    "year": "Jun 1793",
-                    "label": "Constitution suspended; Jacobins ascendant"
-                  },
-                  {
-                    "year": "Oct 1793",
-                    "label": "Women's political clubs banned"
-                  },
-                  {
-                    "year": "~16,000",
-                    "label": "Sentenced and executed by Revolutionary Tribunal"
-                  },
-                  {
-                    "year": "Jul 1794",
-                    "label": "Thermidorian Reaction ends the Terror"
-                  }
-                ],
-                "narration": "For fifteen months the machinery of revolutionary justice ran without pause. Roughly sixteen thousand men and women were condemned by the Revolutionary Tribunal, their names read aloud from vendors' programmes before crowds who came, day after day, to watch the blade fall — until in Thermidor the Terror finally turned on the men who had built it.",
+                "title": "The Terror",
+                "narration": "In the spring of 1793 the Republic, besieged by foreign armies and rebellion at home, handed nearly dictatorial power to a twelve-man committee sworn to save it by any means. What followed was the bloodiest chapter of the Revolution: a Tribunal that sentenced sixteen thousand people to death, a guillotine that became popular entertainment, and a Jacobin leadership that ultimately devoured its own architects.",
                 "citations": [
                   {
                     "articleTitle": "French Revolution",
                     "url": "https://en.wikipedia.org/wiki/French_Revolution",
                     "snippet": "About 16,000 people were sentenced by the Revolutionary Tribunal and executed in the Reign of Terror, which ended in July 1794 with the Thermidorian Reaction.",
+                    "sectionAnchor": ""
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "scenes": [
+              {
+                "type": "portrait",
+                "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/a/aa/Death_of_Marat_by_David.jpg",
+                "personName": "Jean-Paul Marat",
+                "caption": "The Death of Marat, by Jacques-Louis David, 1793",
+                "narration": "Jean-Paul Marat, the fiery journalist whose newspaper L'Ami du peuple had stoked revolutionary fervor for years, was stabbed to death in his medicinal bath by Charlotte Corday, a Girondin sympathizer who blamed him for the Revolution's spiraling violence. David's painting transformed his murdered body into something close to a martyr's icon — proof that even amid factional slaughter, the Revolution still knew how to make saints of its dead.",
+                "citations": [
+                  {
+                    "articleTitle": "French Revolution",
+                    "url": "https://en.wikipedia.org/wiki/French_Revolution",
+                    "snippet": "radical Montagnards, headed by Robespierre, Georges Danton, and Jean-Paul Marat",
+                    "sectionAnchor": "First_Republic_(1792–1795)"
+                  }
+                ]
+              },
+              {
+                "type": "letter-quote",
+                "quoteText": "chronic violence, ambivalent forms of justice, and repeated recourse to heavy-handed repression",
+                "attribution": "Description of the revolutionary government's methods",
+                "date": null,
+                "narration": "The instrument of this repression was the Committee of Public Safety, formed on 6 April 1793 and granted sweeping executive power by December. Charged with defeating foreign armies and the Vendée revolt alike, it ruled through emergency decree, its members answerable to no fixed law but the survival of the Republic itself.",
+                "citations": [
+                  {
+                    "articleTitle": "French Revolution",
+                    "url": "https://en.wikipedia.org/wiki/French_Directory_(1795–1799)",
+                    "snippet": "the directory was characterised by \"chronic violence, ambivalent forms of justice, and repeated recourse to heavy-handed repression.\"",
+                    "sectionAnchor": "French_Directory_(1795–1799)"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "scenes": [
+              {
+                "type": "portrait",
+                "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/1/1f/AduC_143_Jean-Marie_Collot_d%27Herbois_%28J.M.%2C_1750-1796%29.jpg",
+                "personName": "Jean-Marie Collot d'Herbois",
+                "caption": "Jean-Marie Collot d'Herbois (1750–1796), member of the Committee of Public Safety",
+                "narration": "Men like Collot d'Herbois sat on the twelve-man Committee that, by law, held supervisory power over the armed forces, the judiciary, and the ministers of the Convention itself. Robespierre was only one voice among these administrators of the Terror, though history would remember his name above all others as the Revolutionary Tribunal's sentences climbed into the thousands.",
+                "citations": [
+                  {
+                    "articleTitle": "Committee of Public Safety",
+                    "url": "https://en.wikipedia.org/wiki/Committee_of_Public_Safety",
+                    "snippet": "the committee was given broad supervisory and administrative powers over the armed forces, judiciary and legislature, as well as the executive bodies and ministers of the convention",
+                    "sectionAnchor": null
+                  }
+                ]
+              },
+              {
+                "type": "timeline",
+                "events": [
+                  {
+                    "year": "6 Apr 1793",
+                    "label": "Committee of Public Safety created"
+                  },
+                  {
+                    "year": "Dec 1793",
+                    "label": "Convention grants Committee executive power"
+                  },
+                  {
+                    "year": "Jul 1794",
+                    "label": "~16,000 executed by Revolutionary Tribunal since Terror began"
+                  },
+                  {
+                    "year": "28 Jul 1794",
+                    "label": "Robespierre executed in Thermidorian Reaction"
+                  }
+                ],
+                "narration": "The machinery Robespierre helped build eventually turned on him. After the arrest and execution of rival Hébertist and Dantonist factions, suspicion in the Convention curdled against Robespierre himself. On 27 July 1794 — 9 Thermidor by the revolutionary calendar — he was arrested; the next day, the guillotine that had claimed sixteen thousand others claimed him too.",
+                "citations": [
+                  {
+                    "articleTitle": "Committee of Public Safety",
+                    "url": "https://en.wikipedia.org/wiki/Committee_of_Public_Safety",
+                    "snippet": "After the arrest and execution of rival factions of Hébertists and Dantonists, sentiment in the Convention eventually turned against Robespierre, who was executed in July 1794.",
                     "sectionAnchor": null
                   }
                 ]
@@ -430,16 +496,17 @@
           {
             "scenes": [
               {
-                "type": "map-plate",
+                "type": "portrait",
                 "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/2/21/Execution_robespierre%2C_saint_just....jpg",
-                "caption": "Execution of Robespierre and Saint-Just, 28 July 1794",
-                "narration": "The men who had led the Committee of Public Safety were themselves arrested and guillotined the day after their fall, Robespierre among them, his jaw bandaged from a failed suicide attempt. Vendors sold programmes of the executions, and crowds who had once cheered his speeches now watched his end with the same appetite for spectacle.",
+                "personName": "Execution of Robespierre and Saint-Just",
+                "caption": "The execution of Robespierre and Saint-Just, 28 July 1794",
+                "narration": "The crowd that gathered to watch Robespierre die was no smaller than those that had watched his victims. Vendors still sold programmes naming the condemned; the tricoteuses still knitted at the scaffold's edge. But this execution marked an ending: the Thermidorian Reaction that followed dismantled the machinery of Terror and, within months, replaced the Committee's rule with a new and fragile government — the Directory.",
                 "citations": [
                   {
-                    "articleTitle": "Committee of Public Safety",
-                    "url": "https://en.wikipedia.org/wiki/Committee_of_Public_Safety",
-                    "snippet": "On 27 July 1794, Robespierre, Saint-Just and Couthon (Mountain) were arrested and executed the following day.",
-                    "sectionAnchor": "Composition"
+                    "articleTitle": "French Revolution",
+                    "url": "https://en.wikipedia.org/wiki/French_Revolution",
+                    "snippet": "knitting women (tricoteuses) formed a cadre of hardcore regulars, inciting the crowd. Parents often brought their children.",
+                    "sectionAnchor": "Media_and_symbolism"
                   }
                 ]
               }
@@ -448,34 +515,19 @@
         ]
       },
       {
-        "title": "The Directory and Beyond",
+        "title": "The Directory and the Rise of Bonaparte",
         "pages": [
           {
             "scenes": [
               {
                 "type": "chapter-header",
-                "title": "A Fragile Republic",
-                "narration": "After Robespierre's fall, power passed to a five-man Directory, a government perpetually caught between royalist resurgence and Jacobin agitation, unable to call new elections and reduced to rule by decree or by force of arms. Corruption, inflation, and an endless war wore down its legitimacy year after year, even as French armies won victories abroad.",
+                "title": "The Directory and the Rise of Bonaparte",
+                "narration": "Weakened by war, inflation, and its own contradictions, the Committee of Public Safety gave way in November 1795 to a five-man Directory — a government that pleased almost no one and satisfied fewer. Royalists plotted its overthrow, Jacobins despised its corruption, and radicals like Babeuf dreamed of a more equal republic. Into this instability stepped a young general whose troops had already proven decisive on more than one Parisian street.",
                 "citations": [
                   {
                     "articleTitle": "French Revolution",
                     "url": "https://en.wikipedia.org/wiki/French_Revolution",
-                    "snippet": "the directory was characterised by \"chronic violence, ambivalent forms of justice, and repeated recourse to heavy-handed repression.\"",
-                    "sectionAnchor": "French_Directory_(1795–1799)"
-                  }
-                ]
-              },
-              {
-                "type": "portrait",
-                "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/1/1d/Paul_Barras_directeur.jpg",
-                "personName": "Paul Barras",
-                "caption": "Paul Barras, Director of the French Republic",
-                "narration": "Barras outlasted nearly every rival, steering the Directory through royalist plots, Jacobin conspiracies, and a war that never seemed to end. His pragmatic alliances, including his patronage of a young general named Bonaparte, would ultimately hasten the very regime's demise.",
-                "citations": [
-                  {
-                    "articleTitle": "French Revolution",
-                    "url": "https://en.wikipedia.org/wiki/French_Revolution",
-                    "snippet": "The removal of his conservative opponents opened the way for direct conflict between Barras and those on the left.",
+                    "snippet": "Jacobin sympathisers viewed the French Directory as a betrayal of the Revolution, while Bonapartists later justified Napoleon's coup by emphasizing its corruption.",
                     "sectionAnchor": "French_Directory_(1795–1799)"
                   }
                 ]
@@ -486,68 +538,83 @@
             "scenes": [
               {
                 "type": "portrait",
-                "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/0/09/AduC_204_La_R%C3%A9veill%C3%A8re-L%C3%A9paux_%28L.M.%2C_1753-1824%29.JPG",
-                "personName": "Louis-Marie La Révellière-Lépeaux",
-                "caption": "La Révellière-Lépeaux, Director and committed Republican",
-                "narration": "A firm republican among the five directors, La Révellière-Lépeaux worked to keep the fragile regime from collapsing under royalist pressure. He was part of the majority that annulled the 1797 elections rather than see a restoration undo everything the Revolution had achieved.",
+                "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/1/1d/Paul_Barras_directeur.jpg",
+                "personName": "Paul Barras",
+                "caption": "Paul Barras, a leading director of the French Directory",
+                "narration": "Paul Barras stood at the center of the Directory's shifting alliances — Republican enough to resist royalist restoration, pragmatic enough to survive coup after coup. It was Barras who first recognized the usefulness of a young artillery officer named Napoleon Bonaparte, whose cannon fire against a royalist rising in Paris on 5 October 1795 proved the Convention could still command loyal, decisive force.",
                 "citations": [
                   {
                     "articleTitle": "French Revolution",
-                    "url": "https://en.wikipedia.org/wiki/French_Revolution",
-                    "snippet": "Prior to 1797, three of the five directors were firmly Republican; Barras, Révellière-Lépeaux and Jean-François Rewbell",
+                    "url": "https://en.wikipedia.org/wiki/French_Directory_(1795–1799)",
+                    "snippet": "On 5 October, Convention troops led by Napoleon put down a royalist rising in Paris",
                     "sectionAnchor": "French_Directory_(1795–1799)"
                   }
                 ]
               },
               {
+                "type": "letter-quote",
+                "quoteText": "over 100 of the 150 new deputies were royalists of some sort",
+                "attribution": "Aftermath of the October 1795 elections",
+                "date": "October 1795",
+                "narration": "Even after crushing the royalist rising, the Directory could not crush royalist sentiment itself. When the first legislative elections under the new constitution were held just two weeks later, the majority of new deputies leaned toward restoring the monarchy — proof that the Republic's enemies had not vanished, only retreated into the ballot box.",
+                "citations": [
+                  {
+                    "articleTitle": "French Revolution",
+                    "url": "https://en.wikipedia.org/wiki/French_Directory_(1795–1799)",
+                    "snippet": "when the first legislative elections were held two weeks later, over 100 of the 150 new deputies were royalists of some sort",
+                    "sectionAnchor": "French_Directory_(1795–1799)"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "scenes": [
+              {
                 "type": "timeline",
                 "events": [
                   {
-                    "year": "Oct 1795",
-                    "label": "Directory established"
+                    "year": "Nov 1795",
+                    "label": "Directory replaces Committee of Public Safety"
                   },
                   {
                     "year": "May 1796",
-                    "label": "Conspiracy of the Equals crushed"
+                    "label": "Conspiracy of the Equals crushed, Babeuf executed"
                   },
                   {
-                    "year": "Sep 1797",
-                    "label": "Coup annuls royalist election gains"
+                    "year": "May 1797",
+                    "label": "Royalist gains in Council elections"
                   },
                   {
-                    "year": "1798",
-                    "label": "Jacobin resurgence in elections"
+                    "year": "4 Sep 1797",
+                    "label": "Coup of 18 Fructidor annuls royalist election gains"
                   },
                   {
                     "year": "9 Nov 1799",
                     "label": "Coup of 18 Brumaire ends the Directory"
                   }
                 ],
-                "narration": "Through five turbulent years the Directory lurched from crisis to coup, unable to reconcile the Revolution's radical promises with the need for order. Its final act came on 18 Brumaire, when Napoleon Bonaparte, the soldier who had once defended the Convention with cannon fire, swept the regime aside to install himself as First Consul.",
+                "narration": "The Directory's four turbulent years swung wildly between left and right. Babeuf's Conspiracy of the Equals demanded a more radical, equitable republic and was crushed within weeks. Royalist victories at the polls two years later were annulled by force, with sixty-three leading royalists deported to French Guiana. Fighting continued despite exhaustion on every side, until Napoleon's coup of 18 Brumaire finally swept the whole fragile structure away.",
                 "citations": [
                   {
                     "articleTitle": "French Revolution",
-                    "url": "https://en.wikipedia.org/wiki/French_Revolution",
-                    "snippet": "Its instability ended in 1799 with the coup of 18 Brumaire and the establishment of the Consulate, with Napoleon Bonaparte as First Consul.",
-                    "sectionAnchor": null
+                    "url": "https://en.wikipedia.org/wiki/French_Directory_(1795–1799)",
+                    "snippet": "The elections were annulled, 63 leading Royalists deported to French Guiana, and laws were passed against émigrés, Royalists and ultra-Jacobins.",
+                    "sectionAnchor": "French_Directory_(1795–1799)"
                   }
                 ]
-              }
-            ]
-          },
-          {
-            "scenes": [
+              },
               {
                 "type": "portrait",
                 "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/d/de/AduC_277_Cambac%C3%A8res_%28J.J.R.%2C_1753-1824%29.JPG",
-                "personName": "Jean-Jacques-Régis de Cambacérès",
-                "caption": "Cambacérès, jurist of the revolutionary era",
-                "narration": "A survivor of every revolutionary regime from the Convention onward, Cambacérès embodied the legal continuity that outlasted the turmoil — the codification of equality before the law that no subsequent government, however conservative, dared fully undo. Through men like him, the Revolution's legal legacy passed intact into the new century.",
+                "personName": "Jean-Jacques Régis de Cambacérès",
+                "caption": "Cambacérès (1753–1824), jurist who would help shape the post-revolutionary legal order",
+                "narration": "As the Directory faltered, men like Cambacérès worked to salvage what could survive of the Revolution's legal achievements — the end of feudal privilege, the principle of equality before the law. When Napoleon's Consulate replaced the Directory in 1799, it was builders like these who ensured the Revolution's core reforms, if not its republican spirit, endured into the new century.",
                 "citations": [
                   {
                     "articleTitle": "French Revolution",
                     "url": "https://en.wikipedia.org/wiki/French_Revolution",
-                    "snippet": "there were no efforts by the Bourbons, Vichy or any other government to restore the privileges that had been stripped away from the nobility in 1789. France permanently became a society of equals under the law.",
+                    "snippet": "Napoleon as emperor set up a constitutional system and the restored Bourbons were forced to retain one.",
                     "sectionAnchor": "Impact"
                   }
                 ]
@@ -561,12 +628,12 @@
                 "quoteText": "Revolution became a tradition, and republicanism an enduring option.",
                 "attribution": "Historian Paul Hanson, on the legacy of the Revolution",
                 "date": null,
-                "narration": "Even after empire and restoration swept away many revolutionary gains, the memory of participatory politics endured in French life. What began as a fiscal crisis at Versailles had, within a single decade, remade the very idea of what a nation could be — and that idea would outlive every regime that tried to bury it.",
+                "narration": "The Bastille's stones were long since scattered, the Terror's scaffolds dismantled, and the Directory itself swept aside by 1799 — yet something irreversible had happened to France. Feudal privilege did not return under Napoleon, nor under the restored Bourbons, nor under any government after. Equality before the law, once declared in a single overnight session in August 1789, had become the permanent floor beneath French society, whatever government stood upon it.",
                 "citations": [
                   {
                     "articleTitle": "French Revolution",
                     "url": "https://en.wikipedia.org/wiki/French_Revolution",
-                    "snippet": "According to Paul Hanson, \"Revolution became a tradition, and republicanism an enduring option.\"",
+                    "snippet": "Revolution became a tradition, and republicanism an enduring option.",
                     "sectionAnchor": "Impact"
                   }
                 ]
@@ -577,5 +644,5 @@
       }
     ]
   },
-  "bakedAt": "2026-07-18T17:23:47.945Z"
+  "bakedAt": "2026-07-18T21:05:42.577Z"
 }
