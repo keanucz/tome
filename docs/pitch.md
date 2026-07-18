@@ -29,9 +29,11 @@ Beats, with what to say while each is happening. The generation takes about a mi
 4. **Pages fill in.** "The story arrives as one streaming JSON object. Every page you see materialize is a validated piece of it. Skeletons fill as scenes land."
 5. **Narration starts.** Let it read for ten seconds or so. Point at the portrait: "That's a real painting, from Commons, drifting Ken Burns style. Nothing here is AI-generated imagery."
 6. **The page turns itself.** "When the narration for a page finishes, the book turns the page. Nobody is clicking."
-7. **Tap a page.** The marginalia panel slides in. "Every passage is backed by a verbatim quote from the source. Article, section, link to Wikipedia. This is the answer to 'how do I know it's not making this up' — you tap and read the source."
+7. **Tap the dagger (†) on a scene.** The marginalia panel slides in. "Every passage is backed by a verbatim quote from the source. Article, section, link to Wikipedia. This is the answer to 'how do I know it's not making this up' — you tap and read the source."
+8. **Select a phrase** (e.g. "Estates-General"). The margin note appears inline. "You never leave the book to Google something — select it and the margin explains it, grounded in Wikipedia, with the link."
+9. **The closer — click "⚜ Request an audience" under a portrait.** Ask Frederick, out loud, why he invaded Saxony. He answers in character, in a voice cast for him, grounded in his article. Then turn to the judges: "You have unlimited Q&A — so does the book. Ask it anything."
 
-Let one more page turn on its own, then mute or lower narration and face the room.
+Use the NARRATION ON/OFF toggle (bottom right of the book) to silence the narrator when you start talking to the room.
 
 ## 3:00 — How it works (30 seconds)
 

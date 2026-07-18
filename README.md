@@ -16,6 +16,8 @@ You speak (or type) a history question. Tome resolves it to Wikipedia, fetches t
 - **It reads to you.** ElevenLabs narrates each page; when the audio ends, the page turns itself. If ElevenLabs is down it falls back to OpenAI TTS, then to the browser's own voice.
 - **Provenance is one tap away.** Every scene must carry at least one citation with a verbatim quote from the source text. Tap a page and the marginalia panel slides in: the quote, the article, the section anchor, a link to Wikipedia.
 - **You choose the depth.** Three reading depths — *Pamphlet* (a brisk tale), *Chronicle* (the full story), *Tome* (every detail). Depth scales the whole pipeline: how much source text is fetched (12k → 38k words), how many chapters the model is told to write (2-3 → 6-9), the narrative-density rules ("a single narration must never compress more than a few years of a life"), and the output token budget (12k → 40k).
+- **Ask the margin.** Select any phrase on any page and a margin note appears inline: a two-sentence, Wikipedia-grounded explanation of what it is and why it matters in that sentence — no tab-switching to Google mid-story. (`/api/gloss`, Haiku + live Wikipedia summary.)
+- **Request an audience.** Click "⚜ Request an audience" under any portrait and speak with the figure — typed or by voice. Replies are in character, grounded in their Wikipedia summary, and spoken aloud in a voice *cast for them*: a casting model picks the closest ElevenLabs voice from a described catalog (Maria Theresa gets an aristocratic British contralto; Frederick a deep authoritative baritone). Book narration pauses while the audience is in session.
 
 ## Architecture
 
