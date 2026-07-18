@@ -15,6 +15,7 @@ You speak (or type) a history question. Tome resolves it to Wikipedia, fetches t
 - **Real artifacts, not generated imagery.** Portraits and maps are actual Wikimedia Commons files, classified heuristically (portrait / map / scene), displayed with a slow Ken Burns drift and captioned with painter and date.
 - **It reads to you.** ElevenLabs narrates each page; when the audio ends, the page turns itself. If ElevenLabs is down it falls back to OpenAI TTS, then to the browser's own voice.
 - **Provenance is one tap away.** Every scene must carry at least one citation with a verbatim quote from the source text. Tap a page and the marginalia panel slides in: the quote, the article, the section anchor, a link to Wikipedia.
+- **You choose the depth.** Three reading depths — *Pamphlet* (a brisk tale), *Chronicle* (the full story), *Tome* (every detail). Depth scales the whole pipeline: how much source text is fetched (12k → 38k words), how many chapters the model is told to write (2-3 → 6-9), the narrative-density rules ("a single narration must never compress more than a few years of a life"), and the output token budget (12k → 40k).
 
 ## Architecture
 
