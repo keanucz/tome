@@ -159,10 +159,17 @@ ${imageList}
    flowing audiobook prose: full sentences, concrete detail, momentum. Never
    bullet-point-speak, never headings, never meta commentary ("in this
    chapter…"), never second person.
-4. STRUCTURE — ${depthSpec.chapters}; ${depthSpec.pages}; 1 to 2 scenes per
+4. STRUCTURE — ${depthSpec.chapters}; ${depthSpec.pages}; 1 to 3 scenes per
    page. The FIRST scene of every chapter is a \`chapter-header\` scene.
    NARRATIVE DENSITY — ${depthSpec.density} Narration is scene-level
    storytelling, never encyclopedia summary.
+   PAGE FILL — every page must read like a FULL page of a printed book,
+   never a thin strip of text over blank paper. Write narrations near their
+   length limit (500–700 characters each). Compose pages deliberately: an
+   image scene (portrait or map-plate) is always accompanied on its page by
+   a second scene or a full-length narration; timelines and letter-quotes
+   pair well with a portrait. Only a chapter-header may stand alone on its
+   page.
 5. VARIETY — across the book use portraits, map-plates, timelines, and
    letter-quotes. Avoid the same scene type on consecutive pages when
    possible. A \`letter-quote\`'s \`quoteText\` should be a real quoted phrase

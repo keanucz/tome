@@ -232,7 +232,7 @@
   min-height: 0;
   display: flex;
   flex-direction: column;
-  gap: 0.7rem;
+  gap: 1rem;
   overflow: hidden;
   /* If content ever overruns the page, the last line fades like drying ink
      instead of hard-clipping. */
@@ -369,7 +369,7 @@
 
 .tome-prose {
   font-family: var(--font-body, Georgia, serif);
-  font-size: clamp(0.92rem, 1.12vw, 1.08rem);
+  font-size: clamp(1rem, 1.3vw, 1.24rem);
   line-height: 1.62;
   text-align: justify;
   hyphens: auto;
@@ -1205,4 +1205,22 @@
   60% {
     transform: translateX(-1px) rotate(3deg);
   }
+}
+
+/* ── Page fill: no half-empty pages ────────────────────────────────────── */
+
+/* A page carrying a single scene centers it in the leaf instead of hugging
+   the top and leaving the bottom half blank. */
+.tome-page-body:has(.tome-scene:only-of-type) {
+  justify-content: center;
+}
+
+/* Multi-scene pages distribute the scenes down the full page height. */
+.tome-page-body:has(.tome-scene:nth-of-type(2)) {
+  justify-content: space-evenly;
+}
+
+/* Portraits may grow taller now that pages are near-fullscreen. */
+.tome-portrait-frame {
+  width: min(62%, 400px);
 }

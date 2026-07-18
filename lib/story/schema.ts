@@ -112,7 +112,7 @@ export type Scene = z.infer<typeof SceneSchema>
 export type SceneType = Scene['type']
 
 export const PageSchema = z.object({
-  scenes: z.array(SceneSchema).min(1).max(2),
+  scenes: z.array(SceneSchema).min(1).max(3),
 })
 export type Page = z.infer<typeof PageSchema>
 
