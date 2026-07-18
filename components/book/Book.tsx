@@ -1,7 +1,8 @@
 'use client'
 
-import { AnimatePresence } from 'framer-motion'
+import { AnimatePresence, motion } from 'framer-motion'
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { ClosedCover } from './ClosedCover'
 import type { Citation, PartialStory } from '@/lib/story/schema'
 import { textureClass, themeToCssVars } from '@/lib/story/theme'
 import { useNarration } from '@/lib/tts/client'
@@ -14,6 +15,10 @@ import './book.css'
 
 /** How long the stream must stay quiet before the last page counts as done. */
 const SETTLE_MS = 4000
+
+/** Content pages that must exist before the closed cover opens into the
+ *  spread — the book stays a sealed volume until it is well underway. */
+const REVEAL_AT_PAGES = 6
 
 /**
  * The living book. Renders a (possibly still-streaming) story as a themed
@@ -62,6 +67,16 @@ export function Book({
     return () => clearTimeout(t)
   }, [fingerprint])
 
+  // The book stays closed (front board only) until the story is well
+  // underway, then opens into the spread once and stays open.
+  const contentPages = Math.max(0, total - 1)
+  const [opened, setOpened] = useState(false)
+  useEffect(() => {
+    if (!opened && total > 0 && (contentPages >= REVEAL_AT_PAGES || settled)) {
+      setOpened(true)
+    }
+  }, [opened, total, contentPages, settled])
+
   // A fresh story stream rewinds the book to its cover. Streams only grow,
   // so shrinking back to the bare cover (total <= 1) means a new story began.
   useEffect(() => {
@@ -70,6 +85,7 @@ export function Book({
       lastStarted.current = -1
       setCurrent(0)
       setDir(1)
+      setOpened(false)
     }
   }, [total, current])
 
@@ -122,7 +138,7 @@ export function Book({
     currentPage.scenes.every((s) => (s?.citations?.length ?? 0) > 0)
   const pageDone = clamped < total - 1 || settled || lastPageClosed
   useEffect(() => {
-    if (!autoNarrate || !currentPage || !pageDone) return
+    if (!autoNarrate || !opened || !currentPage || !pageDone) return
     if (lastStarted.current === clamped) return
     const text = currentPage.narration.trim()
     if (!text) return
@@ -136,7 +152,7 @@ export function Book({
       if (clamped + 1 < totalRef.current) goToRef.current(clamped + 1, false)
       else setAwaitingNext(true)
     })
-  }, [autoNarrate, pageDone, clamped, currentPage, speak, narrationSrc])
+  }, [autoNarrate, opened, pageDone, clamped, currentPage, speak, narrationSrc])
 
   // A narration finished at the story's edge — advance once more pages arrive.
   useEffect(() => {
@@ -180,8 +196,40 @@ export function Book({
     ? [pages[spreadStart], pages[spreadStart + 1]]
     : [pages[spreadStart]]
 
+  if (!opened) {
+    const latestChapter = pages[total - 1]?.chapterTitle ?? undefined
+    return (
+      <div
+        className={`tome-book ${twoUp ? 'tome-two-up' : 'tome-one-up'}`}
+        style={themeVars}
+      >
+        <motion.div
+          key="closed"
+          initial={{ opacity: 0, scale: 0.97 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.9, ease: 'easeOut' }}
+        >
+          <ClosedCover
+            title={cover.title}
+            subtitle={cover.subtitle}
+            era={cover.era}
+            latestChapter={latestChapter}
+            pagesWritten={contentPages}
+          />
+        </motion.div>
+      </div>
+    )
+  }
+
   return (
     <div className={`tome-book ${twoUp ? 'tome-two-up' : 'tome-one-up'}`} style={themeVars}>
+      <motion.div
+        key="open"
+        initial={{ opacity: 0, scale: 0.94, rotateY: -14 }}
+        animate={{ opacity: 1, scale: 1, rotateY: 0 }}
+        transition={{ duration: 0.9, ease: [0.2, 0, 0, 1] }}
+        style={{ perspective: 2000 }}
+      >
       <div className="tome-cover-board">
         <div className="tome-spread">
           <AnimatePresence initial={false}>
@@ -249,6 +297,7 @@ export function Book({
 
         <ProgressBar current={clamped} total={total} writing={!settled} />
       </div>
+      </motion.div>
     </div>
   )
 }

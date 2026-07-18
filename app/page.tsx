@@ -248,16 +248,18 @@ export default function Home() {
         />
       ) : prebaked !== null ? (
         <>
-          <Book
-            story={prebaked}
-            onCite={onCite}
-            autoNarrate
-            narrationSrc={
-              prebakedSlug
-                ? (i) => prebakedAudioUrl(prebakedSlug, i)
-                : undefined
-            }
-          />
+          <div className="flex min-h-screen items-center justify-center px-2 py-4">
+            <Book
+              story={prebaked}
+              onCite={onCite}
+              autoNarrate
+              narrationSrc={
+                prebakedSlug
+                  ? (i) => prebakedAudioUrl(prebakedSlug, i)
+                  : undefined
+              }
+            />
+          </div>
           <button
             type="button"
             onClick={reset}
@@ -277,7 +279,9 @@ export default function Home() {
         <ConsultingArchives topic={topic} onBack={reset} />
       ) : (
         <>
-          <Book story={object ?? {}} onCite={onCite} autoNarrate />
+          <div className="flex min-h-screen items-center justify-center px-2 py-4">
+            <Book story={object ?? {}} onCite={onCite} autoNarrate />
+          </div>
           <button
             type="button"
             onClick={reset}
