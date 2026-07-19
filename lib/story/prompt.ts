@@ -109,12 +109,14 @@ const DEPTH_SPECS: Record<
       'one phase of an event). Where the sources give detail — names, ' +
       'places, dates, quotes — use it. Refuse the urge to summarize.',
     narration:
-      '750 to 900 characters per scene, close to the limit every time. Write ' +
-      'like a narrative historian mid-chapter, never like an encyclopedia ' +
-      'lead: one scene = one moment or one event, entered in medias res, ' +
-      'thick with the names, dates, places, sums, and verbatim phrases the ' +
-      'sources provide. If a scene reads as an overview of a period rather ' +
-      'than a moment within it, split it into more scenes and pages instead.',
+      'At least 750 characters per scene, with NO upper limit — a scene ' +
+      'runs as long as its moment deserves. Write like a narrative ' +
+      'historian mid-chapter, never like an encyclopedia lead: one scene = ' +
+      'one moment or one event, entered in medias res, thick with the ' +
+      'names, dates, places, sums, and verbatim phrases the sources ' +
+      'provide. Never pad; when the material runs long, prefer MORE scenes ' +
+      'and pages over trimming detail. If a scene reads as an overview of ' +
+      'a period rather than a moment within it, split it.',
   },
 }
 
