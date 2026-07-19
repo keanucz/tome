@@ -81,13 +81,14 @@ Emitting "chapters" before "title" and "theme" ruins the experience.`
 /** Depth → structure targets and narrative density instructions. */
 const DEPTH_SPECS: Record<
   StoryDepth,
-  { chapters: string; pages: string; density: string }
+  { chapters: string; pages: string; density: string; narration: string }
 > = {
   pamphlet: {
     chapters: '2 to 3 chapters',
     pages: '2 to 3 pages per chapter',
     density:
       'A brisk, evocative telling — hit the defining moments, keep momentum high.',
+    narration: '300 to 500 characters per scene — punchy, propulsive.',
   },
   chronicle: {
     chapters: '4 to 5 chapters',
@@ -95,6 +96,8 @@ const DEPTH_SPECS: Record<
     density:
       'A full telling. Give each major phase of the subject its own space; ' +
       'do not fold distinct periods, campaigns, or works into one breath.',
+    narration:
+      '550 to 750 characters per scene — full paragraphs with concrete detail.',
   },
   tome: {
     chapters: '6 to 9 chapters',
@@ -105,6 +108,13 @@ const DEPTH_SPECS: Record<
       'compress more than a few years of a life (or one campaign, one work, ' +
       'one phase of an event). Where the sources give detail — names, ' +
       'places, dates, quotes — use it. Refuse the urge to summarize.',
+    narration:
+      '750 to 900 characters per scene, close to the limit every time. Write ' +
+      'like a narrative historian mid-chapter, never like an encyclopedia ' +
+      'lead: one scene = one moment or one event, entered in medias res, ' +
+      'thick with the names, dates, places, sums, and verbatim phrases the ' +
+      'sources provide. If a scene reads as an overview of a period rather ' +
+      'than a moment within it, split it into more scenes and pages instead.',
   },
 }
 
@@ -155,17 +165,18 @@ ${imageList}
    \`articleTitle\` and \`url\` MUST match the article the quote came from
    exactly as printed above. When the quote comes from a [SECTION], set
    \`sectionAnchor\` to that section's anchor.
-3. NARRATION — each scene's \`narration\` is at most 700 characters of vivid,
-   flowing audiobook prose: full sentences, concrete detail, momentum. Never
-   bullet-point-speak, never headings, never meta commentary ("in this
-   chapter…"), never second person.
+3. NARRATION — each scene's \`narration\` is vivid, flowing audiobook
+   prose: full sentences, concrete detail, momentum. Length for this
+   telling: ${depthSpec.narration} Never bullet-point-speak, never
+   headings, never meta commentary ("in this chapter…"), never second
+   person.
 4. STRUCTURE — ${depthSpec.chapters}; ${depthSpec.pages}; 1 to 3 scenes per
    page. The FIRST scene of every chapter is a \`chapter-header\` scene.
    NARRATIVE DENSITY — ${depthSpec.density} Narration is scene-level
    storytelling, never encyclopedia summary.
    PAGE FILL — every page must read like a FULL page of a printed book,
-   never a thin strip of text over blank paper. Write narrations near their
-   length limit (500–700 characters each). Compose pages deliberately: an
+   never a thin strip of text over blank paper. Write narrations to this
+   telling's length target (rule 3). Compose pages deliberately: an
    image scene (portrait or map-plate) is always accompanied on its page by
    a second scene or a full-length narration; timelines and letter-quotes
    pair well with a portrait. Only a chapter-header may stand alone on its

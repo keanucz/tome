@@ -18,7 +18,7 @@ import { isCatalogVoice } from '@/lib/tts/voices'
 
 export const runtime = 'nodejs'
 
-const MAX_TEXT_LENGTH = 2000
+const MAX_TEXT_LENGTH = 3000
 const CACHE_DIR = path.join(process.cwd(), '.cache', 'tts')
 const IMMUTABLE = 'public, max-age=31536000, immutable'
 

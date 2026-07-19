@@ -20,8 +20,8 @@ import { useCallback, useRef, useState } from 'react'
 
 type PlaybackResult = 'ended' | 'error'
 
-/** Keep safely under the /api/tts 2000-char limit, cutting at a sentence. */
-const TTS_MAX_CHARS = 1950
+/** Keep safely under the /api/tts 3000-char limit, cutting at a sentence. */
+const TTS_MAX_CHARS = 2900
 
 /** Chrome speechSynthesis silently dies mid-utterance unless resumed. */
 const SYNTHESIS_KEEPALIVE_MS = 10_000

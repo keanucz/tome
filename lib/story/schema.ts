@@ -53,8 +53,8 @@ export type ThemeSpec = z.infer<typeof ThemeSpecSchema>
 const sceneBase = {
   narration: z
     .string()
-    .max(700)
-    .describe('Spoken audiobook narration for this scene. Vivid, factual, flowing prose.'),
+    .max(900)
+    .describe('Spoken audiobook narration for this scene. Vivid, factual, flowing prose. Length target comes from the reading depth.'),
   citations: z.array(CitationSchema).min(1),
 }
 
