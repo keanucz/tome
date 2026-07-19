@@ -58,6 +58,10 @@ export default function Home() {
   const [topic, setTopic] = useState('')
   const [depth, setDepth] = useState<StoryDepth>('chronicle')
   const [citations, setCitations] = useState<Citation[]>([])
+  // The cited scene(s) behind the open panel — fuels "Cross-examine this page".
+  const [examineScenes, setExamineScenes] = useState<
+    { narration: string; citations: Citation[] }[]
+  >([])
   const [citationsOpen, setCitationsOpen] = useState(false)
   // ai v7 textStream drops error parts: a 429/overload can close the stream
   // cleanly with zero content while `error` stays undefined. Local flag.
@@ -135,10 +139,16 @@ export default function Home() {
     setStarted(false)
     setCitationsOpen(false)
     setCitations([])
+    setExamineScenes([])
   }, [stop, clear, cancelPrebaked])
 
-  const onCite = useCallback((c: Citation[]) => {
+  const onCite = useCallback((c: Citation[], sceneNarrations?: string[]) => {
     setCitations(c)
+    setExamineScenes(
+      (sceneNarrations ?? [])
+        .filter((narration) => narration.trim().length > 0)
+        .map((narration) => ({ narration, citations: c })),
+    )
     setCitationsOpen(true)
   }, [])
 
@@ -296,6 +306,9 @@ export default function Home() {
         citations={citations}
         open={citationsOpen}
         onClose={() => setCitationsOpen(false)}
+        examine={
+          examineScenes.length > 0 ? { scenes: examineScenes } : undefined
+        }
       />
     </main>
   )

@@ -33,7 +33,7 @@ export function Book({
   narrationSrc,
 }: {
   story: PartialStory
-  onCite: (c: Citation[]) => void
+  onCite: (c: Citation[], sceneNarrations?: string[]) => void
   autoNarrate?: boolean
   /**
    * Optional pre-recorded narration lookup (prebaked stories): given the
@@ -206,10 +206,10 @@ export function Book({
   // Opening the citations panel silences the narrator so the reader can
   // study the sources; narration resumes on the next page turn.
   const handleCite = useCallback(
-    (c: Citation[]) => {
+    (c: Citation[], sceneNarrations?: string[]) => {
       epoch.current++
       stop()
-      onCite(c)
+      onCite(c, sceneNarrations)
     },
     [onCite, stop],
   )

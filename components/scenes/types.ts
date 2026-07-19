@@ -19,7 +19,12 @@ export interface SceneComponentProps<S extends { type: string }> {
   ctx: SceneContext
 }
 
-export type OnCite = (citations: Citation[]) => void
+/**
+ * Fired when a reader opens a scene's sources. `sceneNarrations` carries the
+ * narration text of the cited scene(s) so the citations panel can offer a
+ * cross-examination pass; older callers may omit it.
+ */
+export type OnCite = (citations: Citation[], sceneNarrations?: string[]) => void
 
 /**
  * Citations of one scene with all required fields present — safe to hand to
