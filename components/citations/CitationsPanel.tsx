@@ -9,16 +9,69 @@
  * Citations are deduped by url + snippet. Esc and backdrop click close it.
  * Styled against the book's CSS vars (--paper / --ink / --accent) with
  * parchment fallbacks so it also works standalone.
+ *
+ * When the `examine` prop is present, a "Cross-examine this page" footer
+ * lets the reader run each cited scene's narration against the actual
+ * source text (POST /api/cross-examine) and shows per-scene verdicts.
  */
 
-import { useEffect, useMemo } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import type { Citation } from '@/lib/story/schema'
+
+/** One narration passage plus the citations that back it. */
+export interface ExamineScene {
+  narration: string
+  citations: Citation[]
+}
 
 interface CitationsPanelProps {
   citations: Citation[]
   open: boolean
   onClose: () => void
+  /** Cited scene(s) behind this panel — enables "Cross-examine this page". */
+  examine?: { scenes: ExamineScene[] }
+}
+
+// ---------------------------------------------------------------------------
+// Cross-examination verdicts
+// ---------------------------------------------------------------------------
+
+interface ExamineVerdict {
+  supported: 'yes' | 'partial' | 'no'
+  snippetVerbatim: boolean
+  note: string
+}
+
+type ExaminePhase = 'idle' | 'loading' | 'done' | 'error'
+
+const VERDICT_BADGE: Record<
+  ExamineVerdict['supported'],
+  { glyph: string; label: string }
+> = {
+  yes: { glyph: '✓', label: 'Supported' },
+  partial: { glyph: '◐', label: 'Partly' },
+  no: { glyph: '✗', label: 'Unsupported' },
+}
+
+function isExamineVerdict(value: unknown): value is ExamineVerdict {
+  if (!value || typeof value !== 'object') return false
+  const record = value as Record<string, unknown>
+  return (
+    (record.supported === 'yes' ||
+      record.supported === 'partial' ||
+      record.supported === 'no') &&
+    typeof record.snippetVerbatim === 'boolean' &&
+    typeof record.note === 'string'
+  )
+}
+
+/** Route responses are untrusted — narrow the envelope defensively. */
+function parseVerdicts(body: unknown): ExamineVerdict[] | null {
+  if (!body || typeof body !== 'object') return null
+  const verdicts = (body as { verdicts?: unknown }).verdicts
+  if (!Array.isArray(verdicts) || verdicts.length === 0) return null
+  return verdicts.every(isExamineVerdict) ? verdicts : null
 }
 
 /** Only render anchors for real web URLs — LLM output is untrusted. */
@@ -48,8 +101,61 @@ export function CitationsPanel({
   citations,
   open,
   onClose,
+  examine,
 }: CitationsPanelProps) {
   const deduped = useMemo(() => dedupeCitations(citations), [citations])
+  const examineScenes = useMemo(() => examine?.scenes ?? [], [examine])
+
+  // ── Cross-examination state ───────────────────────────────────────────────
+  const [phase, setPhase] = useState<ExaminePhase>('idle')
+  const [verdicts, setVerdicts] = useState<ExamineVerdict[]>([])
+  const abortRef = useRef<AbortController | null>(null)
+
+  // A different page's scenes (or a closed panel) discard prior verdicts.
+  const examineKey = useMemo(
+    () => examineScenes.map((s) => s.narration).join('␟'),
+    [examineScenes],
+  )
+  useEffect(() => {
+    setPhase('idle')
+    setVerdicts([])
+    return () => {
+      abortRef.current?.abort()
+      abortRef.current = null
+    }
+  }, [open, examineKey])
+
+  const runExamine = useCallback(async () => {
+    const scenes = examine?.scenes
+    if (!scenes || scenes.length === 0) return
+    abortRef.current?.abort()
+    const controller = new AbortController()
+    abortRef.current = controller
+    setPhase('loading')
+    try {
+      const res = await fetch('/api/cross-examine', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          scenes: scenes.slice(0, 6).map((scene) => ({
+            narration: scene.narration.slice(0, 4000),
+            citations: scene.citations,
+          })),
+        }),
+        signal: controller.signal,
+      })
+      if (!res.ok) throw new Error(`cross-examine returned HTTP ${res.status}`)
+      const parsed = parseVerdicts(await res.json())
+      if (!parsed) throw new Error('cross-examine returned a malformed body')
+      if (controller.signal.aborted) return
+      setVerdicts(parsed)
+      setPhase('done')
+    } catch (err) {
+      if (controller.signal.aborted) return
+      console.error('[citations] cross-examine failed:', err)
+      setPhase('error')
+    }
+  }, [examine])
 
   // Esc closes while open.
   useEffect(() => {
@@ -159,6 +265,72 @@ export function CitationsPanel({
                 ))
               )}
             </div>
+
+            {examineScenes.length > 0 ? (
+              <section className="tome-xa" aria-label="Cross-examination">
+                {phase === 'idle' || phase === 'error' ? (
+                  <>
+                    {phase === 'error' ? (
+                      <p className="tome-xa-adjourned" role="status">
+                        the examination was adjourned — try again
+                      </p>
+                    ) : null}
+                    <button
+                      type="button"
+                      className="tome-xa-button"
+                      onClick={runExamine}
+                    >
+                      Cross-examine this page
+                    </button>
+                  </>
+                ) : null}
+
+                {phase === 'loading' ? (
+                  <p className="tome-xa-loading" role="status">
+                    <span className="tome-xa-quill" aria-hidden="true">
+                      &#10002;
+                    </span>
+                    <span className="tome-xa-loading-text">
+                      the examiner is reading the sources&hellip;
+                    </span>
+                  </p>
+                ) : null}
+
+                {phase === 'done' ? (
+                  <div className="tome-xa-results">
+                    {examineScenes.map((scene, index) => {
+                      const verdict = verdicts[index]
+                      if (!verdict) return null
+                      const badge = VERDICT_BADGE[verdict.supported]
+                      return (
+                        <article
+                          className={`tome-xa-card tome-xa-${verdict.supported}`}
+                          key={`${scene.narration.slice(0, 40)}-${index}`}
+                        >
+                          <p className="tome-xa-badge">
+                            <span aria-hidden="true">{badge.glyph}</span>{' '}
+                            {badge.label}
+                          </p>
+                          {examineScenes.length > 1 ? (
+                            <p className="tome-xa-excerpt">
+                              &ldquo;{scene.narration.slice(0, 90)}
+                              {scene.narration.length > 90 ? '…' : ''}&rdquo;
+                            </p>
+                          ) : null}
+                          {verdict.note ? (
+                            <p className="tome-xa-note">{verdict.note}</p>
+                          ) : null}
+                          <p className="tome-xa-verbatim">
+                            snippet verbatim:{' '}
+                            {verdict.snippetVerbatim ? 'yes' : 'no'}
+                          </p>
+                        </article>
+                      )
+                    })}
+                  </div>
+                ) : null}
+              </section>
+            ) : null}
 
             <div className="tome-cite-ornament" aria-hidden="true">
               — ❧ —
@@ -322,6 +494,147 @@ export function CitationsPanel({
           letter-spacing: 0.3em;
           color: color-mix(in srgb, var(--tc-accent) 55%, transparent);
           border-top: 1px solid color-mix(in srgb, var(--tc-ink) 14%, transparent);
+        }
+        .tome-xa {
+          display: grid;
+          gap: 0.65rem;
+          padding: 0.85rem 1.25rem 0.9rem;
+          border-top: 1px solid color-mix(in srgb, var(--tc-ink) 14%, transparent);
+        }
+        .tome-xa-button {
+          width: 100%;
+          padding: 0.6rem 1rem;
+          border: 1px solid var(--tc-accent);
+          border-radius: 2px;
+          background: color-mix(in srgb, var(--tc-accent) 7%, transparent);
+          color: var(--tc-accent);
+          font-family: 'Courier New', Courier, monospace;
+          font-size: 0.7rem;
+          font-weight: 700;
+          letter-spacing: 0.18em;
+          text-transform: uppercase;
+          cursor: pointer;
+          transition: background-color 150ms ease, transform 120ms ease;
+        }
+        .tome-xa-button:hover {
+          background: color-mix(in srgb, var(--tc-accent) 14%, transparent);
+        }
+        .tome-xa-button:active {
+          transform: scale(0.96);
+        }
+        .tome-xa-button:focus-visible {
+          outline: 2px solid var(--tc-accent);
+          outline-offset: 2px;
+        }
+        .tome-xa-adjourned {
+          margin: 0;
+          font-style: italic;
+          font-size: 0.85rem;
+          text-align: center;
+          color: var(--tc-accent);
+        }
+        .tome-xa-loading {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 0.5rem;
+          margin: 0;
+          padding: 0.35rem 0;
+          font-style: italic;
+          font-size: 0.9rem;
+        }
+        .tome-xa-quill {
+          display: inline-block;
+          color: var(--tc-accent);
+          animation: tome-xa-quill 1.1s ease-in-out infinite;
+        }
+        @keyframes tome-xa-quill {
+          0%,
+          100% {
+            transform: translateY(0) rotate(0deg);
+            opacity: 0.55;
+          }
+          50% {
+            transform: translateY(-2px) rotate(-10deg);
+            opacity: 1;
+          }
+        }
+        .tome-xa-loading-text {
+          background: linear-gradient(
+            90deg,
+            var(--tc-ink) 25%,
+            var(--tc-accent) 50%,
+            var(--tc-ink) 75%
+          );
+          background-size: 200% 100%;
+          -webkit-background-clip: text;
+          background-clip: text;
+          color: transparent;
+          animation: tome-xa-shimmer 1.8s linear infinite;
+        }
+        @keyframes tome-xa-shimmer {
+          0% {
+            background-position: 175% 0;
+          }
+          100% {
+            background-position: -25% 0;
+          }
+        }
+        .tome-xa-results {
+          display: grid;
+          gap: 0.6rem;
+          max-height: 38vh;
+          overflow-y: auto;
+          scrollbar-width: thin;
+          scrollbar-color: color-mix(in srgb, var(--tc-ink) 35%, transparent) transparent;
+        }
+        .tome-xa-card {
+          --xa-color: var(--tc-accent);
+          background: color-mix(in srgb, #ffffff 42%, var(--tc-paper));
+          border: 1px solid color-mix(in srgb, var(--tc-ink) 14%, transparent);
+          border-left: 3px solid var(--xa-color);
+          border-radius: 2px 6px 6px 2px;
+          padding: 0.7rem 0.85rem 0.6rem;
+          box-shadow: 0 2px 6px rgba(30, 22, 12, 0.08);
+        }
+        .tome-xa-yes {
+          --xa-color: color-mix(in srgb, var(--tc-accent) 22%, #2e6b38);
+        }
+        .tome-xa-partial {
+          --xa-color: color-mix(in srgb, var(--tc-accent) 22%, #9a6a10);
+        }
+        .tome-xa-no {
+          --xa-color: var(--tc-accent);
+        }
+        .tome-xa-badge {
+          margin: 0 0 0.35rem;
+          font-family: 'Courier New', Courier, monospace;
+          font-size: 0.7rem;
+          font-weight: 700;
+          letter-spacing: 0.16em;
+          text-transform: uppercase;
+          color: var(--xa-color);
+        }
+        .tome-xa-excerpt {
+          margin: 0 0 0.3rem;
+          font-size: 0.72rem;
+          font-style: italic;
+          line-height: 1.45;
+          color: color-mix(in srgb, var(--tc-ink) 60%, transparent);
+        }
+        .tome-xa-note {
+          margin: 0 0 0.45rem;
+          font-style: italic;
+          font-size: 0.88rem;
+          line-height: 1.5;
+          color: var(--tc-ink);
+        }
+        .tome-xa-verbatim {
+          margin: 0;
+          font-family: 'Courier New', Courier, monospace;
+          font-size: 0.66rem;
+          letter-spacing: 0.08em;
+          color: color-mix(in srgb, var(--tc-ink) 62%, transparent);
         }
       `}</style>
     </>

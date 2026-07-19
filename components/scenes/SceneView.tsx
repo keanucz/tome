@@ -39,7 +39,9 @@ export function SceneView({ scene, ctx, onCite }: SceneViewProps) {
         <button
           type="button"
           className="tome-cite-mark"
-          onClick={() => onCite(citations)}
+          onClick={() =>
+            onCite(citations, scene?.narration ? [scene.narration] : undefined)
+          }
           aria-label="View sources"
           title="View sources"
         >
