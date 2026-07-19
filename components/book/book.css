@@ -369,7 +369,7 @@
 
 .tome-prose {
   font-family: var(--font-body, Georgia, serif);
-  font-size: clamp(1rem, 1.3vw, 1.24rem);
+  font-size: clamp(0.95rem, 1.15vw, 1.12rem);
   line-height: 1.62;
   text-align: justify;
   hyphens: auto;
@@ -1321,4 +1321,19 @@
 .tome-audience-fleuron {
   font-size: 0.85rem;
   line-height: 1;
+}
+
+/* Media scenes yield when sharing a page — smaller frames leave room for
+   prose, and the zoom auto-fit only has to absorb the remainder. */
+.tome-page-body:has(.tome-scene + .tome-scene) .tome-portrait-frame {
+  width: min(46%, 290px);
+}
+
+.tome-page-body:has(.tome-scene + .tome-scene) .tome-mapplate-well {
+  aspect-ratio: 16 / 10;
+  max-height: 300px;
+}
+
+.tome-page-body:has(.tome-scene + .tome-scene) .tome-frontispiece {
+  max-height: 120px;
 }

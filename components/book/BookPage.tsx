@@ -1,11 +1,51 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { InkText } from '@/components/scenes/InkText'
 import { SceneView } from '@/components/scenes/SceneView'
 import { SkeletonLines } from '@/components/scenes/Skeleton'
 import type { OnCite } from '@/components/scenes/types'
 import type { FlatPage } from './flatten'
+
+/** Auto-fit floor and step — a page shrinks in small steps until its
+ *  content fits the leaf, never below the floor (mask fade then applies). */
+const FIT_MIN = 0.7
+const FIT_STEP = 0.05
+
+/**
+ * Measure-and-shrink: steps `zoom` down until the body no longer overflows.
+ * `zoom` (unlike transform: scale) re-runs layout, so rem-sized text truly
+ * reflows smaller and the overflow genuinely disappears.
+ */
+function usePageFit(page: FlatPage | undefined) {
+  const bodyRef = useRef<HTMLDivElement | null>(null)
+  const [fit, setFit] = useState(1)
+
+  // A different page in this slot starts the search over.
+  useLayoutEffect(() => {
+    setFit(1)
+  }, [page?.key])
+
+  // After every render (streaming deltas included), shrink one step if the
+  // content still overflows. Converges in a handful of frames.
+  useLayoutEffect(() => {
+    const el = bodyRef.current
+    if (!el || fit <= FIT_MIN) return
+    if (el.scrollHeight > el.clientHeight + 2) {
+      setFit((f) => Math.max(FIT_MIN, +(f - FIT_STEP).toFixed(2)))
+    }
+  })
+
+  // Window resizes restart the search (spread dimensions changed).
+  useEffect(() => {
+    const onResize = () => setFit(1)
+    window.addEventListener('resize', onResize)
+    return () => window.removeEventListener('resize', onResize)
+  }, [])
+
+  return { bodyRef, fit }
+}
 
 export interface CoverInfo {
   title: string | undefined
@@ -48,6 +88,7 @@ export function BookPage({
     page?.kind === 'content' &&
     page.scenes.length === 1 &&
     page.scenes[0]?.type === 'map-plate'
+  const { bodyRef, fit } = usePageFit(page)
 
   return (
     <div
@@ -64,7 +105,11 @@ export function BookPage({
           {!isPlate && page.chapterTitle ? (
             <div className="tome-running-head">{page.chapterTitle}</div>
           ) : null}
-          <div className="tome-page-body">
+          <div
+            className="tome-page-body"
+            ref={bodyRef}
+            style={fit < 1 ? { zoom: fit } : undefined}
+          >
             {page.scenes.map((scene, i) => (
               <SceneView
                 key={i}
