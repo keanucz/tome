@@ -198,7 +198,10 @@ ${imageList}
    \`theme\`, then \`chapters\`. The cover and era styling must appear before
    the first chapter, never after.
 
-Begin the book now. Output only the JSON object.`
+Begin the book now. Output only the JSON object, in EXACTLY this shape —
+top-level keys title, subtitle, theme, chapters; every scene lives inside
+chapters[].pages[].scenes[]. Never emit a top-level "scenes" or "pages"
+array; in a long book it is tempting to flatten the structure — do not.`
 
   return { system: SYSTEM, prompt }
 }
